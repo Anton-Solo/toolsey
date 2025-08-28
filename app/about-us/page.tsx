@@ -84,9 +84,9 @@ export default function AboutUs() {
                                 Visit or Call Us Anytime
                             </p>
                             <p className="p-body-20 mb-8">
-                                We're here to help — whether it’s a quick Zoom or a face-to-face visit. Our team is ready to show you how Toolsey simplifies lead management and drives results. We always pick up the phone and love meeting clients in person.
+                                We&apos;re here to help — whether it&apos;s a quick Zoom or a face-to-face visit. Our team is ready to show you how Toolsey simplifies lead management and drives results. We always pick up the phone and love meeting clients in person.
                                 <br/> <br/>
-                                Let’s do something great together!
+                                Let&apos;s do something great together!
                             </p>
                             <ul className="p-body-20 font-semibold">
                                 <li>
