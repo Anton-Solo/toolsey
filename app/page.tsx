@@ -7,6 +7,7 @@ import { Dashboard } from "@/components/home/DashboardAnim";
 import { ADVANTAGES, HOW_WORKS } from "@/constans";
 import Image from "next/image";
 import { IntegrationAnim } from "@/components/home/IntegrationAnim";
+import { InfoCard } from "@/components/InfoCard";
 
 export default function Home() {
   return (
@@ -136,26 +137,13 @@ export default function Home() {
 
       <section className="mb-28">
         <div className="container">
-            <div className="flex relative flex-col items-center justify-center linear-card w-full h-[580px] relative rounded-[48px]">
-              <img src='/icons/big-circle.svg' alt='circle' className="absolute top-1/2 left-1/2 -translate-1/2 pointer-events-none select-none"/>
-              <img src='/icons/medium-circle.svg' alt='circle' className="absolute top-1/2 left-1/2 -translate-1/2 pointer-events-none select-none"/>
-              <img src='/icons/small-circle.svg' alt='circle' className="absolute top-1/2 left-1/2 -translate-1/2 pointer-events-none select-none"/>
-              <h2 className="h2 text-standart-white max-w-[720px] text-center mx-auto mb-4">
-                Yes, we know it&apos;s ridiculous starting at only $15/mo
-              </h2>
-              <p className="p-body-20 !text-standart-white max-w-[600] mx-auto text-center">
-                We make it up in volume, Toolsey is enjoyed by over 30,000 contractors and home service pros. 
-              </p>
-              <button className="btn btn-white my-6">New customer offer</button>
-              <p className="label text-standart-white max-w-[432px] text-center mx-auto">No contracts required and flexible plans allows Toolsey to deliver the best deal to contractors and home service pros in te industry</p>
-              <Image
-                src="/images/girl2.png"
-                alt="girl"
-                width={285}
-                height={414}
-                className="lg:block hidden absolute max-w-[285px] right-12 bottom-0"
-              />
-            </div>
+            <InfoCard 
+              isImage={true}
+              title={"Yes, we know it&apos;s ridiculous starting at only $15/mo"}
+              text={"We make it up in volume, Toolsey is enjoyed by over 30,000 contractors and home service pros."}
+              btnText={"New customer offer"}
+              extraTxt="No contracts required and flexible plans allows Toolsey to deliver the best deal to contractors and home service pros in te industry"
+            />
         </div>
       </section>
 

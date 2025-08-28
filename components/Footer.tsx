@@ -1,12 +1,17 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import { FOOTER_ADDRESS, FOOTER_NAV_LINKS, SOCIAL_LINKS } from "@/constans";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
     const year = new Date().getFullYear();
+    const pathname = usePathname();
+    const isBlue = pathname === "/about-us";
 
     return (
-        <footer className="bg-standart-white pt-10 pb-6">
+        <footer className={`${isBlue ? 'bg-primary-light' : 'bg-standart-white'} pt-10 pb-6`}>
             <div className="container">
                 <div className="flex flex-wrap justify-between mb-10 tracking-sm text-accent gap-6">
                     <div className="flex flex-col gap-6 max-w-[332px]">
