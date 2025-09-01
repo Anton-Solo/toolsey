@@ -1,4 +1,4 @@
-export const ProReports = ({ className }:{ className?: string }) => {
+const ProReports = ({ className }:{ className?: string }) => {
     return (
         <svg className={className} width="624" height="408" viewBox="0 0 624 408" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g clipPath="url(#clip0_1433_17551)">
@@ -96,3 +96,5 @@ export const ProReports = ({ className }:{ className?: string }) => {
         </svg>
     )
 }
+
+export default ProReports;

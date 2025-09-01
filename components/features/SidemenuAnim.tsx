@@ -1,4 +1,4 @@
-export const SideMenuAnim = ({ className }:{ className?: string }) => {
+const SideMenuAnim = ({ className }:{ className?: string }) => {
     return (
         <svg className={className} width="216" height="268" viewBox="0 0 216 268" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_1433_17524)">
@@ -76,3 +76,5 @@ export const SideMenuAnim = ({ className }:{ className?: string }) => {
         </svg>
     );
 }
+
+export default SideMenuAnim;
