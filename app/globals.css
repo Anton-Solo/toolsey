@@ -4,6 +4,7 @@
   --standart-white: #ffffff;
   --foreground: #15192D;
   --standart-black: #000807;
+  --video-bg: rgba(245, 250, 252, 1);
   /* Brand */
   --primary: #0078AD;
   --primary-light: #F5FAFC;
@@ -39,6 +40,7 @@
   --color-accent-dark: var(--accent-dark);
   --color-card-bg: var(--card-bg);
   --color-standart-black: var(--standart-black);
+  --color-video-bg: var(--video-bg);
 
   /* Typography */
   --text-h1: 72px;      
