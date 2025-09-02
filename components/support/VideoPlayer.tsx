@@ -10,10 +10,6 @@ interface VideoItem {
     description: string;
 }
 
-interface YouTubePlayerProps {
-    videos: VideoItem[];
-}
-
 export const VideoPlayer = () => {
     const [activeVideo, setActiveVideo] = useState<VideoItem>(TUTORIAL_VIDEOS[0]);
 
@@ -27,23 +23,23 @@ export const VideoPlayer = () => {
                 <iframe
                     src={`https://www.youtube.com/embed/${activeVideo.youtubeId}`}
                     title={activeVideo.title}
-                    className="w-full h-full rounded-2xl"
+                    className="w-full h-full min-h-[184px] lg:min-h-[448px] md:min-h-[327px] rounded-2xl"
                     allowFullScreen
                 />
             </div>
 
-            <div className="lg:w-[520px] w-full space-y-4 max-h-[448px] overflow-y-auto">
+            <div className="lg:w-[520px] w-full space-y-4 max-h-[448px] overflow-y-auto pr-6">
                 {TUTORIAL_VIDEOS.map((video) => (
                     <div
                         key={video.id}
-                        className={`rounded-xl cursor-pointer transition-colors ${
+                        className={`rounded-xl cursor-pointer transition-colors p-1 ${
                             activeVideo.id === video.id 
                             ? 'bg-video-bg' 
                             : 'bg-transparent'
                         }`}
                         onClick={() => setActiveVideo(video)}
                     >
-                        <div className="flex gap-4 mb-2">
+                        <div className="flex gap-4">
                             <img
                                 src={getYouTubeThumbnail(video.youtubeId)}
                                 alt={video.title}

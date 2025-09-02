@@ -1,24 +1,57 @@
 "use client";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/navigation';
 import Image from 'next/image';
+import { ArrowSlider } from '../icons/home-form/ArrowSlider';
 
 export const TestimonialsSlider = () => {
     return (
-        <div className="relative w-full overflow-visible">
+        <div className="relative w-full">
+            <button aria-label="Previous" className="swiper-button-prev !left-[40%] sm:!left-[45%] !-bottom-16 !top-auto after:!content-[''] !w-[48px] !h-[48px] rounded-[33px] bg-primary flex items-center justify-center">
+                <ArrowSlider className='!w-4'/>
+            </button>
+            <button aria-label="Next" className="swiper-button-next !right-[40%] sm:!right-[45%] !left-auto !-bottom-16 !top-auto after:!content-[''] !w-[48px] !h-[48px] rounded-[33px] bg-primary flex items-center justify-center">
+                <ArrowSlider className='rotate-180 !w-4'/>
+            </button>
+
             <Swiper
+                modules={[Navigation]}
+                navigation={{
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                }}
                 spaceBetween={32}
-                slidesPerView={4}
+                slidesPerView={1}
                 centeredSlides={true}
                 loop={true}
                 className="!overflow-visible px-[50px]"
+                breakpoints={{
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 32,
+                    },
+                    1280: {
+                        slidesPerView: 4,
+                        spaceBetween: 32,
+                    },
+                }}
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)}
             >
                 {Array.from({ length: 10 }, (_, index) => (
                     <SwiperSlide key={index} className="!w-auto">
-                        <div className='w-[416px] p-8 rounded-3xl bg-standart-white border border-card-bg'>
+                        <div className='w-full max-w-[416px] p-6 md:p-8 rounded-3xl bg-standart-white border border-card-bg'>
                             <p className='p-body-20 !text-accent-dark mb-10'>
                                 Before Toolsey, we were constantly losing leads due to slow responses and messy spreadsheets. 
                                 Now, every new request gets an automatic reply within minutes, and the whole team can track jobs easily. Honestly, 

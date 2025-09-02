@@ -30,25 +30,25 @@ export const TUTORIAL_VIDEOS = [
     {
         id: 1,
         title: "Add a team member",
-        youtubeId: "NiMqWab6kAk&ab_channel=toolsey",
+        youtubeId: "NiMqWab6kAk",
         description: "Invite teammates in seconds and assign roles so they can start working leads."
     },
     {
         id: 2,
         title: "Connect your CRM",
-        youtubeId: "NiMqWab6kAk&ab_channel=toolsey",
+        youtubeId: "5rlQC1IHvjQ",
         description: "Integrate Toolsey with your CRM to sync leads and simplify your sales flow."
     },
     {
         id: 3,
         title: "Capture leads from your website",
-        youtubeId: "NiMqWab6kAk&ab_channel=toolsey",
+        youtubeId: "NiMqWab6kAk",
         description: "Use web forms to collect and organize leads—fast and without any coding."
     },
     {
         id: 4,
         title: "Set up mobile notifications",
-        youtubeId: "NiMqWab6kAk&ab_channel=toolsey",
+        youtubeId: "5rlQC1IHvjQ",
         description: "Enable push alerts so you never miss a lead while working in the field."
     },
 ];

@@ -1,6 +1,6 @@
 export const ArchiveAnim = ({ className }:{ className?: string }) => {
     return (
-        <svg width="640" height="408" viewBox="0 0 640 408" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className={className} width="640" height="408" viewBox="0 0 640 408" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g clipPath="url(#clip0_1433_18180)">
             <rect width="640" height="408" rx="32" fill="white"/>
             <rect width="640" height="408" rx="32" fill="url(#pattern0_1433_18180)"/>

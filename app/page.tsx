@@ -14,8 +14,8 @@ export default function Home() {
     <main className="bg-primary-light">
       <section className="pt-20 pb-10">
         <div className="container">
-          <div className="flex items-center justify-between gap-4">
-            <div className="max-w-[522px]">
+          <div className="flex lg:flex-nowrap flex-wrap items-center lg:justify-between justify-center gap-4">
+            <div className="max-w-[410px]">
               <h1 className="h1 mb-4">Sales team software for only $15/mo</h1>
               <p className="p-body-20">Powerful sales tools to win more deals.</p>
             </div>
@@ -49,6 +49,18 @@ export default function Home() {
         </div>
       </section>
 
+      <section>
+        <div className="container">
+          <Image 
+            src="/images/dash-header.png"
+            alt="bg section"
+            width={1216}
+            height={539}
+            className="w-full h-full mx-auto"
+          />
+        </div>
+      </section>
+
        <section className="bg-primary pt-24 mb-28">
         <div className="container">
             <h2 className="h2 text-standart-white text-center mx-auto mb-4">
@@ -57,9 +69,9 @@ export default function Home() {
             <p className="p-body-20 !text-standart-white max-w-[648] mx-auto text-center mb-16">
                Speed to lead is everything when it comes to winning more deals. Toolsey was built to give you an unfair advantage! 
             </p>
-            <div className="flex justify-center gap-8 relative">
-              <div className="mb-[100px]">
-                <div className="relative w-[554px] h-[296px] -mb-[150px]">
+            <div className="flex lg:flex-row flex-col justify-center lg:gap-8 overflow-hidden relative">
+              <div className="lg:mb-[100px] -mb-[55px] lg:block flex items-center justify-center flex-col">
+                <div className="relative w-[554px] h-[296px] lg:-mb-[150px] -mb-[55px]">
                   <Image
                     src="/icons/elipse78.svg"
                     alt="elipse 78"
@@ -93,8 +105,8 @@ export default function Home() {
                   className="max-w-full h-full"
                 />
               </div>
-              <div>
-                <div className="relative w-[578px] h-[251px] -mb-[80px]">
+              <div className="lg:block flex items-center justify-center flex-col max-lg:mb-[500px]">
+                <div className="relative w-[554px] h-[296px] lg:-mb-[80px] -mb-[40px]">
                   <Image
                     src="/icons/elipse391.svg"
                     alt="elipse 391"
@@ -212,7 +224,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pb-32">
+      <section className="pb-48">
         <div className="container">
           <h2 className="h2 text-center mb-4">
             Testimonials

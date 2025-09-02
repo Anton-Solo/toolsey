@@ -1,4 +1,6 @@
-const FeaturesCard = ({ id, title, subtitle, description, whyItMatters, Anim, index }: { id: number, title: string; subtitle: string; description: string; whyItMatters: string; Anim?: React.ComponentType<React.SVGProps<SVGSVGElement>>, index:number }) => {
+import React from 'react';
+
+const FeaturesCard = ({ id, title, subtitle, description, whyItMatters, Anim, index }: { id: number, title: string; subtitle: string; description: string; whyItMatters: string; Anim?: React.ComponentType<React.SVGProps<SVGSVGElement>> | React.ReactNode, index:number }) => {
     return (
         <div key={id} className={`flex items-center lg:justify-between justify-center gap-4 lg:py-[60px] py-14 ${index % 2 !== 0 ? 'lg:flex-row-reverse flex-row' : 'flex-row' } lg:flex-nowrap flex-wrap`}>
             <div className="max-w-[608px] shrink-1">
@@ -7,7 +9,13 @@ const FeaturesCard = ({ id, title, subtitle, description, whyItMatters, Anim, in
                 <p className="p-body-20 mb-4">{description}</p>
                 <p className="p-body-20"><span className="font-bold">Why It Matters:</span> {whyItMatters}</p>
             </div>
-            {Anim && <Anim className="max-sm:w-full max-sm:h-full"/>}
+            {Anim && (
+                React.isValidElement(Anim) ? 
+                    Anim : 
+                    typeof Anim === 'function' ? 
+                        <Anim className="max-sm:w-full max-sm:h-full"/> : 
+                        null
+            )}
         </div>
     )
 }

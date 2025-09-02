@@ -24,7 +24,7 @@
   /* Button tokens (primary) */
   --btn-height: 56px;
   --btn-radius: 16px;
-  --btn-padding-x: 16px;
+  --btn-padding-x: 32px;
 }
 
 @theme inline {
@@ -63,6 +63,27 @@
 }
 
 @layer utilities {
+  /* Scrollbar styling */
+  * {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--primary) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 9999px;
+    border: 2px solid transparent; /* creates padding */
+    background-clip: content-box;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
   /* Animations */
   @keyframes slide-down {
     from { transform: translateY(-100%); }
@@ -104,6 +125,7 @@
     font-size: 20px;
     font-weight: 700;
     transition: background-color 250ms ease-in-out;
+    cursor: pointer;
   }
 
   .btn:focus-visible {
@@ -206,6 +228,23 @@
     border-radius: 12px;
     letter-spacing: var(--tracking-sm);
     outline: none;
+  }
+
+  .react-international-phone-input-container .react-international-phone-input {
+    border: 1px solid var(--color-accent-light)!important;
+    height: 56px!important;
+    padding: 0 10px!important;
+    border-radius: 0 12px 12px 0!important;
+    letter-spacing: var(--tracking-sm)!important;
+    outline: none!important;
+    width: 100%;
+  }
+
+  .react-international-phone-input-container .react-international-phone-country-selector-button {
+    border: 1px solid var(--color-accent-light)!important;
+    height: 56px!important;
+    border-radius:  12px  0 0 12px !important;
+    padding: 0 10px!important;
   }
 
   .linear-card {

@@ -1,13 +1,3 @@
-// import { ArchiveAnim } from "@/components/features/ArchiveAnim";
-// import { CreateFormAnim } from "@/components/features/CreateFormAnim";
-// import { InstantLeadAnim } from "@/components/features/InstantLeadAnim";
-// import { LeadAgg } from "@/components/features/LeadAgg";
-// import { MessagingAnim } from "@/components/features/MessagingAnim";
-// import { ProReports } from "@/components/features/ProReportsAnim";
-// import { ReportsAnim } from "@/components/features/ReportsAnim";
-// import { TeamManagementAnim } from "@/components/features/TeamManagementAnim";
-// import { TrackAnim } from "@/components/features/TrackAnim";
-
 export const LEAD_FEATURES_BLOCK = [
     {
         id: 1,
@@ -39,7 +29,7 @@ export const LEAD_FEATURES_BLOCK = [
         subtitle: "Right Lead. Right Rep. Right Now.",
         description: "Toolsey’s automation routes new leads instantly based on rules you define—like service area, team, or job type. Need to override? It’s one click.",
         whyItMatters: "No more lead confusion or delay. Ensure fast, fair, and efficient lead distribution—automatically.",
-        Anim: 'InstantLeadAnim'
+        Anim: '/images/right-lead.png'
     },
 ]
 
@@ -93,7 +83,7 @@ export const MAIN_FEATURES_BLOCK = [
         subtitle: "Organized Visuals. Instant Access.",
         description: "Capture and organize jobsite images directly in Toolsey, or sync from platforms like CompanyCam and FlatZap. Every photo is tagged to the right lead—easy to find, share, and present.",
         whyItMatters: "Build trust and stay compliant with clear, organized photo documentation. No more digging through photo galleries.",
-        Anim: 'TeamManagementAnim'
+        Anim: '/images/visuals.png'
     },
     {
         id: 4,

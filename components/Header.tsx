@@ -39,7 +39,7 @@ export default function Header() {
 
           <div className="flex items-center gap-6 font-bold tracking-sm">
             <Link className="hidden md:block" href="/login">Login</Link>
-            <button className="btn btn-primary !h-[48px]">Get started</button>
+            <button className="btn btn-primary !h-[48px] !text-[16px] !px-4">Get started</button>
             <button
                 type="button"
                 aria-label="Open menu"

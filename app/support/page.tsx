@@ -17,7 +17,7 @@ export default function Support() {
 
                 <section className="py-[60px]">
                     <h2 className="h2 text-center text-foreground mb-12">Still need help?</h2>
-                    <div className="flex justify-between gap-[10px]">
+                    <div className="flex lg:flex-nowrap flex-wrap lg:justify-between justify-center lg:gap-[10px] gap-8">
                         <div className="p-[40px] rounded-4xl bg-standart-white max-w-[640px] w-full">
                             <div className="flex justify-center mb-6">
                                 <ChatIcon />

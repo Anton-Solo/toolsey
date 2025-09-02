@@ -8,14 +8,14 @@ import Image from "next/image";
 export default function AboutUs() {
     return (
         <main>
-            <section className="bg-primary-light py-32 relative">
+            <section className="bg-primary-light py-32 relative overflow-visible">
                 <div className="container">
-                    <img src='/icons/blue-elipse.svg' alt='circle' className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none"/>
-                    <img src='/icons/blue-small-elipse.svg' alt='circle' className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none"/>
-                    <img src='/icons/blue-smallest-elipse.svg' alt='circle' className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none"/>
+                    <img src='/icons/blue-elipse.svg' alt='circle' className="absolute bottom-0 left-1/2 w-[730px] lg:w-[1343px] -translate-x-1/2 pointer-events-none select-none"/>
+                    <img src='/icons/blue-small-elipse.svg' alt='circle' className="absolute bottom-0 left-1/2 w-[542px] lg:w-[1035px] -translate-x-1/2 pointer-events-none select-none"/>
+                    <img src='/icons/blue-smallest-elipse.svg' alt='circle' className="absolute w-[385px] lg:w-[736px] bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none"/>
                     <div className="flex flex-col items-center justify-center">
                         <p className="p-body-16 !text-primary font-medium mb-4">About Us</p>
-                        <h1 className="h2 font-bold mb-4">
+                        <h1 className="h2 font-bold mb-4 text-center">
                             Turning Leads into Revenue
                         </h1>
                         <p className="p-body-20 max-w-[638px] mx-auto text-center mb-8 text-accent">
@@ -28,7 +28,7 @@ export default function AboutUs() {
                 </div>
             </section>
 
-            <section className="py-20">
+            <section className="pt-[120px] pb-[60px]">
                 <div className="container">
                     <h2 className="text-h1-sm leading-h1-sm text-center tracking-normal font-bold mb-12 text-standart-black">
                         Toolsey in Numbers:
@@ -36,7 +36,7 @@ export default function AboutUs() {
                     <div className="flex lg:flex-nowrap flex-wrap lg:justify-start justify-center gap-8">
                         {NUMBERS.map(({ id, label, text }) => (
                             <div key={id} className="flex max-w-[304px] w-full flex-col rounded-3xl items-center justify-center gap-4 bg-primary-light px-6 py-[40px]">
-                                <span className="text-h2-sm leading-h2-sm font-bold text-primary">{label}</span>
+                                <span className="text-h1-sm leading-h1-sm font-bold text-primary">{label}</span>
                                 <p className="p-body-16 font-semibold text-center">{text}</p>
                             </div>
                         ))}
@@ -47,7 +47,7 @@ export default function AboutUs() {
             <section className="py-10">
                 <div className="container">
                     <div className="flex lg:flex-nowrap flex-wrap lg:justify-between justify-center  items-center gap-4 mb-20">
-                        <div className="max-w-[528px] h-[408px] rounded-4xl shrink-0">
+                        <div className="max-w-[528px] md:h-[408px] h-[327px] rounded-4xl md:shrink-0">
                             <Image 
                                 src="/images/about-toolsey.png" 
                                 alt="About us" 
@@ -69,14 +69,16 @@ export default function AboutUs() {
                             </p>
                         </div>
                     </div>
-                    <div className="flex lg:flex-nowrap flex-wrap lg:justify-between justify-center items-center gap-4">
-                        <div className="max-w-[528px] h-[408px] rounded-4xl shrink-0">
-                            <Image 
-                                src="/images/about-toolsey.png" 
-                                alt="About us" 
-                                width={528} 
-                                height={408} 
-                                className="w-full h-full object-cover rounded-4xl"
+                    <div className="flex lg:flex-nowrap flex-wrap lg:justify-between justify-center gap-4">
+                        <div className="md:w-[528px] md:h-[528px] w-full h-[327px] rounded-4xl shrink-0">
+                            <iframe
+                               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3057.8621886206124!2d-86.01095952396574!3d39.96683377151551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8814b476e095e67f%3A0x30afe8708d1b7849!2zMTIxNzUgVmlzaW9uYXJ5IFdheSAjMTE4LCBGaXNoZXJzLCBJTiA0NjAzOCwg0KHQqNCQ!5e0!3m2!1sen!2sus!4v1756802971347!5m2!1sen!2sus&hl=en&gl=US"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0, borderRadius: "32px" }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
                             />
                         </div>
                         <div className="max-w-[640px]">
@@ -115,7 +117,7 @@ export default function AboutUs() {
                 </div>
             </section>
 
-            <section className="py-20">
+            <section className="py-[60px]">
                 <div className="container">
                     <InfoCard 
                         title="See How Toolsey Can Transform Your Sales"
