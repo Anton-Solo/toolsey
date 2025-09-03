@@ -47,7 +47,7 @@ export default function Footer() {
                                 </li>
                                 {FOOTER_NAV_LINKS.map(({ href, label}) => (
                                     <li key={href}>
-                                        <Link href={href}>{label}</Link>
+                                        <Link className='hover:opacity-70 transition-opacity duration-300' href={href}>{label}</Link>
                                     </li>
                                 ))}
                             </ul>

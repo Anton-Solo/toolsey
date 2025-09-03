@@ -70,7 +70,7 @@ export default function Home() {
                Speed to lead is everything when it comes to winning more deals. Toolsey was built to give you an unfair advantage! 
             </p>
             <div className="flex lg:flex-row flex-col justify-center lg:gap-8 overflow-hidden relative">
-              <div className="lg:mb-[100px] -mb-[55px] lg:block flex items-center justify-center flex-col">
+              <div className="lg:mb-[100px] -mb-[80px] lg:block flex items-center justify-center flex-col">
                 <div className="relative w-[554px] h-[296px] lg:-mb-[150px] -mb-[55px]">
                   <Image
                     src="/icons/elipse78.svg"
@@ -106,7 +106,7 @@ export default function Home() {
                 />
               </div>
               <div className="lg:block flex items-center justify-center flex-col max-lg:mb-[500px]">
-                <div className="relative w-[554px] h-[296px] lg:-mb-[80px] -mb-[40px]">
+                <div className="relative w-[554px] h-[296px] lg:-mb-[80px] -mb-[60px]">
                   <Image
                     src="/icons/elipse391.svg"
                     alt="elipse 391"

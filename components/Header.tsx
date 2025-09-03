@@ -3,10 +3,19 @@
 import { NAV_LINKS } from "@/constans";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+  const pathname = usePathname();
+
+  const isActiveLink = (href: string) => {
+    if (href === "/blog") {
+      return pathname.startsWith("/blog");
+    }
+    return pathname === href;
+  };
 
   const handleCloseMenu = () => {
     setIsExiting(true);
@@ -31,14 +40,22 @@ export default function Header() {
 
           <nav className="hidden md:flex items-center gap-6 font-medium tracking-sm">
             {NAV_LINKS.map((link) => (
-              <Link key={link.label} href={link.href} className="hover:opacity-70 transition-opacity">
+              <Link 
+                key={link.label} 
+                href={link.href} 
+                className={`hover:opacity-70 transition-all duration-300 ${
+                  isActiveLink(link.href) 
+                    ? 'text-primary font-bold' 
+                    : 'text-gray-900'
+                }`}
+              >
                 {link.label}
               </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-6 font-bold tracking-sm">
-            <Link className="hidden md:block" href="/login">Login</Link>
+            <Link className="hidden md:block hover:opacity-70 transition-opacity duration-300" href="/login">Login</Link>
             <button className="btn btn-primary !h-[48px] !text-[16px] !px-4">Get started</button>
             <button
                 type="button"
@@ -83,7 +100,11 @@ export default function Header() {
                         <li key={link.label}>
                             <Link
                             href={link.href}
-                            className="block py-2"
+                            className={`block py-2 transition-all duration-300 ${
+                              isActiveLink(link.href)
+                                ? 'text-primary font-bold'
+                                : 'text-gray-900'
+                            }`}
                             onClick={handleCloseMenu}
                             >
                             {link.label}
@@ -91,7 +112,15 @@ export default function Header() {
                         </li>
                     ))}
                     <li>
-                        <Link href="/login" onClick={handleCloseMenu} className="py-2">
+                        <Link 
+                          href="/login" 
+                          onClick={handleCloseMenu} 
+                          className={`block py-2 transition-all duration-300 ${
+                            isActiveLink("/login")
+                              ? 'text-primary font-bold'
+                              : 'text-gray-900'
+                          }`}
+                        >
                             Login
                         </Link>
                     </li>
