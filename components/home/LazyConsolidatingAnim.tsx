@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 
 // Lazy load ConsolidatingAnim component
+
 const ConsolidatingAnim = dynamic(() => import("./ConsolidatingAnim").then(mod => ({ default: mod.ConsolidatingAnim })), {
   ssr: false
 });
