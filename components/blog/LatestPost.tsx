@@ -13,11 +13,11 @@ export const LatestPost = () => {
                         <ArrowIcon className="w-[10px] h-[5px] stroke-primary -rotate-90 mt-[2px]" />
                     </Link>
                 </div>
-                <div className="flex flex-wrap gap-8 justify-center">
+                {/* <div className="flex flex-wrap gap-8 justify-center">
                     <PostCard />
                     <PostCard />
                     <PostCard />
-                </div>
+                </div> */}
             </div>
         </section>
     )

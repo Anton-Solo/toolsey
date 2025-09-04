@@ -48,6 +48,10 @@ export const Select = ({
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    useEffect(() => {
+        setSelectedValue(value || "");
+    }, [value]);
+
     const handleOptionClick = (optionValue: string) => {
         setSelectedValue(optionValue);
         setIsOpen(false);

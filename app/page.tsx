@@ -1,6 +1,5 @@
 import { AdvantageCard } from "@/components/home/AdvantageCard";
 import { BrandsSlider } from "@/components/home/BrandsSlider";
-import { ConsolidatingAnim } from "@/components/home/ConsolidatingAnim";
 import { FormBlock } from "@/components/home/FormBlock";
 import { TestimonialsSlider } from "@/components/home/TestimonialsSlider";
 import { Dashboard } from "@/components/home/DashboardAnim";
@@ -8,6 +7,7 @@ import { ADVANTAGES, HOW_WORKS } from "@/constans";
 import Image from "next/image";
 import { IntegrationAnim } from "@/components/home/IntegrationAnim";
 import { InfoCard } from "@/components/InfoCard";
+import { LazyConsolidatingAnim } from "@/components/home/LazyConsolidatingAnim";
 
 export default function Home() {
   return (
@@ -61,7 +61,7 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="bg-primary pt-24 mb-28">
+       <section className="bg-primary pt-24 mb-28 overflow-hidden">
         <div className="container">
             <h2 className="h2 text-standart-white text-center mx-auto mb-4">
               Lead response times
@@ -69,9 +69,9 @@ export default function Home() {
             <p className="p-body-20 !text-standart-white max-w-[648] mx-auto text-center mb-16">
                Speed to lead is everything when it comes to winning more deals. Toolsey was built to give you an unfair advantage! 
             </p>
-            <div className="flex lg:flex-row flex-col justify-center lg:gap-8 overflow-hidden relative">
+            <div className="flex lg:flex-row flex-col justify-center lg:gap-8 relative">
               <div className="lg:mb-[100px] -mb-[80px] lg:block flex items-center justify-center flex-col">
-                <div className="relative w-[554px] h-[296px] lg:-mb-[150px] -mb-[55px]">
+                <div className="relative w-[554px] h-[296px] lg:-mb-[150px] -mb-[55px] animate-gentle-float">
                   <Image
                     src="/icons/elipse78.svg"
                     alt="elipse 78"
@@ -83,7 +83,7 @@ export default function Home() {
                     <span className="text-[40px] tracking-normal opacity-80">78%</span> of customers pick the first company to respond
                   </p>
                 </div>
-                <div className="relative w-[505px] h-[393px]">
+                <div className="relative w-[505px] h-[393px] animate-gentle-float-more">
                   <Image
                     src="/icons/elipse87.svg"
                     alt="elipse 87"
@@ -106,7 +106,7 @@ export default function Home() {
                 />
               </div>
               <div className="lg:block flex items-center justify-center flex-col max-lg:mb-[500px]">
-                <div className="relative w-[554px] h-[296px] lg:-mb-[80px] -mb-[60px]">
+                <div className="relative w-[554px] h-[296px] lg:-mb-[80px] -mb-[60px] animate-gentle-float">
                   <Image
                     src="/icons/elipse391.svg"
                     alt="elipse 391"
@@ -118,7 +118,7 @@ export default function Home() {
                     <span className="text-[40px] tracking-normal opacity-80">391%</span> higher conversion if you respond within one minute
                   </p>
                 </div>
-                <div className="relative w-[529px] h-[324px]">
+                <div className="relative w-[529px] h-[324px] animate-gentle-float-more">
                   <Image
                     src="/icons/elipse7.svg"
                     alt="elipse 7"
@@ -141,7 +141,7 @@ export default function Home() {
           <p className="p-body-20 text-center max-w-[560px] mx-auto mb-28">Toolsey will aggregate and organize all of your lead sources and sales activity into one place.</p>
             
           <div className="flex flex-col lg:flex-row items-center">
-            <ConsolidatingAnim className="lg:-mr-[220px] -mb-[325px] lg:mb-0 max-w-[665px]"/>
+            <LazyConsolidatingAnim className="lg:-mr-[220px] -mb-[325px] lg:mb-0 max-w-[665px]"/>
             <Dashboard className="max-w-[872px]"/>
           </div>
         </div>
