@@ -3,43 +3,49 @@ export const IntegrationAnim = ({className}: {className?: string}) => {
     <svg className={className} width="489" height="457" viewBox="0 0 489 457" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
     <circle opacity="0.5" cx="331.5" cy="335.5" r="193.5" fill="white" fillOpacity="0.08" stroke="white" strokeWidth="0.760291" strokeDasharray="7.6 7.6"/>
     <circle opacity="0.5" cx="331.5" cy="335.5" r="282.5" fill="white" fillOpacity="0.08" stroke="white" strokeWidth="0.760291" strokeDasharray="7.6 7.6"/>
-    <g filter="url(#filter0_d_1384_981)">
+    <g className="animate-gentle-float-more" filter="url(#filter0_d_1384_981)">
     <rect x="320.874" y="18" width="56" height="56" rx="28" fill="url(#pattern0_1384_981)"/>
     </g>
-    <g filter="url(#filter1_d_1384_981)">
-    <rect x="184.874" y="46" width="56" height="56" rx="28" fill="white"/>
-    <rect x="184.874" y="46" width="56" height="56" rx="28" fill="url(#pattern1_1384_981)"/>
+    <g className="animate-gentle-float">
+      <g filter="url(#filter1_d_1384_981)">
+      <rect x="184.874" y="46" width="56" height="56" rx="28" fill="white"/>
+      <rect x="184.874" y="46" width="56" height="56" rx="28" fill="url(#pattern1_1384_981)"/>
+      </g>
     </g>
-    <g filter="url(#filter2_d_1384_981)">
+    <g className="animate-gentle-float-more" filter="url(#filter2_d_1384_981)">
     <rect x="312.692" y="118" width="48" height="48" rx="24" fill="white"/>
     <rect x="312.692" y="118" width="48" height="48" rx="24" fill="url(#pattern2_1384_981)"/>
     </g>
-    <g filter="url(#filter3_d_1384_981)">
+    <g className="animate-gentle-float" filter="url(#filter3_d_1384_981)">
     <rect x="162.693" y="182" width="48" height="48" rx="24" fill="white"/>
     <rect x="162.693" y="182" width="48" height="48" rx="24" fill="url(#pattern3_1384_981)"/>
     </g>
-    <g filter="url(#filter4_d_1384_981)">
+    <g className="animate-gentle-float-more" filter="url(#filter4_d_1384_981)">
     <rect x="113.693" y="318" width="48" height="48" rx="24" fill="white"/>
     <rect x="113.693" y="318" width="48" height="48" rx="24" fill="url(#pattern4_1384_981)"/>
     </g>
-    <g filter="url(#filter5_d_1384_981)">
+    <g className="animate-gentle-float" filter="url(#filter5_d_1384_981)">
     <rect x="169.693" y="449" width="48" height="48" rx="24" fill="white"/>
     <rect x="169.693" y="449" width="48" height="48" rx="24" fill="url(#pattern5_1384_981)"/>
     </g>
-    <g filter="url(#filter6_d_1384_981)">
+    <g className="animate-gentle-float-more" filter="url(#filter6_d_1384_981) ">
     <rect x="446.692" y="445" width="48" height="48" rx="24" fill="white"/>
     <rect x="446.692" y="445" width="48" height="48" rx="24" fill="url(#pattern6_1384_981)"/>
     </g>
-    <g filter="url(#filter7_d_1384_981)">
-    <rect x="77.6925" y="137" width="56" height="56" rx="28" fill="white"/>
-    <rect x="77.6925" y="137" width="56" height="56" rx="28" fill="url(#pattern7_1384_981)"/>
-    <rect x="77.6925" y="137" width="56" height="56" rx="28" fill="url(#pattern8_1384_981)"/>
+    <g className="animate-gentle-float">
+      <g filter="url(#filter7_d_1384_981)">
+      <rect x="77.6925" y="137" width="56" height="56" rx="28" fill="white"/>
+      <rect x="77.6925" y="137" width="56" height="56" rx="28" fill="url(#pattern7_1384_981)"/>
+      <rect x="77.6925" y="137" width="56" height="56" rx="28" fill="url(#pattern8_1384_981)"/>
+      </g>
     </g>
-    <g filter="url(#filter8_d_1384_981)">
-    <rect x="21.6925" y="274" width="56" height="56" rx="28" fill="white"/>
-    <rect x="21.6925" y="274" width="56" height="56" rx="28" fill="url(#pattern9_1384_981)"/>
+    <g className="animate-gentle-float-more">
+      <g filter="url(#filter8_d_1384_981)">
+      <rect x="21.6925" y="274" width="56" height="56" rx="28" fill="white"/>
+      <rect x="21.6925" y="274" width="56" height="56" rx="28" fill="url(#pattern9_1384_981)"/>
+      </g>
     </g>
-    <g filter="url(#filter9_d_1384_981)">
+    <g className="animate-gentle-float" filter="url(#filter9_d_1384_981)">
     <rect x="37.8741" y="405" width="56" height="56" rx="28" fill="white"/>
     <g clipPath="url(#clip0_1384_981)">
     <path d="M72.6839 440.065C70.2635 440.065 68.3003 438.123 68.3003 435.728C68.3003 433.333 70.2635 431.39 72.6839 431.39C75.1043 431.39 77.0674 433.332 77.0674 435.728C77.0674 438.124 75.1054 440.065 72.6839 440.065ZM73.9965 427.377V423.518C75.0151 423.042 75.727 422.024 75.727 420.841V420.752C75.727 419.119 74.3773 417.785 72.729 417.785H72.6387C70.9904 417.785 69.6407 419.119 69.6407 420.752V420.841C69.6407 422.024 70.3537 423.042 71.3712 423.518V427.377C69.856 427.609 68.4716 428.227 67.3291 429.137L56.6242 420.896C56.6948 420.629 56.7446 420.352 56.7458 420.062C56.7458 418.212 55.234 416.712 53.3658 416.709C51.4987 416.707 49.9823 418.203 49.98 420.052C49.9777 421.902 51.4894 423.4 53.3577 423.403C53.9665 423.403 54.5303 423.233 55.0245 422.954L65.5546 431.063C64.6267 432.441 64.1321 434.066 64.1343 435.728C64.1343 437.534 64.7108 439.205 65.6854 440.578L62.4814 443.749C62.2242 443.669 61.9568 443.626 61.6873 443.622C60.1524 443.622 58.9092 444.853 58.9092 446.371C58.9092 447.89 60.1524 449.12 61.6873 449.12C63.2222 449.12 64.4665 447.889 64.4665 446.37C64.4633 446.103 64.42 445.838 64.338 445.584L67.5051 442.45C68.995 443.579 70.8133 444.189 72.6827 444.188C77.4054 444.188 81.2323 440.401 81.2323 435.728C81.2323 431.498 78.093 428.004 73.9965 427.377Z" fill="#F95C35"/>
@@ -47,7 +53,7 @@ export const IntegrationAnim = ({className}: {className?: string}) => {
     </g>
     <path d="M388.769 407H273.221C265.375 407 259 400.625 259 392.767V277.221C259 269.375 265.375 263 273.221 263H388.769C396.627 263 402.99 269.375 402.99 277.221V392.767C402.99 400.625 396.627 406.988 388.769 406.988" fill="white" fillOpacity="0.24"/>
     <path d="M327.393 283.316H325.556C315.897 283.316 309.644 289.836 309.644 299.934V301.977C302.418 303.182 297.904 308.449 297.904 316.065V317.196C297.904 323.242 301.055 329.653 309.644 331.004V355.942C309.644 375.772 320.021 386.696 338.841 386.696C346.955 386.696 353.95 384.19 358.561 379.64C362.174 376.222 364.084 371.842 364.084 366.976C364.084 358.643 357.722 352.171 352.259 352.171H350.909L349.534 352.694L347.564 353.485L346.359 355.249C345.386 356.672 344.413 356.855 343.512 356.855C343.391 356.855 343.281 356.855 343.184 356.855C343.05 356.368 342.88 355.395 342.88 353.68V331.271H348.038C357.418 331.271 363.245 325.773 363.245 316.928V315.651C363.245 308.912 359.291 301.722 348.184 301.722H343.172V299.958C343.172 289.557 337.272 283.34 327.405 283.34M327.405 290.335C332.637 290.335 336.177 292.598 336.177 299.946V308.717H348.196C353.853 308.717 356.262 311.114 356.262 315.651V316.928C356.262 321.734 353.719 324.276 348.062 324.276H335.897V353.692C335.897 360.48 338.014 363.874 343.525 363.874C347.491 363.874 350.313 361.891 352.15 359.203C352.186 359.191 352.223 359.178 352.272 359.178C353.233 359.178 357.101 361.989 357.101 366.976C357.101 369.945 355.97 372.487 353.707 374.604C350.593 377.718 345.508 379.701 338.853 379.701C323.732 379.701 316.651 371.648 316.651 355.942V324.264H313.123C307.466 324.264 304.924 321.722 304.924 317.196V316.065C304.924 311.393 307.466 308.705 312.977 308.705H316.651V299.934C316.651 293.425 319.912 290.323 325.568 290.323H327.405V290.335Z" fill="white"/>
-    <g filter="url(#filter10_d_1384_981)">
+    <g className="animate-gentle-float-more" filter="url(#filter10_d_1384_981)">
     <rect x="442.692" y="177" width="48" height="48" rx="24" fill="white"/>
     <rect x="442.692" y="177" width="48" height="48" rx="24" fill="url(#pattern10_1384_981)"/>
     <rect x="442.692" y="177" width="48" height="48" rx="24" fill="url(#pattern11_1384_981)"/>
@@ -56,7 +62,7 @@ export const IntegrationAnim = ({className}: {className?: string}) => {
     <rect x="442.692" y="177" width="48" height="48" rx="24" fill="url(#pattern14_1384_981)"/>
     <rect x="442.692" y="177" width="48" height="48" rx="24" fill="url(#pattern15_1384_981)"/>
     </g>
-    <g filter="url(#filter11_d_1384_981)">
+    <g className="animate-gentle-float" filter="url(#filter11_d_1384_981)">
     <rect x="442.692" y="57" width="56" height="56" rx="28" fill="white"/>
     <rect x="442.692" y="57" width="56" height="56" rx="28" fill="url(#pattern16_1384_981)"/>
     <rect x="442.692" y="57" width="56" height="56" rx="28" fill="url(#pattern17_1384_981)"/>

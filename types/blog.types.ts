@@ -38,6 +38,8 @@ export interface BlogApiResponse {
 
 export interface BlogApiParams {
   page?: number;
-  per_page?: number;
+  perPage?: number;
   category?: string;
+  sort?: string;
+  searchText?: string;
 }

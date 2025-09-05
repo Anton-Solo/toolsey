@@ -2,48 +2,43 @@ import { Filters } from "@/components/blog/Filters";
 import { PostCard } from "@/components/blog/PostCard";
 import { WeeklyNews } from "@/components/blog/WeeklyNews";
 import { Pagination } from "@/components/blog/Pagination";
-import { fetchBlogPosts } from "@/lib/api/blog";
+import { fetchBlogCategories, fetchBlogPosts } from "@/lib/api/blog";
 import React, { Suspense } from "react";
 
 // Modern Next.js App Router configuration
 export const revalidate = 300; // ISR: revalidate every 5 minutes
 
 interface BlogPageProps {
-    searchParams: {
+    searchParams: Promise<{
         page?: string;
         category?: string;
-        search?: string;
+        searchText?: string;
         sort?: string;
-    };
+    }>;
 }
 
 export default async function Blog({ searchParams }: BlogPageProps) {
-    const currentPage = parseInt(searchParams.page || '1');
-    const category = searchParams.category;
-    const search = searchParams.search;
-    const sort = searchParams.sort;
+    const params = await searchParams;
+    
+    const currentPage = parseInt(params.page || '1');
+    const category = params.category;
+    const searchText = params.searchText;
+    const sort = params.sort;
 
     try {
         const blogData = await fetchBlogPosts({
             page: currentPage,
-            per_page: 12,
+            perPage: 12,
             category: category,
-            // Note: Add search and sort parameters to API function if supported by backend
+            sort: sort,
+            searchText: searchText,
         });
 
         const posts = blogData.data;
         const meta = blogData.meta;
 
-        // Extract unique categories for filters
-        const allCategories = posts.reduce((acc: string[], post) => {
-            post.categories.forEach(cat => {
-                if (!acc.includes(cat)) {
-                    acc.push(cat);
-                }
-            });
-            return acc;
-        }, []);
-        console.log(meta)
+        const allCategories = await fetchBlogCategories();
+        const categories = allCategories.data;
 
         return (
             <main className="bg-primary-light pt-[120px] pb-[60px]">
@@ -58,7 +53,7 @@ export default async function Blog({ searchParams }: BlogPageProps) {
 
                 <section className="pb-8">
                     <div className="container">
-                        <Filters availableCategories={allCategories} />
+                        <Filters availableCategories={categories} />
                     </div>
                 </section>
 

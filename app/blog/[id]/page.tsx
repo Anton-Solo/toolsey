@@ -1,4 +1,4 @@
-import { LatestPost } from "@/components/blog/LatestPost";
+import LatestPost from "@/components/blog/LatestPost";
 import { WeeklyNews } from "@/components/blog/WeeklyNews";
 import { ArrowIcon } from "@/components/icons/support/ArrowIcon";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -163,7 +163,7 @@ export default async function Post({ params }: PostPageProps) {
                     </div>
                 </section>
 
-                {/* <LatestPost /> */}
+                <LatestPost />
                 <ScrollToTop />
             </main>
         )

@@ -3,10 +3,15 @@
 import { SearchIcon } from "../icons/blog/SearchIcon"
 import { Select } from "../Select"
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 interface FiltersProps {
-    availableCategories?: string[];
+    availableCategories?: {
+        id: number;
+        slug: string;
+        summary: string | null;
+        title: string;
+    }[];
 }
 
 export const Filters = ({ availableCategories = [] }: FiltersProps) => {
@@ -16,20 +21,21 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
 
     // Get current filter values from URL
     const currentCategory = searchParams.get('category') || '';
-    const currentSort = searchParams.get('sort') || 'most-recent';
+    const currentSort = searchParams.get('sort') || 'newest';
 
     // Create category options
     const categoryOptions = [
         { value: '', label: 'All categories' },
         ...availableCategories.map(category => ({
-            value: category,
-            label: category
+            value: String(category.id),
+            label: category.title
         }))
     ];
 
     const sortOptions = [
-        { value: 'most-recent', label: 'Most recent' },
-        { value: 'most-popular', label: 'Most popular' }
+        { value: 'newest', label: 'Newest' },
+        { value: 'popular', label: 'Most popular' },
+        { value: 'oldest', label: 'Oldest' },
     ];
 
     const updateFilters = (key: string, value: string) => {
@@ -49,7 +55,7 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
-        updateFilters('search', searchTerm);
+        updateFilters('searchText', searchTerm);
     };
 
     return (

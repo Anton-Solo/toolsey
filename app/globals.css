@@ -452,3 +452,67 @@ body {
 .animate-counter-rotate {
   animation: counter-rotate 60s linear infinite;
 }
+
+/* Scroll animations */
+@keyframes slideUpFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUpFromBottom 0.8s ease-out forwards;
+}
+
+.animate-slide-up-delay {
+  animation: slideUpFromBottom 0.8s ease-out 0.3s forwards;
+}
+
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+/* Cards animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation: fadeInUp 0.6s ease-out 0.5s forwards;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fadeInUp 0.6s ease-out 0.7s forwards;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation: fadeInUp 0.6s ease-out 0.9s forwards;
+}
+
+.animate-fade-in-up-delay-4 {
+  animation: fadeInUp 0.6s ease-out 1.1s forwards;
+}
+
+.animate-fade-in-up-delay-5 {
+  animation: fadeInUp 0.6s ease-out 1.3s forwards;
+}
+
+.cards-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}

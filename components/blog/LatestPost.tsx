@@ -1,8 +1,13 @@
 import Link from "next/link"
 import { ArrowIcon } from "../icons/support/ArrowIcon"
 import { PostCard } from "./PostCard"
+import { fetchBlogPosts } from "@/lib/api/blog"
 
-export const LatestPost = () => {
+export default async function LatestPost() {
+    const posts = await fetchBlogPosts({
+        perPage: 3,
+    })
+
     return (
         <section className="py-[60px] pb-[120px]">
             <div className="container">
@@ -13,11 +18,11 @@ export const LatestPost = () => {
                         <ArrowIcon className="w-[10px] h-[5px] stroke-primary -rotate-90 mt-[2px]" />
                     </Link>
                 </div>
-                {/* <div className="flex flex-wrap gap-8 justify-center">
-                    <PostCard />
-                    <PostCard />
-                    <PostCard />
-                </div> */}
+                <div className="flex flex-wrap gap-8 justify-center">
+                    {posts.data.map((post) => (
+                        <PostCard key={post.id} post={post} />
+                    ))}
+                </div>
             </div>
         </section>
     )

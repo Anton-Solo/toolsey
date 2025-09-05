@@ -1,13 +1,14 @@
-import { AdvantageCard } from "@/components/home/AdvantageCard";
 import { BrandsSlider } from "@/components/home/BrandsSlider";
 import { FormBlock } from "@/components/home/FormBlock";
 import { TestimonialsSlider } from "@/components/home/TestimonialsSlider";
 import { Dashboard } from "@/components/home/DashboardAnim";
-import { ADVANTAGES, HOW_WORKS } from "@/constans";
+import { HOW_WORKS } from "@/constans";
 import Image from "next/image";
 import { IntegrationAnim } from "@/components/home/IntegrationAnim";
 import { InfoCard } from "@/components/InfoCard";
 import { LazyConsolidatingAnim } from "@/components/home/LazyConsolidatingAnim";
+import { AnimatedAdvantagesSection } from "@/components/home/AnimatedAdvantagesSection";
+import { AnimatedDashboardSection } from "@/components/home/AnimatedDashboardSection";
 
 export default function Home() {
   return (
@@ -41,25 +42,11 @@ export default function Home() {
             yet powerful platform to drive more sales with tools 
             that are easyto-use yet incredibly effective.
           </p>
-          <div className="flex lg:justify-start justify-center flex-wrap gap-x-8 gap-y-12">
-            {ADVANTAGES.map(( advantage ) => (
-              <AdvantageCard key={advantage.id} {...advantage}/>
-            ))}
-          </div>
+          <AnimatedAdvantagesSection />
         </div>
       </section>
 
-      <section>
-        <div className="container">
-          <Image 
-            src="/images/dash-header.png"
-            alt="bg section"
-            width={1216}
-            height={539}
-            className="w-full h-full mx-auto"
-          />
-        </div>
-      </section>
+      <AnimatedDashboardSection />
 
        <section className="bg-primary pt-24 mb-28 overflow-hidden">
         <div className="container">
@@ -140,9 +127,9 @@ export default function Home() {
           <h2 className="h2 mb-4 text-center max-w-[984px] mx-auto">Consolidating information is the key to efficiency and sanity!</h2>
           <p className="p-body-20 text-center max-w-[560px] mx-auto mb-28">Toolsey will aggregate and organize all of your lead sources and sales activity into one place.</p>
             
-          <div className="flex flex-col lg:flex-row items-center">
-            <LazyConsolidatingAnim className="lg:-mr-[220px] -mb-[325px] lg:mb-0 max-w-[665px]"/>
-            <Dashboard className="max-w-[872px]"/>
+          <div className="flex flex-col lg:flex-row items-center justify-center">
+            <LazyConsolidatingAnim className="lg:-mr-[220px] -mb-[325px] lg:mb-0 max-w-[665px] w-full"/>
+            <Dashboard className="relative z-10 max-w-[872px]"/>
           </div>
         </div>
       </section>
@@ -238,7 +225,7 @@ export default function Home() {
 
       <section>
         <div className="container">
-          <div className="flex items-center lg:flex-nowrap flex-wrap lg:justify-between justify-center linear-card w-full lg:h-[480px] relative rounded-[48px] lg:pl-16 pt-16 lg:pt-0">
+          <div className="flex items-center lg:flex-nowrap flex-wrap lg:justify-between justify-center linear-card w-full lg:h-[480px] relative rounded-[48px] lg:pl-16 pt-16 lg:pt-0 overflow-hidden">
               <div>
                 <h2 className="h2 text-standart-white mb-4 max-w-[720px] lg:text-left text-center">
                   Integrations that power your business
