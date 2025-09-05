@@ -15,15 +15,22 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
 
   const getBaseUrl = () => {
     if (typeof window === 'undefined') {
-      return process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL 
-        ? `${process.env.VERCEL_URL}` 
-        : 'http://localhost:3000';
+      if (process.env.NEXT_PUBLIC_SITE_URL) {
+        return process.env.NEXT_PUBLIC_SITE_URL;
+      }
+      if (process.env.VERCEL_URL) {
+        return `https://${process.env.VERCEL_URL}`;
+      }
+      return 'http://localhost:3000';
     }
-    return process.env.VERCEL_URL;
+    return window.location.origin;
   };
   
   const baseUrl = getBaseUrl();
-  const url = `/api/blog${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
+  const url = `${baseUrl}/api/blog${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
+  
+  console.log('Base URL:', baseUrl);
+  console.log('Full URL:', url);
 
   
   const response = await fetch(url, {
