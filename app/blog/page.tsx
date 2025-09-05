@@ -14,6 +14,7 @@ interface BlogPageProps {
         category?: string;
         searchText?: string;
         sort?: string;
+        
     }>;
 }
 
