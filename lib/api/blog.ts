@@ -19,7 +19,7 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
         ? `${process.env.VERCEL_URL}` 
         : 'http://localhost:3000';
     }
-    return window.location.origin;
+    return process.env.VERCEL_URL;
   };
   
   const baseUrl = getBaseUrl();
