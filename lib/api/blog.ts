@@ -16,7 +16,13 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   // На сервері потрібен абсолютний URL для fetch
   const getAbsoluteUrl = () => {
     if (typeof window === 'undefined') {
-
+      // На сервері (SSR) використовуємо змінну середовища або домен
+      if (process.env.NEXT_PUBLIC_SITE_URL) {
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+        // Перевіряємо чи вже є протокол
+        const url = siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}`;
+        return `${url}/api/blog`;
+      }
       if (process.env.VERCEL_URL) {
         const vercelUrl = process.env.VERCEL_URL;
         // Перевіряємо чи вже є протокол
