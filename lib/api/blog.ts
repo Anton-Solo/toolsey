@@ -16,12 +16,12 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   // На сервері потрібен абсолютний URL для fetch
   const getAbsoluteUrl = () => {
     if (typeof window === 'undefined') {
-      // На сервері (SSR) використовуємо змінну середовища або домен
-      if (process.env.NEXT_PUBLIC_SITE_URL) {
-        return `${process.env.NEXT_PUBLIC_SITE_URL}/api/blog`;
-      }
+
       if (process.env.VERCEL_URL) {
-        return `https://${process.env.VERCEL_URL}/api/blog`;
+        const vercelUrl = process.env.VERCEL_URL;
+        // Перевіряємо чи вже є протокол
+        const url = vercelUrl.startsWith('http') ? vercelUrl : `https://${vercelUrl}`;
+        return `${url}/api/blog`;
       }
       return 'http://localhost:3000/api/blog';
     }
@@ -32,6 +32,11 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   const baseUrl = getAbsoluteUrl();
   const url = `${baseUrl}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
   
+  console.log('Environment check:', {
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+    VERCEL_URL: process.env.VERCEL_URL,
+    isServer: typeof window === 'undefined'
+  });
   console.log('Base URL:', baseUrl);
   console.log('Full URL:', url);
 
