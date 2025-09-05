@@ -13,15 +13,12 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   if (params.sort) searchParams.set('sort', params.sort);
   if (params.searchText) searchParams.set('searchText', params.searchText);
 
-  // Використовуємо наш внутрішній API route
   const getBaseUrl = () => {
-    // На сервері (SSR) використовуємо змінну середовища або домен
     if (typeof window === 'undefined') {
       return process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL 
         ? `https://${process.env.VERCEL_URL}` 
         : 'http://localhost:3000';
     }
-    // В браузері використовуємо поточний домен
     return window.location.origin;
   };
   

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const BEARER_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN || process.env.API_TOKEN;
+const BEARER_TOKEN = process.env.API_TOKEN || process.env.NEXT_PUBLIC_API_TOKEN;
 
 export async function GET(request: NextRequest) {
   try {
@@ -26,6 +26,9 @@ export async function GET(request: NextRequest) {
     console.log('Making API request to:', apiUrl);
     console.log('API_BASE_URL:', process.env.API_BASE_URL);
     console.log('BEARER_TOKEN exists:', !!BEARER_TOKEN);
+    console.log('BEARER_TOKEN value:', BEARER_TOKEN ? '***' + BEARER_TOKEN.slice(-4) : 'undefined');
+    console.log('NEXT_PUBLIC_API_TOKEN:', process.env.NEXT_PUBLIC_API_TOKEN ? '***' + process.env.NEXT_PUBLIC_API_TOKEN.slice(-4) : 'undefined');
+    console.log('API_TOKEN:', process.env.API_TOKEN ? '***' + process.env.API_TOKEN.slice(-4) : 'undefined');
     console.log('Request parameters:', {
       sort,
       category,
@@ -33,6 +36,14 @@ export async function GET(request: NextRequest) {
       page,
       perPage
     });
+
+    if (!BEARER_TOKEN) {
+      console.error('No API token found!');
+      return NextResponse.json(
+        { error: 'API token not configured' },
+        { status: 500 }
+      );
+    }
 
     const response = await fetch(apiUrl, {
       method: 'GET',
