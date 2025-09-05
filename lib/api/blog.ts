@@ -13,10 +13,7 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   if (params.sort) searchParams.set('sort', params.sort);
   if (params.searchText) searchParams.set('searchText', params.searchText);
 
-  // Використовуємо наш внутрішній API route
   const url = `http://localhost:3000/api/blog${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
-  
-  console.log('Fetching blog posts from:', url);
   
   const response = await fetch(url, {
     headers: {
