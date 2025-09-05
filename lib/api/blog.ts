@@ -13,21 +13,24 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   if (params.sort) searchParams.set('sort', params.sort);
   if (params.searchText) searchParams.set('searchText', params.searchText);
 
-  const getBaseUrl = () => {
+  // На сервері потрібен абсолютний URL для fetch
+  const getAbsoluteUrl = () => {
     if (typeof window === 'undefined') {
+      // На сервері (SSR) використовуємо змінну середовища або домен
       if (process.env.NEXT_PUBLIC_SITE_URL) {
-        return process.env.NEXT_PUBLIC_SITE_URL;
+        return `${process.env.NEXT_PUBLIC_SITE_URL}/api/blog`;
       }
       if (process.env.VERCEL_URL) {
-        return `https://${process.env.VERCEL_URL}`;
+        return `https://${process.env.VERCEL_URL}/api/blog`;
       }
-      return 'http://localhost:3000';
+      return 'http://localhost:3000/api/blog';
     }
-    return window.location.origin;
+    // В браузері використовуємо відносний URL
+    return '/api/blog';
   };
   
-  const baseUrl = getBaseUrl();
-  const url = `${baseUrl}/api/blog${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
+  const baseUrl = getAbsoluteUrl();
+  const url = `${baseUrl}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
   
   console.log('Base URL:', baseUrl);
   console.log('Full URL:', url);
