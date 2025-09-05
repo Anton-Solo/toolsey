@@ -16,7 +16,7 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   const getBaseUrl = () => {
     if (typeof window === 'undefined') {
       return process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL 
-        ? `https://${process.env.VERCEL_URL}` 
+        ? `${process.env.VERCEL_URL}` 
         : 'http://localhost:3000';
     }
     return window.location.origin;
