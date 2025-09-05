@@ -23,7 +23,7 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   };
   
   const baseUrl = getBaseUrl();
-  const url = `${baseUrl}/api/blog${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
+  const url = `/api/blog${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
 
   
   const response = await fetch(url, {
