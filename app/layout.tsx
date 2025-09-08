@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body
         className={`${jakarta.variable} antialiased`}
       >
+        <SpeedInsights/>
         <Header />
         {children}
         <Footer />
