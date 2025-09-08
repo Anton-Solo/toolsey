@@ -451,6 +451,19 @@ body {
 
 .animate-counter-rotate {
   animation: counter-rotate 60s linear infinite;
+  will-change: transform;
+}
+
+.animate-gentle-float {
+  will-change: transform;
+}
+
+.animate-gentle-float-more {
+  will-change: transform;
+}
+
+.animate-fade-in-up {
+  will-change: opacity, transform;
 }
 
 /* Scroll animations */

@@ -2,13 +2,13 @@ import { BrandsSlider } from "@/components/home/BrandsSlider";
 import { FormBlock } from "@/components/home/FormBlock";
 import { TestimonialsSlider } from "@/components/home/TestimonialsSlider";
 import { LazyDashboard } from "@/components/home/LazyDashboard";
-import { HOW_WORKS } from "@/constans";
-import Image from "next/image";
 import { IntegrationAnim } from "@/components/home/IntegrationAnim";
 import { InfoCard } from "@/components/InfoCard";
 import { LazyConsolidatingAnim } from "@/components/home/LazyConsolidatingAnim";
 import { AnimatedAdvantagesSection } from "@/components/home/AnimatedAdvantagesSection";
 import { AnimatedDashboardSection } from "@/components/home/AnimatedDashboardSection";
+import { LazyLeadResponseSection } from "@/components/home/LazyLeadResponseSection";
+import { LazyHowItWorksSection } from "@/components/home/LazyHowItWorksSection";
 
 export default function Home() {
   return (
@@ -48,79 +48,7 @@ export default function Home() {
 
       <AnimatedDashboardSection />
 
-       <section className="bg-primary pt-24 mb-28 overflow-hidden">
-        <div className="container">
-            <h2 className="h2 text-standart-white text-center mx-auto mb-4">
-              Lead response times
-            </h2>
-            <p className="p-body-20 !text-standart-white max-w-[648] mx-auto text-center mb-16">
-               Speed to lead is everything when it comes to winning more deals. Toolsey was built to give you an unfair advantage! 
-            </p>
-            <div className="flex lg:flex-row flex-col justify-center lg:gap-8 relative">
-              <div className="lg:mb-[100px] -mb-[80px] lg:block flex items-center justify-center flex-col">
-                <div className="relative w-[554px] h-[296px] lg:-mb-[150px] -mb-[55px] animate-gentle-float">
-                  <Image
-                    src="/icons/elipse78.svg"
-                    alt="elipse 78"
-                    width={554}
-                    height={296}
-                    className="absolute top-0 left-0 w-full h-full z-10"
-                  />
-                  <p className="absolute top-1/2 left-[70px] -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
-                    <span className="text-[40px] tracking-normal opacity-80">78%</span> of customers pick the first company to respond
-                  </p>
-                </div>
-                <div className="relative w-[505px] h-[393px] animate-gentle-float-more">
-                  <Image
-                    src="/icons/elipse87.svg"
-                    alt="elipse 87"
-                    width={505}
-                    height={393}
-                    className="absolute top-0 left-0 w-full h-full z-10"
-                  />
-                  <p className="absolute top-1/2 left-[70px] -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
-                    <span className="text-[40px] tracking-normal opacity-80">87%</span> higher contact rate with automated routing
-                  </p>
-                </div>
-              </div>
-              <div className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 w-[536px] h-[536px]">
-                <Image
-                  src="/images/lead.png"
-                  alt="lead response times"
-                  width={536}
-                  height={536}
-                  className="max-w-full h-full"
-                />
-              </div>
-              <div className="lg:block flex items-center justify-center flex-col max-lg:mb-[500px]">
-                <div className="relative w-[554px] h-[296px] lg:-mb-[80px] -mb-[60px] animate-gentle-float">
-                  <Image
-                    src="/icons/elipse391.svg"
-                    alt="elipse 391"
-                    width={578}
-                    height={251}
-                    className="absolute top-0 left-0 w-full h-full z-10"
-                  />
-                  <p className="absolute top-[40%] right-[70px] -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
-                    <span className="text-[40px] tracking-normal opacity-80">391%</span> higher conversion if you respond within one minute
-                  </p>
-                </div>
-                <div className="relative w-[529px] h-[324px] animate-gentle-float-more">
-                  <Image
-                    src="/icons/elipse7.svg"
-                    alt="elipse 7"
-                    width={529}
-                    height={324}
-                    className="absolute top-0 left-0 w-full h-full z-10"
-                  />
-                  <p className="absolute top-1/2 right-[10px] -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
-                    <span className="text-[40px] tracking-normal opacity-80">Only 7%</span> of the companies reply within 5 minutes
-                  </p>
-                </div>
-              </div>
-            </div>
-        </div>
-      </section>
+      <LazyLeadResponseSection />
 
       <section className="mb-28">
         <div className="container">
@@ -134,6 +62,8 @@ export default function Home() {
         </div>
       </section>
 
+      <LazyHowItWorksSection />
+
       <section className="mb-28">
         <div className="container">
             <InfoCard 
@@ -146,70 +76,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        <div className="container">
-          <h2 className="h2 mb-4 text-center">See how Toolsey works in action</h2>
-          <p className="p-body-20 mb-20 text-center max-w-[510px] mx-auto">
-            Give yourself an unfair advantage with a system built to win more jobs. 
-            Toolsey automation and assignment tools will drive speed to lead
-          </p>
-          <div className="flex flex-wrap lg:flex-nowrap lg:justify-between justify-center gap-8 justify-between">
-            <div className="max-w-[640px]">
-              <h3 className="p-body-24 font-bold mb-6">
-                Toolsey Mobile App: a thing of beauty
-              </h3>
-              <p className="p-body-20">Smart and easy to use — your sales team will be up and running in just a few minutes and instantly fall in love.</p>
-              <div className="flex items-center flex-wrap gap-4 my-6">
-                {HOW_WORKS.mobile_app.map(item => (
-                  <div 
-                    key={item} 
-                    className="flex items-center justify-center h-[42px] rounded-xl px-4 bg-secondary-foreground p-body-16 font-medium">
-                      {item}
-                  </div>)
-                )}
-                <span className="p-body-16 font-medium !text-primary">...and much more!</span>
-              </div>
-              <button className="btn btn-primary">Get start free</button>
-            </div>
-            <Image
-              src="/images/mobile-app.png"
-              alt="mobile app"
-              width={640}
-              height={360}
-              className="max-h-[360px]"
-            />
-          </div>
-
-          <div className="flex flex-wrap lg:flex-nowrap lg:justify-between justify-center gap-8 my-20">
-            <div className="max-w-[640px]">
-              <h3 className="p-body-24 font-bold mb-6">
-                Your Command Center for All Sales Activity
-              </h3>
-              <p className="p-body-20">
-                Powerful and easy to use — your admin&apos;s life just got a whole lot easier and more productive.
-              </p>
-              <div className="flex items-center flex-wrap gap-4 my-6">
-                {HOW_WORKS.command_center.map(item => (
-                  <div 
-                    key={item} 
-                    className="flex items-center justify-center h-[42px] rounded-xl px-4 bg-secondary-foreground p-body-16 font-medium">
-                      {item}
-                  </div>)
-                )}
-                <span className="p-body-16 font-medium !text-primary">...and much more!</span>
-              </div>
-              <button className="btn btn-primary">Get start free</button>
-            </div>
-            <Image
-              src="/images/command-center.png"
-              alt="command center"
-              width={640}
-              height={360}
-              className="max-h-[360px]"
-            />
-          </div>
-        </div>
-      </section>
 
       <section className="pb-36">
         <div className="container">
