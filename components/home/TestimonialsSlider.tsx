@@ -23,11 +23,10 @@ export const TestimonialsSlider = () => {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 }}
-                spaceBetween={32}
+                spaceBetween={15}
                 slidesPerView={1}
                 centeredSlides={true}
                 loop={true}
-                className="!overflow-visible px-[50px]"
                 breakpoints={{
                     640: {
                         slidesPerView: 1,
@@ -51,7 +50,7 @@ export const TestimonialsSlider = () => {
             >
                 {Array.from({ length: 10 }, (_, index) => (
                     <SwiperSlide key={index} className="!w-auto">
-                        <div className='w-full max-w-[416px] p-6 md:p-8 rounded-3xl bg-standart-white border border-card-bg'>
+                        <div className='w-full sm:max-w-[416px] max-w-[304px] p-6 md:p-8 rounded-3xl bg-standart-white border border-card-bg'>
                             <p className='p-body-20 !text-accent-dark mb-10'>
                                 Before Toolsey, we were constantly losing leads due to slow responses and messy spreadsheets. 
                                 Now, every new request gets an automatic reply within minutes, and the whole team can track jobs easily. Honestly, 

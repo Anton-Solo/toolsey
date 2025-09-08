@@ -1,7 +1,7 @@
 import { BrandsSlider } from "@/components/home/BrandsSlider";
 import { FormBlock } from "@/components/home/FormBlock";
 import { TestimonialsSlider } from "@/components/home/TestimonialsSlider";
-import { Dashboard } from "@/components/home/DashboardAnim";
+import { LazyDashboard } from "@/components/home/LazyDashboard";
 import { HOW_WORKS } from "@/constans";
 import Image from "next/image";
 import { IntegrationAnim } from "@/components/home/IntegrationAnim";
@@ -25,7 +25,7 @@ export default function Home() {
         </div>
       </section> 
 
-      <section className="py-28">
+      <section className="py-28 overflow-hidden">
         <div className="container">
           <h4 className="text-foreground text-2xl mb-12 text-center">
             Trusted by <span className="font-medium">30,000+</span> Contactors and Home Service Pros
@@ -128,8 +128,8 @@ export default function Home() {
           <p className="p-body-20 text-center max-w-[560px] mx-auto mb-28">Toolsey will aggregate and organize all of your lead sources and sales activity into one place.</p>
             
           <div className="flex flex-col lg:flex-row items-center justify-center">
-            <LazyConsolidatingAnim className="lg:-mr-[220px] -mb-[325px] lg:mb-0 max-w-[665px] w-full"/>
-            <Dashboard className="relative z-10 max-w-[872px]"/>
+            <LazyConsolidatingAnim className="lg:-mr-[220px] -mb-[50%] lg:mb-0 max-w-[665px] w-full"/>
+            <LazyDashboard />
           </div>
         </div>
       </section>
@@ -138,7 +138,7 @@ export default function Home() {
         <div className="container">
             <InfoCard 
               isImage={true}
-              title={"Yes, we know it&apos;s ridiculous starting at only $15/mo"}
+              title={"Yes, we know it's ridiculous starting at only $15/mo"}
               text={"We make it up in volume, Toolsey is enjoyed by over 30,000 contractors and home service pros."}
               btnText={"New customer offer"}
               extraTxt="No contracts required and flexible plans allows Toolsey to deliver the best deal to contractors and home service pros in te industry"
@@ -211,7 +211,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pb-48">
+      <section className="pb-36">
         <div className="container">
           <h2 className="h2 text-center mb-4">
             Testimonials
@@ -226,7 +226,7 @@ export default function Home() {
       <section>
         <div className="container">
           <div className="flex items-center lg:flex-nowrap flex-wrap lg:justify-between justify-center linear-card w-full lg:h-[480px] relative rounded-[48px] lg:pl-16 pt-16 lg:pt-0 overflow-hidden">
-              <div>
+              <div className="lg:px-0 px-4">
                 <h2 className="h2 text-standart-white mb-4 max-w-[720px] lg:text-left text-center">
                   Integrations that power your business
                 </h2>

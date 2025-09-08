@@ -1,4 +1,8 @@
-import { FeatureAnimations } from "@/components/features/FeatureAnimations";
+import { LazyLeadFeaturesSection } from "@/components/features/LazyLeadFeaturesSection";
+import { LazyLeadMappingSection } from "@/components/features/LazyLeadMappingSection";
+import { LazyMainFeaturesSection } from "@/components/features/LazyMainFeaturesSection";
+import { LazyTextingSection } from "@/components/features/LazyTextingSection";
+import { LazyLeadTeamSection } from "@/components/features/LazyLeadTeamSection";
 
 
 export default function Features() {
@@ -15,7 +19,11 @@ export default function Features() {
         </div>
       </section>
 
-      <FeatureAnimations />
+      <LazyLeadFeaturesSection />
+      <LazyLeadMappingSection />
+      <LazyMainFeaturesSection />
+      <LazyTextingSection />
+      <LazyLeadTeamSection />
 
       <section className="lg:py-28 py-14">
         <div className="container text-center">

@@ -13,39 +13,25 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   if (params.sort) searchParams.set('sort', params.sort);
   if (params.searchText) searchParams.set('searchText', params.searchText);
 
-  // На сервері потрібен абсолютний URL для fetch
   const getAbsoluteUrl = () => {
     if (typeof window === 'undefined') {
-      // На сервері (SSR) використовуємо змінну середовища або домен
       if (process.env.NEXT_PUBLIC_SITE_URL) {
         const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-        // Перевіряємо чи вже є протокол
         const url = siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}`;
         return `${url}/api/blog`;
       }
       if (process.env.VERCEL_URL) {
         const vercelUrl = process.env.VERCEL_URL;
-        // Перевіряємо чи вже є протокол
         const url = vercelUrl.startsWith('http') ? vercelUrl : `https://${vercelUrl}`;
         return `${url}/api/blog`;
       }
       return 'http://localhost:3000/api/blog';
     }
-    // В браузері використовуємо відносний URL
     return '/api/blog';
   };
   
   const baseUrl = getAbsoluteUrl();
   const url = `${baseUrl}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
-  
-  console.log('Environment check:', {
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
-    VERCEL_URL: process.env.VERCEL_URL,
-    isServer: typeof window === 'undefined'
-  });
-  console.log('Base URL:', baseUrl);
-  console.log('Full URL:', url);
-
   
   const response = await fetch(url, {
     headers: {
@@ -60,7 +46,6 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   return response.json();
 }
 
-// Fetch blog post by ID
 export async function fetchBlogPostById(id: number) {
   const response = await fetch(`${process.env.API_BASE_URL}/blog/posts/${id}`, {
     headers: {

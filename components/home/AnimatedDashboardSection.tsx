@@ -13,36 +13,36 @@ export const AnimatedDashboardSection = () => {
 
   return (
     <section>
-      <div className="container">
+      <div className="container overflow-hidden">
         <div className="flex">
           <div 
             ref={leftBlockRef}
-            className={`pt-[115px] -mr-[22px] relative z-10 ${
+            className={`pt-[11%] hidden lg:block -mr-[22px] relative z-10 ${
               leftBlockVisible ? 'animate-slide-up' : 'scroll-hidden'
             }`}
           >
             <DashNotesIcon  className="-mr-8"/>
             <MessageLeftIcon className="relative -right-[25px]"/>
           </div>
-          <div className="relative max-w-[840px] w-full overflow-hidden">
+          <div className="relative max-w-[840px] max-h-[380px]  w-full overflow-hidden shrink-0">
             <Image 
               src="/images/dash-header-1.png"
               alt="bg section"
               width={840}
               height={400}
-              className="w-full max-w-[840px] h-full "
+              className="w-full absolute bottom-0 left-1/2 -translate-x-1/2 max-w-[840px] h-full min-w-[226px]"
             />
             <Image 
               src="/images/dash-girl.png"
               alt="bg section"
               width={546}
               height={383}
-              className="w-full max-w-[546px] h-full absolute -bottom-[30px] left-[60%] -translate-x-1/2"
+              className="w-full max-w-[546px] h-auto absolute -bottom-[30px] left-[60%] -translate-x-1/2"
             />
           </div>
           <div 
             ref={rightBlockRef}
-            className={`pt-[90px] ${
+            className={`pt-[8%] hidden lg:block ${
               rightBlockVisible ? 'animate-slide-up' : 'scroll-hidden'
             }`}
           >
