@@ -3,6 +3,7 @@ import { LazyLeadMappingSection } from "@/components/features/LazyLeadMappingSec
 import { LazyMainFeaturesSection } from "@/components/features/LazyMainFeaturesSection";
 import { LazyTextingSection } from "@/components/features/LazyTextingSection";
 import { LazyLeadTeamSection } from "@/components/features/LazyLeadTeamSection";
+import Link from "next/link";
 
 
 export default function Features() {
@@ -31,7 +32,7 @@ export default function Features() {
           <p className="p-body-20 mb-6">Start using Toolsey today and turn every lead into a customer.</p>
           <div className="flex lg:flex-nowrap flex-wrap items-center justify-center gap-6 mb-4 text-[20px]">
             <button className="btn btn-primary max-sm:w-full">Learn more</button>
-            <button className="btn btn-primary max-sm:w-full">See plans and pricing</button>
+            <Link href="/pricing" className="btn btn-primary max-sm:w-full">See plans and pricing</Link>
           </div>
           <p className="label">Simple setup. Instant results. No credit card required.</p>
         </div>

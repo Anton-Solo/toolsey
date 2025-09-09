@@ -1,0 +1,77 @@
+import { PricingData } from '@/types/pricing.types';
+
+export const PRICING_DATA: PricingData = {
+  yearlyDiscount: 20,
+  plans: [
+    {
+      id: 'lite',
+      name: 'Lite',
+      price: {
+        monthly: 0,
+        yearly: 0,
+      },
+      currency: '$',
+      period: 'mo',
+      features: [
+        { id: 'users-3', text: '3 users', included: true },
+        { id: 'integrations-1', text: '1 of Integrations', included: true },
+        { id: 'support', text: 'Live Customer Support', included: true },
+        { id: 'training', text: 'Zoom Training', included: true },
+        { id: 'reports', text: 'Inspection Report', included: true },
+      ],
+      ctaText: 'Try today',
+      ctaHref: '/signup?plan=lite',
+    },
+    {
+      id: 'basic',
+      name: 'Basic',
+      description: 'MOST POPULAR',
+      price: {
+        monthly: 19,
+        yearly: 15,
+      },
+      currency: '$',
+      period: 'mo',
+      isPopular: true,
+      features: [
+        { id: 'users-5', text: '5 users ($20 per additional user/mo)', included: true },
+        { id: 'integrations-unlimited', text: 'Unlimited Integrations', included: true },
+        { id: 'additional-users', text: '$20 per additional user/mo', included: true },
+        { id: 'support', text: 'Live Customer Support', included: true },
+        { id: 'training', text: 'Zoom Training', included: true },
+        { id: 'reports', text: 'Inspection Report', included: true },
+        { id: 'photos', text: 'Photo Management', included: true },
+        { id: 'tasks', text: 'Task Management', included: true },
+      ],
+      ctaText: 'Try today',
+      ctaHref: '/signup?plan=basic',
+    },
+    {
+      id: 'premium',
+      name: 'Premium',
+      price: {
+        monthly: 31,
+        yearly: 25,
+      },
+      currency: '$',
+      period: 'mo',
+      features: [
+        { id: 'users-10', text: '10 of Toolsey Users', included: true },
+        { id: 'integrations-unlimited', text: 'Unlimited Integrations', included: true },
+        { id: 'additional-users', text: '$20 per additional user/mo', included: true },
+        { id: 'support', text: 'Live Customer Support', included: true },
+        { id: 'training', text: 'Zoom Training', included: true },
+        { id: 'reports', text: 'Inspection Report', included: true },
+        { id: 'photos', text: 'Photo Management', included: true },
+        { id: 'tasks', text: 'Task Management', included: true },
+        { id: 'forms', text: 'Forms Module', included: true },
+        { id: 'custom-forms', text: 'Custom Forms Building', included: true },
+        { id: 'lead-reports', text: 'Lead Enrichment Reports', included: true },
+        { id: 'contract-details', text: 'Advanced Contract Details', included: true },
+        { id: 'analytics', text: 'Multi-Location Analytics', included: true },
+      ],
+      ctaText: 'Try today',
+      ctaHref: '/signup?plan=premium',
+    },
+  ],
+};

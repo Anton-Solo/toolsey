@@ -10,6 +10,13 @@ export function splitHtmlContent(htmlContent: string, splitRatio: number = 0.6):
         return { firstHalf: '', secondHalf: '' };
     }
 
+    // Check if content is too short to split
+    const textContent = htmlContent.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    const wordCount = textContent.split(' ').length;
+    
+    if (wordCount < 50) {
+        return { firstHalf: htmlContent, secondHalf: '' };
+    }
     
     const blockElementSplit = splitByBlockElements(htmlContent, splitRatio);
     if (blockElementSplit.secondHalf) {
@@ -31,7 +38,8 @@ function splitByBlockElements(htmlContent: string, splitRatio: number): ContentS
         /<blockquote[^>]*>.*?<\/blockquote>/gi,
         /<ul[^>]*>.*?<\/ul>/gi,
         /<ol[^>]*>.*?<\/ol>/gi,
-        /<div[^>]*>.*?<\/div>/gi
+        /<div[^>]*>.*?<\/div>/gi,
+        /<img[^>]*>/gi  // Include images as block elements
     ];
 
     const allMatches: Array<{ match: string; index: number }> = [];
@@ -69,7 +77,7 @@ function splitByWordCount(htmlContent: string, splitRatio: number): ContentSplit
     const textContent = htmlContent.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
     const words = textContent.split(' ');
     
-    if (words.length < 100) {
+    if (words.length < 50) {
         return { firstHalf: htmlContent, secondHalf: '' };
     }
 

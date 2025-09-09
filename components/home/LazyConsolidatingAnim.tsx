@@ -51,7 +51,7 @@ export const LazyConsolidatingAnim = ({ className, disableLazyLoading = false }:
     <div ref={ref} className={className}>
       {isVisible ? (
         <div onLoad={handleLoad}>
-          <ConsolidatingAnim className="h-max" />
+          <ConsolidatingAnim className="h-max w-full" />
         </div>
       ) : (
         // Skeleton placeholder with same dimensions

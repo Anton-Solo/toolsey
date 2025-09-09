@@ -11,9 +11,9 @@ interface InfoCardProps {
 export const InfoCard = ({isImage = false, title, text, btnText, extraTxt }: InfoCardProps) => {
     return (
         <div className="flex relative flex-col items-center justify-center linear-card w-full md:h-[580px] lg:h-[416px] md:px-0 px-4 py-4 rounded-[48px]">
-            <img src='/icons/big-circle.svg' alt='circle' className="absolute h-full top-1/2 left-1/2 -translate-1/2 pointer-events-none select-none"/>
-            <img src='/icons/medium-circle.svg' alt='circle' className="absolute lg:h-full h-1/2 top-1/2 left-1/2 -translate-1/2 pointer-events-none select-none"/>
-            <img src='/icons/small-circle.svg' alt='circle' className="absolute lg:h-full h-1/3 top-1/2 left-1/2 -translate-1/2 pointer-events-none select-none"/>
+            <img src='/icons/big-circle.svg' alt='circle' className="absolute h-full w-full top-1/2 left-1/2 -translate-1/2 pointer-events-none select-none"/>
+            <img src='/icons/medium-circle.svg' alt='circle' className="absolute h-full w-full  top-1/2 left-1/2 -translate-1/2 pointer-events-none select-none"/>
+            <img src='/icons/small-circle.svg' alt='circle' className="absolute h-full w-full top-1/2 left-1/2 -translate-1/2 pointer-events-none select-none"/>
             <h2 className="h2 text-standart-white max-w-[720px] text-center mx-auto mb-4">
                 {title}
             </h2>

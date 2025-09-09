@@ -12,7 +12,7 @@ export const AnimatedDashboardSection = () => {
   const { ref: rightBlockRef, isVisible: rightBlockVisible } = useScrollAnimation();
 
   return (
-    <section>
+    <section className="hidden lg:block">
       <div className="container overflow-hidden">
         <div className="flex">
           <div 

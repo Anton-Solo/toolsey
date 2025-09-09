@@ -9,11 +9,11 @@ import { ArrowSlider } from '../icons/home-form/ArrowSlider';
 
 export const TestimonialsSlider = () => {
     return (
-        <div className="relative w-full overflow-hidden pb-[100px]">
-            <button aria-label="Previous" className="swiper-button-prev !left-[40%] sm:!left-[45%] !bottom-0 !top-auto after:!content-[''] !w-[48px] !h-[48px] rounded-[33px] bg-primary flex items-center justify-center hover:scale-105 transition-all duration-300">
+        <div className="relative w-full overflow-hidden pb-[100px] px-4 sm:px-0">
+            <button aria-label="Previous" className="swiper-button-prev !left-[20%] sm:!left-[35%] md:!left-[40%] lg:!left-[45%] !bottom-0 !top-auto after:!content-[''] !w-[48px] !h-[48px] rounded-[33px] bg-primary flex items-center justify-center hover:scale-105 transition-all duration-300">
                 <ArrowSlider className='!w-4'/>
             </button>
-            <button aria-label="Next" className="swiper-button-next !right-[40%] sm:!right-[45%] !left-auto !bottom-0 !top-auto after:!content-[''] !w-[48px] !h-[48px] rounded-[33px] bg-primary flex items-center justify-center hover:scale-105 transition-all duration-300">
+            <button aria-label="Next" className="swiper-button-next !right-[20%] sm:!right-[35%] md:!right-[40%] lg:!right-[45%] !left-auto !bottom-0 !top-auto after:!content-[''] !w-[48px] !h-[48px] rounded-[33px] bg-primary flex items-center justify-center hover:scale-105 transition-all duration-300">
                 <ArrowSlider className='rotate-180 !w-4'/>
             </button>
 

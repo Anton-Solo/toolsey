@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { HOW_WORKS } from '@/constans';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import Link from 'next/link';
 
 export const LazyHowItWorksSection = () => {
   const { ref, isVisible } = useScrollAnimation({
@@ -34,26 +35,32 @@ export const LazyHowItWorksSection = () => {
             <p className="p-body-20">Smart and easy to use — your sales team will be up and running in just a few minutes and instantly fall in love.</p>
             <div className="flex items-center flex-wrap gap-4 my-6">
               {HOW_WORKS.mobile_app.map(item => (
-                <div 
+                <Link 
+                  href="/features"
                   key={item} 
-                  className="flex items-center justify-center h-[42px] rounded-xl px-4 bg-secondary-foreground p-body-16 font-medium">
+                  className="flex items-center justify-center h-[42px] rounded-xl px-4 bg-secondary-foreground p-body-16 font-medium hover:opacity-70 transition-opacity duration-300">
                   {item}
-                </div>)
+                </Link>)
               )}
-              <span className="p-body-16 font-medium !text-primary">...and much more!</span>
+              <Link href="/features" className="p-body-16 font-medium !text-primary hover:opacity-70 transition-opacity duration-300">...and much more!</Link>
             </div>
-            <button className="btn btn-primary">Get start free</button>
+            <Link href="/pricing" className="btn btn-primary">Get start free</Link>
           </div>
-          <Image
-            src="/images/mobile-app.png"
-            alt="mobile app"
-            width={640}
-            height={360}
-            className="max-h-[360px]"
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-          />
+          <div>
+            <Image
+              src="/images/mobile-app.png"
+              alt="mobile app"
+              width={640}
+              height={360}
+              className="max-h-[360px]"
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+            />
+            <div className="flex items-center justify-center">
+              <button className="btn btn-primary mt-4">Watch app video</button>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-wrap lg:flex-nowrap lg:justify-between justify-center gap-8 my-20">
@@ -66,26 +73,32 @@ export const LazyHowItWorksSection = () => {
             </p>
             <div className="flex items-center flex-wrap gap-4 my-6">
               {HOW_WORKS.command_center.map(item => (
-                <div 
+                <Link 
+                  href="/features"
                   key={item} 
-                  className="flex items-center justify-center h-[42px] rounded-xl px-4 bg-secondary-foreground p-body-16 font-medium">
+                  className="flex items-center justify-center h-[42px] rounded-xl px-4 bg-secondary-foreground p-body-16 font-medium hover:opacity-70 transition-opacity duration-300">
                   {item}
-                </div>)
+                </Link>)
               )}
-              <span className="p-body-16 font-medium !text-primary">...and much more!</span>
+              <Link href="/features" className="p-body-16 font-medium !text-primary hover:opacity-70 transition-opacity duration-300">...and much more!</Link>
             </div>
-            <button className="btn btn-primary">Get start free</button>
+            <Link href="/pricing" className="btn btn-primary">Get start free</Link>
           </div>
-          <Image
-            src="/images/command-center.png"
-            alt="command center"
-            width={640}
-            height={360}
-            className="max-h-[360px]"
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-          />
+          <div className="flex flex-col items-center justify-center">
+            <Image
+              src="/images/command-center.png"
+              alt="command center"
+              width={640}
+              height={360}
+              className="max-h-[360px]"
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+            />
+            <div className="flex items-center justify-center">
+              <button className="btn btn-primary mt-4">Watch desktop video</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

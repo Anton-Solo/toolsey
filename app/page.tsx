@@ -9,6 +9,7 @@ import { AnimatedAdvantagesSection } from "@/components/home/AnimatedAdvantagesS
 import { AnimatedDashboardSection } from "@/components/home/AnimatedDashboardSection";
 import { LazyLeadResponseSection } from "@/components/home/LazyLeadResponseSection";
 import { LazyHowItWorksSection } from "@/components/home/LazyHowItWorksSection";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -114,9 +115,9 @@ export default function Home() {
             Ready to grow your business?
           </h2>
           <p className="p-body-20 mb-6">Start using Toolsey today and turn every lead into a customer.</p>
-          <div className="flex items-center justify-center gap-6 mb-4 text-[20px]">
-            <button className="btn btn-primary">Explore pricing</button>
-            <button className="btn btn-primary">Discovery call</button>
+          <div className="flex items-center justify-center max-sm:flex-wrap gap-6 mb-4 text-[20px]">
+            <Link href="/pricing" className="btn btn-primary max-sm:w-full">Explore pricing</Link>
+            <button className="btn btn-primary max-sm:w-full">Discovery call</button>
           </div>
           <p className="label">Simple setup. Instant results. No credit card required.</p>
         </div>

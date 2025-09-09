@@ -86,3 +86,5 @@ export const HOW_WORKS = {
     mobile_app: ['Add leads', 'Create Inspection Reports', 'Generate Contracts', 'Submit Commission Requests', 'Take Notes', 'View Documents', 'Take Jobsite Photos', 'Get Directions', 'Track Statuses', 'View Calendar', 'View Lead Enrichment Report', 'Get aerial view of the property', 'Organize, sort, and save searches'],
     command_center: ['Aggregate all of your leads into one unified platform', 'Add leads manually', 'Customize the entire Toolsey platform to fit your business needs', 'Create digital contracts then publish to view across the entire company', 'Powerful search and sort functions', 'Assign and re-assign leads with a single click', 'Track leads with ease', 'Sort, filter, and save to quickly view key sales data']
 }
+
+export { PRICING_DATA } from './pricing';

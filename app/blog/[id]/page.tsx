@@ -2,7 +2,7 @@ import LatestPost from "@/components/blog/LatestPost";
 import { WeeklyNews } from "@/components/blog/WeeklyNews";
 import { ArrowIcon } from "@/components/icons/support/ArrowIcon";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import { fetchBlogPostById, fetchBlogPosts } from "@/lib/api/blog";
+import { fetchBlogPostById } from "@/lib/api/blog";
 import { BlogPost } from "@/types/blog.types";
 import { splitHtmlContent } from "@/utils/contentSplitter";
 import Image from "next/image";
@@ -80,7 +80,10 @@ export default async function Post({ params }: PostPageProps) {
             return `${readTime} min read`;
         };
 
-        const { firstHalf, secondHalf } = splitHtmlContent(post.content, 0.6);
+        // Extract images from content and remove them from text content
+        const imagesInContent = post.content.match(/<img[^>]*>/gi) || [];
+        const textContent = post.content.replace(/<img[^>]*>/gi, '');
+        const { firstHalf, secondHalf } = splitHtmlContent(textContent, 0.6);
 
         return (
             <main className="bg-primary-light">
@@ -91,14 +94,9 @@ export default async function Post({ params }: PostPageProps) {
                             Back to blog
                         </Link>
                         <div className="max-w-[640px] w-full mx-auto">
+                            {/* Main blog image */}
                             <Image 
-                                src={
-                                    (post.images.large && 
-                                     post.images.large !== "https://devpro.toolsey.com/core/blog_img" && 
-                                     post.images.large.includes('.')) 
-                                        ? post.images.large 
-                                        : "/images/test-image.png"
-                                } 
+                                src={post.images.large || "/images/test-image.png"}
                                 alt={post.title} 
                                 width={640} 
                                 height={296} 
@@ -132,27 +130,35 @@ export default async function Post({ params }: PostPageProps) {
                                     </div>
                                 )}
 
-                                {/* First half of content */}
-                                {firstHalf && (
-                                    <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
-                                )}
-                                
-                                {/* WeeklyNews in the middle */}
-                                {secondHalf && (
-                                    <div className="my-12">
-                                        <WeeklyNews isPost={true} />
+                                {/* Show images from content if they exist */}
+                                {imagesInContent.length > 0 && (
+                                    <div className="mb-8">
+                                        <div dangerouslySetInnerHTML={{ 
+                                            __html: imagesInContent.join('') 
+                                        }} />
                                     </div>
                                 )}
-                                
-                                {/* Second half of content */}
-                                {secondHalf && (
-                                    <div dangerouslySetInnerHTML={{ __html: secondHalf }} />
-                                )}
-                                
-                                {/* If content wasn't split, show WeeklyNews at the end */}
-                                {!secondHalf && (
+
+                                {/* Show content based on whether it was split */}
+                                {secondHalf ? (
                                     <>
-                                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                                        {/* First half of content */}
+                                        <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
+                                        
+                                        {/* WeeklyNews in the middle */}
+                                        <div className="my-12">
+                                            <WeeklyNews isPost={true} />
+                                        </div>
+                                        
+                                        {/* Second half of content */}
+                                        <div dangerouslySetInnerHTML={{ __html: secondHalf }} />
+                                    </>
+                                ) : (
+                                    <>
+                                        {/* Show full content if not split */}
+                                        <div dangerouslySetInnerHTML={{ __html: textContent }} />
+                                        
+                                        {/* WeeklyNews at the end */}
                                         <div className="mt-12">
                                             <WeeklyNews isPost={true} />
                                         </div>

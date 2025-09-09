@@ -37,7 +37,7 @@ export const LazyLeadResponseSection = () => {
                 className="absolute top-0 left-0 w-full h-full z-10"
                 loading="lazy"
               />
-              <p className="absolute top-1/2 left-[70px] -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
+              <p className="absolute top-1/2 sm:left-[70px] left-1/2 max-sm:-translate-x-1/2 -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
                 <span className="text-[40px] tracking-normal opacity-80">78%</span> of customers pick the first company to respond
               </p>
             </div>
@@ -50,7 +50,7 @@ export const LazyLeadResponseSection = () => {
                 className="absolute top-0 left-0 w-full h-full z-10"
                 loading="lazy"
               />
-              <p className="absolute top-1/2 left-[70px] -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
+              <p className="absolute top-1/2 sm:left-[70px] left-1/2 max-sm:-translate-x-1/2 -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
                 <span className="text-[40px] tracking-normal opacity-80">87%</span> higher contact rate with automated routing
               </p>
             </div>
@@ -77,7 +77,7 @@ export const LazyLeadResponseSection = () => {
                 className="absolute top-0 left-0 w-full h-full z-10"
                 loading="lazy"
               />
-              <p className="absolute top-[40%] right-[70px] -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
+              <p className="absolute top-[40%] sm:right-[70px] max-sm:left-1/2 max-sm:-translate-x-1/2 -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
                 <span className="text-[40px] tracking-normal opacity-80">391%</span> higher conversion if you respond within one minute
               </p>
             </div>
@@ -90,7 +90,7 @@ export const LazyLeadResponseSection = () => {
                 className="absolute top-0 left-0 w-full h-full z-10"
                 loading="lazy"
               />
-              <p className="absolute top-1/2 right-[10px] -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
+              <p className="absolute top-1/2 sm:right-[10px] max-sm:left-1/2 max-sm:-translate-x-1/2 -translate-y-1/2 font-bold text-[20px] tracking-sm max-w-[352px] text-standart-white">
                 <span className="text-[40px] tracking-normal opacity-80">Only 7%</span> of the companies reply within 5 minutes
               </p>
             </div>
