@@ -10,6 +10,7 @@ import { AnimatedDashboardSection } from "@/components/home/AnimatedDashboardSec
 import { LazyLeadResponseSection } from "@/components/home/LazyLeadResponseSection";
 import { LazyHowItWorksSection } from "@/components/home/LazyHowItWorksSection";
 import Link from "next/link";
+import { CALENDLY_URL } from "@/constans";
 
 export default function Home() {
   return (
@@ -72,6 +73,7 @@ export default function Home() {
               title={"Yes, we know it's ridiculous starting at only $15/mo"}
               text={"We make it up in volume, Toolsey is enjoyed by over 30,000 contractors and home service pros."}
               btnText={"New customer offer"}
+              btnHref='/pricing'
               extraTxt="No contracts required and flexible plans allows Toolsey to deliver the best deal to contractors and home service pros in te industry"
             />
         </div>
@@ -117,7 +119,13 @@ export default function Home() {
           <p className="p-body-20 mb-6">Start using Toolsey today and turn every lead into a customer.</p>
           <div className="flex items-center justify-center max-sm:flex-wrap gap-6 mb-4 text-[20px]">
             <Link href="/pricing" className="btn btn-primary max-sm:w-full">Explore pricing</Link>
-            <button className="btn btn-primary max-sm:w-full">Discovery call</button>
+            <a 
+              href={CALENDLY_URL} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-primary max-sm:w-full">
+                Discovery call
+            </a>
           </div>
           <p className="label">Simple setup. Instant results. No credit card required.</p>
         </div>

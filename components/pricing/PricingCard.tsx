@@ -1,7 +1,7 @@
 'use client';
 
+import { PRO_TOOLSEY_URL } from '@/constans';
 import { PricingPlan, PricingPeriod } from '@/types/pricing.types';
-import Link from 'next/link';
 
 interface PricingCardProps {
   plan: PricingPlan;
@@ -31,12 +31,12 @@ export const PricingCard = ({ plan, period }: PricingCardProps) => {
         </div>
       </div>
 
-      <Link
-        href={plan.ctaHref}
+      <a
+        href={PRO_TOOLSEY_URL}
         className="btn btn-primary w-full mb-8"
       >
         {plan.ctaText}
-      </Link>
+      </a>
 
       <ul className="space-y-3 mb-8">
         {plan.features.map((feature) => (

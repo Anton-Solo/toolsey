@@ -2,6 +2,7 @@ import { MailIcon } from "@/components/icons/about/MailIcon";
 import { MarkerIcon } from "@/components/icons/about/MarkerIcon";
 import { PhoneIcon } from "@/components/icons/about/PhoneIcon";
 import { InfoCard } from "@/components/InfoCard";
+import { CALENDLY_URL } from "@/constans";
 import { NUMBERS } from "@/constans/about";
 import Image from "next/image";
 
@@ -22,7 +23,13 @@ export default function AboutUs() {
                             Toolsey helps businesses grow by streamlining lead management and boosting conversion through smart automation and intuitive tools.
                         </p>
                         <div className="flex justify-center">
-                            <button className="btn btn-primary">Discovery Call</button>
+                            <a 
+                                href={CALENDLY_URL} 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn btn-primary">
+                                    Discovery Call
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -123,6 +130,7 @@ export default function AboutUs() {
                         title="See How Toolsey Can Transform Your Sales"
                         text="Let us show you what Toolsey can do in a quick 20-minute demo — no pressure, just real results."
                         btnText="Discovery Call"
+                        btnHref={CALENDLY_URL}
                     />
                 </div>
             </section>

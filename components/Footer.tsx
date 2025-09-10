@@ -29,6 +29,7 @@ export default function Footer() {
                             {SOCIAL_LINKS.map(({ href, Icon }) => (
                                 <a 
                                     key={href} 
+                                    aria-label={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     href={href} 
