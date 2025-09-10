@@ -37,21 +37,8 @@ const animMap: Record<string, AnimationComponent> = {
 };
 
 export const LazyMainFeaturesSection = () => {
-  const { ref, isVisible } = useScrollAnimation({
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px',
-    triggerOnce: true
-  });
-
   return (
-    <section 
-      ref={ref}
-      className={`py-[60px] transition-all duration-700 ${
-        isVisible 
-          ? 'animate-fade-in-up opacity-100' 
-          : 'opacity-0 translate-y-8'
-      }`}
-    >
+    <section className="py-[60px]">
       <div className="container">
         <div className="flex flex-wrap gap-x-8 lg:gap-y-16 justify-between">
           {MAIN_FEATURES_BLOCK.map(({ id, title, subtitle, description, whyItMatters, Anim }, index) => {
@@ -67,23 +54,79 @@ export const LazyMainFeaturesSection = () => {
             }
 
             return (
-              <div key={id} className="flex lg:flex-col flex-col-reverse items-center gap-4 max-w-[624px] max-lg:py-14">
-                {AnimComponent ? (
-                  <AnimComponent className="max-sm:w-full max-sm:h-full" /> 
-                ) : imageUrl ? (
-                  <Image src={imageUrl} alt={title} width={624} height={408} />
-                ) : null}
-                <div>
-                  <p className="p-body-16 font-medium !text-primary mb-2">{title}</p>
-                  <h3 className="p-body-24 font-bold mb-4">{subtitle}</h3>
-                  <p className="p-body-20 mb-4">{description}</p>
-                  <p className="p-body-20"><span className="font-bold">Why It Matters:</span> {whyItMatters}</p>
-                </div>
-              </div>
+              <MainFeatureItem
+                key={id}
+                id={id}
+                title={title}
+                subtitle={subtitle}
+                description={description}
+                whyItMatters={whyItMatters}
+                AnimComponent={AnimComponent}
+                imageUrl={imageUrl}
+                index={index}
+              />
             );
           })}
         </div>
       </div>
     </section>
+  );
+};
+
+const MainFeatureItem = ({ 
+  id, 
+  title, 
+  subtitle, 
+  description, 
+  whyItMatters, 
+  AnimComponent, 
+  imageUrl, 
+  index 
+}: {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  whyItMatters: string;
+  AnimComponent: AnimationComponent | null;
+  imageUrl: string | null;
+  index: number;
+}) => {
+  const { ref, isVisible } = useScrollAnimation({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+    triggerOnce: true
+  });
+
+  return (
+    <div 
+      ref={ref}
+      className={`flex lg:flex-col flex-col-reverse items-center gap-4 max-w-[624px] max-lg:py-14 transition-all duration-700 ${
+        isVisible 
+          ? 'animate-fade-in-up opacity-100' 
+          : 'opacity-0 translate-y-8'
+      }`}
+    >
+      {AnimComponent ? (
+        <AnimComponent className="max-sm:w-full max-sm:h-full" /> 
+      ) : imageUrl ? (
+        <Image 
+          src={imageUrl} 
+          alt={title} 
+          width={624} 
+          height={408}
+          className="max-sm:w-full max-sm:h-full"
+          priority={index < 1}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+        />
+      ) : null}
+      <div>
+        <p className="p-body-16 font-medium !text-primary mb-2">{title}</p>
+        <h3 className="p-body-24 font-bold mb-4">{subtitle}</h3>
+        <p className="p-body-20 mb-4">{description}</p>
+        <p className="p-body-20"><span className="font-bold">Why It Matters:</span> {whyItMatters}</p>
+      </div>
+    </div>
   );
 };

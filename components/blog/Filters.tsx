@@ -19,11 +19,9 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
     const searchParams = useSearchParams();
     const [searchTerm, setSearchTerm] = useState('');
 
-    // Get current filter values from URL
     const currentCategory = searchParams.get('category') || '';
     const currentSort = searchParams.get('sort') || 'newest';
 
-    // Create category options
     const categoryOptions = [
         { value: '', label: 'All categories' },
         ...availableCategories.map(category => ({
@@ -47,7 +45,6 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
             params.delete(key);
         }
         
-        // Reset to first page when filters change
         params.delete('page');
         
         router.push(`/blog?${params.toString()}`);
@@ -64,6 +61,7 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
                 <SearchIcon />
                 <input 
                     type="text" 
+                    aria-label="Search articles, topics, or keywords"
                     placeholder="Search articles, topics, or keywords" 
                     className="w-full h-full outline-0"
                     value={searchTerm}
@@ -73,6 +71,7 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
             <div className="flex lg:flex-nowrap flex-wrap items-center flex-col sm:flex-row gap-8 sm:w-max w-full">
                 <Select
                     options={categoryOptions}
+                    aria-label="All categories"
                     placeholder="All categories"
                     inputClassName="sm:w-[304px] w-full"
                     dropdownClassName="bg-standart-white"
@@ -81,6 +80,7 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
                 />
                 <Select
                     options={sortOptions}
+                    aria-label="Most recent"
                     placeholder="Most recent"
                     inputClassName="sm:w-[304px] w-full"
                     dropdownClassName="bg-standart-white"

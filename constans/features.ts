@@ -5,7 +5,7 @@ export const LEAD_FEATURES_BLOCK = [
         subtitle: "All Your Leads. One Powerful Hub.",
         description: "Toolsey automatically pulls leads from top platforms like Angi, Facebook, Thumbtack, Porch, and your website into a single dashboard—no copy-paste, no missed leads. Integrated with 20+ tools including Zapier and Calendly, every lead is time-stamped and instantly triggers notifications, assignments, and follow-ups.",
         whyItMatters: "Stop juggling spreadsheets and inboxes. Centralize your leads, respond faster, and stay organized to win more jobs.",
-        Anim: 'LeadAgg'
+        Anim: '/images/lead-agg.png'
     },
     {
         id: 2,
@@ -13,7 +13,7 @@ export const LEAD_FEATURES_BLOCK = [
         subtitle: "Respond in Seconds. Win More Jobs.",
         description: "Toolsey sends real-time email and SMS alerts the moment a new lead comes in. Customize alerts to notify sales reps, admins, or managers. Messages are branded, automated, and lightning fast.",
         whyItMatters: "Responding in under 5 minutes boosts your chance of contact by 900%. Never miss a lead again.",
-        Anim: 'InstantLeadAnim'
+        Anim: '/images/instant-lead.png'
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ export const LEAD_FEATURES_BLOCK = [
         subtitle: "Track Every Lead. Close More Deals.",
         description: "With Toolsey’s customizable sales funnel, you can monitor every stage of a lead’s journey. See activity, status changes, team notes, and get alerts on stalled opportunities before they’re lost.",
         whyItMatters: "Stay in control of your pipeline. Know exactly where every deal stands and take action before it’s too late.",
-        Anim: 'TrackAnim'
+        Anim: '/images/track.png'
     },
     {
         id: 4,
@@ -40,7 +40,7 @@ export const LEAD_TEAM_BLOCK = [
         subtitle: "Your Team. Your Data. Total Control.",
         description: "Track rep performance with real-time dashboards, export PDF reports for meetings, manage lead availability, and use color-coded calendars for full visibility.",
         whyItMatters: "Motivate with leaderboards. Track success. Pause reps when needed. It’s sales management made simple.",
-        Anim: 'TeamManagementAnim'
+        Anim: '/images/team-management.png'
     },
     {
         id: 2,
@@ -48,7 +48,7 @@ export const LEAD_TEAM_BLOCK = [
         subtitle: "Decisions Backed by Data.",
         description: "See what’s working and what’s not with Toolsey’s real-time reporting. Track lead sources, conversion rates, lost deals, revenue by service, and more—then export reports with one click.",
         whyItMatters: "Know your numbers. Optimize your strategy. Run your business on insight, not instinct.",
-        Anim: 'ReportsAnim'
+        Anim: '/images/reports.png'
     },
     {
         id: 3,
@@ -56,7 +56,7 @@ export const LEAD_TEAM_BLOCK = [
         subtitle: "Old Leads, New Opportunities.",
         description: "Archive leads that didn’t convert without deleting them. Filter, tag, and export them anytime for re-engagement or reporting.",
         whyItMatters: "Don’t let leads go to waste. Rehash cold contacts, keep your CRM clean, and turn yesterday’s “no” into tomorrow’s “yes.”",
-        Anim: 'ArchiveAnim'
+        Anim: '/images/archive.png'
     },
 ]
 
@@ -67,7 +67,7 @@ export const MAIN_FEATURES_BLOCK = [
         subtitle: "Professional Reports. Built in Minutes.",
         description: "Create detailed, photo-rich inspection reports right from the job site. Use prebuilt templates, add custom content, and send polished PDFs to customers in minutes— without leaving the Toolsey app.",
         whyItMatters: "Save time. Impress customers. Close faster with visual, branded documentation that sells the job for you.",
-        Anim: 'ProReports'
+        Anim: '/images/pro-reports.png'
     },
     {
         id: 2,
@@ -75,7 +75,7 @@ export const MAIN_FEATURES_BLOCK = [
         subtitle: "Custom Forms. Zero Paperwork Hassle.",
         description: "From contracts to color selections, Toolsey lets you build digital forms tailored to your workflow. Use dropdowns, pre-filled content, and default options—accessible via mobile or desktop.",
         whyItMatters: "Ditch the clipboards. Speed up form completion, minimize errors, and keep every document linked to the right lead.",
-        Anim: 'CreateFormAnim'
+        Anim: '/images/create-form.png'
     },
     {
         id: 3,
@@ -91,6 +91,6 @@ export const MAIN_FEATURES_BLOCK = [
         subtitle: "Emails & Texts That Send Themselves.",
         description: "Trigger professional, branded messages based on lead status or calendar events. Use 30+ dynamic fields to personalize every message—without lifting a finger.",
         whyItMatters: "Reduce no-shows. Keep customers informed. Automate your follow-ups and save hours every week.",
-        Anim: 'MessagingAnim'
+        Anim: '/images/messaging.png'
     },
 ]

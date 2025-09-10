@@ -20,6 +20,8 @@ export default function Footer() {
                             alt="logo"
                             width={230}
                             height={48}
+                            className="w-[230px] h-[48px]"
+                            priority={false}
                         />
                         <p className="text-accent">
                             Toolsey was designed to organize and automate your sales process. 
@@ -68,20 +70,26 @@ export default function Footer() {
                                 Download app
                             </p>
                             <ul className="flex items-center gap-4">
-                                <Image 
-                                    src='/icons/ios-app.svg'
-                                    alt="ios app"
-                                    width={135}
-                                    height={40}
-                                    className="h-[40px]"
-                                />
-                                <Image 
-                                    src='/icons/google-app.svg'
-                                    alt="ios app"
-                                    width={135}
-                                    height={40}
-                                    className="h-[40px]"
-                                />
+                                <li>
+                                    <Image 
+                                        src='/icons/ios-app.svg'
+                                        alt="ios app"
+                                        width={135}
+                                        height={40}
+                                        className="w-[135px] h-[40px]"
+                                        priority={false}
+                                    />
+                                </li>
+                                <li>
+                                    <Image 
+                                        src='/icons/google-app.svg'
+                                        alt="google app"
+                                        width={135}
+                                        height={40}
+                                        className="w-[135px] h-[40px]"
+                                        priority={false}
+                                    />
+                                </li>
                             </ul>
                         </div>
                     </div>

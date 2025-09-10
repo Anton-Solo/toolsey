@@ -5,8 +5,7 @@ import { Pagination } from "@/components/blog/Pagination";
 import { fetchBlogCategories, fetchBlogPosts } from "@/lib/api/blog";
 import React, { Suspense } from "react";
 
-// Modern Next.js App Router configuration
-export const revalidate = 300; // ISR: revalidate every 5 minutes
+export const revalidate = 300;
 
 interface BlogPageProps {
     searchParams: Promise<{
@@ -61,7 +60,24 @@ export default async function Blog({ searchParams }: BlogPageProps) {
                 <section className="">
                     <div className="container">
                         <div className="flex flex-wrap gap-8 max-lg:justify-center">
-                            <Suspense fallback={<div className="text-center">Loading posts...</div>}>
+                            <Suspense fallback={
+                                <div className="flex flex-wrap gap-8 max-lg:justify-center w-full">
+                                    {Array.from({ length: 12 }).map((_, index) => (
+                                        <div key={index} className="max-w-[416px] w-full">
+                                            <div className="bg-gray-200 rounded-t-3xl w-full h-[208px] animate-pulse"></div>
+                                            <div className="p-6 bg-standart-white rounded-b-3xl">
+                                                <div className="flex items-center gap-2 mb-2">
+                                                    <div className="bg-gray-200 h-6 w-16 rounded animate-pulse"></div>
+                                                    <div className="bg-gray-200 h-6 w-20 rounded animate-pulse"></div>
+                                                </div>
+                                                <div className="bg-gray-200 h-6 w-full rounded mb-2 animate-pulse"></div>
+                                                <div className="bg-gray-200 h-4 w-3/4 rounded mb-6 animate-pulse"></div>
+                                                <div className="bg-gray-200 h-4 w-24 rounded animate-pulse"></div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }>
                                 {posts.length > 0 ? (
                                     posts.map((post, index) => {
                                         if (index === 8) {

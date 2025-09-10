@@ -5,58 +5,38 @@ import Image from 'next/image';
 import { LEAD_FEATURES_BLOCK } from '@/constans/features';
 import { ComponentType } from 'react';
 import { SVGProps } from 'react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import FeaturesCard from '@/components/features/FeaturesCard';
+
+// import LeadAgg from '@/components/features/LeadAgg';
 
 type AnimationComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
 type AnimationModule = {
   default?: AnimationComponent;
-  LeadAgg?: AnimationComponent;
   TrackAnim?: AnimationComponent;
   InstantLeadAnim?: AnimationComponent;
   [key: string]: AnimationComponent | undefined;
 };
 
 const extractAnimationComponent = (mod: AnimationModule): AnimationComponent => {
-  return (mod.default || mod.LeadAgg || mod.TrackAnim || mod.InstantLeadAnim || mod) as AnimationComponent;
+  return (mod.default || mod.TrackAnim || mod.InstantLeadAnim || mod) as AnimationComponent;
 };
 
-const FeaturesCard = dynamic(() => import('@/components/features/FeaturesCard'), { 
-  ssr: false, 
-  loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
-});
-
 const animMap: Record<string, AnimationComponent> = {
-  LeadAgg: dynamic(() => import('@/components/features/LeadAgg').then(extractAnimationComponent), { 
-    ssr: false, 
-    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
-  }) as AnimationComponent,
+  // LeadAgg: LeadAgg,
   TrackAnim: dynamic(() => import('@/components/features/TrackAnim').then(extractAnimationComponent), { 
     ssr: false, 
     loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
   }) as AnimationComponent,
-  InstantLeadAnim: dynamic(() => import('@/components/features/InstantLeadAnim').then(extractAnimationComponent), { 
-    ssr: false, 
-    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
-  }) as AnimationComponent,
+  // InstantLeadAnim: dynamic(() => import('@/components/features/InstantLeadAnim').then(extractAnimationComponent), { 
+  //   ssr: false, 
+  //   loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
+  // }) as AnimationComponent,
 };
 
 export const LazyLeadFeaturesSection = () => {
-  const { ref, isVisible } = useScrollAnimation({
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px',
-    triggerOnce: true
-  });
-
   return (
-    <section 
-      ref={ref}
-      className={`transition-all duration-700 ${
-        isVisible 
-          ? 'animate-fade-in-up opacity-100' 
-          : 'opacity-0 translate-y-8'
-      }`}
-    >
+    <section>
       <div className="container">
         <section>
           <div className="container">
@@ -75,7 +55,16 @@ export const LazyLeadFeaturesSection = () => {
               const animContent = AnimComponent ? (
                 <AnimComponent className="max-sm:w-full max-sm:h-full" />
               ) : imageUrl ? (
-                <Image src={imageUrl} alt={card.title} width={624} height={408} />
+                <Image 
+                  src={imageUrl} 
+                  alt={card.title} 
+                  width={624} 
+                  height={408}
+                  className="max-sm:w-full max-sm:h-full"
+                  priority={index < 1} 
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                />
               ) : null;
 
               return (

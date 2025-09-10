@@ -49,7 +49,7 @@ export const PostCard = ({ post }: PostCardProps) => {
 
     return (
         <div className="hover:shadow-lg rounded-3xl max-w-[416px] w-full linear-borders bg-standart-white">
-            <Link href={`/blog/${post.id}`} className="block w-full h-[208px]">
+            <Link href={`/blog/${post.id}`} className="block w-full h-[208px] relative">
                 <Image
                     src={getImageSrc()}
                     alt={post.title}
@@ -59,6 +59,8 @@ export const PostCard = ({ post }: PostCardProps) => {
                     onError={() => setImageError(true)}
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={false}
                 />
             </Link>
             <div className="p-6">

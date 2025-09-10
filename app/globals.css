@@ -468,9 +468,9 @@ body {
   will-change: transform;
 }
 
-.animate-fade-in-up {
+/* .animate-fade-in-up {
   will-change: opacity, transform;
-}
+} */
 
 /* Scroll animations */
 @keyframes slideUpFromBottom {

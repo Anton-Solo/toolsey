@@ -8,6 +8,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {

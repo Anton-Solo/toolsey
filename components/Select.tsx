@@ -124,9 +124,9 @@ export const Select = ({
             </div>
 
             {/* Dropdown */}
-            {isOpen && (
+            <div className={`absolute top-full left-0 right-0 z-10 ${isOpen ? 'block' : 'hidden'}`}>
                 <div
-                    className={`absolute input flex flex-col gap-2 !h-max bg-standart-white z-10 w-full overflow-y-auto !p-4 ${dropdownClassName}`}
+                    className={`input flex flex-col gap-2 !h-max bg-standart-white w-full overflow-y-auto !p-4 max-h-60 ${dropdownClassName}`}
                     role="listbox"
                 >
                     {options.map((option) => (
@@ -143,7 +143,7 @@ export const Select = ({
                         </div>
                     ))}
                 </div>
-            )}
+            </div>
         </div>
     );
 };
