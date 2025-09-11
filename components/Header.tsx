@@ -2,12 +2,11 @@
 
 import { NAV_LINKS, PRO_TOOLSEY_URL } from "@/constans";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isExiting, setIsExiting] = useState(false);
   const pathname = usePathname();
 
   const isActiveLink = (href: string) => {
@@ -17,18 +16,13 @@ export default function Header() {
     return pathname === href;
   };
 
-  const handleCloseMenu = () => {
-    setIsExiting(true);
+  const handleOpenMenu = () => {
+    setIsMenuOpen(true);
   };
 
-  useEffect(() => {
-    if (!isExiting) return;
-    const timeout = setTimeout(() => {
-      setIsExiting(false);
-      setIsMenuOpen(false);
-    }, 320);
-    return () => clearTimeout(timeout);
-  }, [isExiting]);
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="bg-standart-white h-[88px] shadow-header">
@@ -62,7 +56,7 @@ export default function Header() {
                 aria-label="Open menu"
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
-                onClick={() => setIsMenuOpen(true)}
+                onClick={handleOpenMenu}
                 className="md:hidden inline-flex items-center justify-center h-10 w-10 -mr-2"
             >
             <img src="/icons/burger.svg" alt="Open menu" width={24} height={24} />
@@ -71,14 +65,14 @@ export default function Header() {
         </div>
       </div>
 
-      {(isMenuOpen || isExiting) && (
+      {isMenuOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
           <button
             aria-label="Close menu"
             onClick={handleCloseMenu}
-            className={`absolute inset-0 bg-black/30 ${isExiting ? "animate-fade-out" : "animate-fade-in"}`}
+            className="absolute inset-0 bg-black/30 animate-fade-in"
           />
-          <div id="mobile-menu" className={`absolute top-0 left-0 right-0 bg-standart-white shadow-header ${isExiting ? "animate-slide-up" : "animate-slide-down"}`}>
+          <div id="mobile-menu" className="absolute top-0 left-0 z-10 right-0 bg-standart-white shadow-header animate-slide-down">
             <div className="container">
               <div className="flex items-center justify-between h-[72px]">
                 <Link href="/">
@@ -90,7 +84,9 @@ export default function Header() {
                   onClick={handleCloseMenu}
                   className="inline-flex items-center justify-center h-10 w-10 -mr-2"
                 >
-                  <img src="/icons/burger.svg" alt="Close menu" width={24} height={24} />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className="w-6 h-6 text-primary">
+                      <path d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z"/>
+                  </svg>
                 </button>
               </div>
             </div>
@@ -100,7 +96,7 @@ export default function Header() {
                         <li key={link.label}>
                             <Link
                             href={link.href}
-                            className={`block py-2 transition-all duration-300 ${
+                            className={`block py-2 w-max transition-all duration-300 ${
                               isActiveLink(link.href)
                                 ? 'text-primary font-bold'
                                 : 'text-gray-900'
@@ -114,7 +110,6 @@ export default function Header() {
                     <li>
                         <Link 
                           href={PRO_TOOLSEY_URL}
-                          onClick={handleCloseMenu} 
                           className={`block py-2 transition-all duration-300 ${
                             isActiveLink("/login")
                               ? 'text-primary font-bold'

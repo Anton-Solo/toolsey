@@ -20,11 +20,11 @@ export const NAV_LINKS = [
 ]
 
 export const SOCIAL_LINKS = [
-    { href: "https://instagram.com", Icon: InstaIcon },
-    { href: "https://facebook.com", Icon: FaceIcon },
-    { href: "https://linkedin.com", Icon: LinkIcon },
-    { href: "https://x.com", Icon: XIcon },
-    { href: "https://youtube.com", Icon: YoutubeIcon },
+    { href: "https://www.instagram.com/toolseyhq/", Icon: InstaIcon },
+    { href: "https://www.facebook.com/toolseyHQ/", Icon: FaceIcon },
+    { href: "https://www.linkedin.com/company/toolsey/about/", Icon: LinkIcon },
+    { href: "https://x.com/toolseyHQ", Icon: XIcon },
+    { href: "https://www.youtube.com/channel/UCqhH29lm9brBf5JPiYUFC5g", Icon: YoutubeIcon },
 ]
 
 export const FOOTER_NAV_LINKS = [

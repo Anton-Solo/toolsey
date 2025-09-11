@@ -2,6 +2,7 @@
 
 import { TUTORIAL_VIDEOS } from '@/constans/ support';
 import { useState } from 'react';
+import { VideoModal } from './VideoModal';
 
 interface VideoItem {
     id: number;
@@ -12,20 +13,44 @@ interface VideoItem {
 
 export const VideoPlayer = () => {
     const [activeVideo, setActiveVideo] = useState<VideoItem>(TUTORIAL_VIDEOS[0]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalVideo, setModalVideo] = useState<VideoItem | null>(null);
 
     const getYouTubeThumbnail = (videoId: string) => {
-        return `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+        return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    };
+
+    const openModal = (video: VideoItem) => {
+        setModalVideo(video);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalVideo(null);
     };
 
     return (
         <div className="flex lg:flex-row flex-col gap-8">
             <div className="flex-1">
-                <iframe
-                    src={`https://www.youtube.com/embed/${activeVideo.youtubeId}`}
-                    title={activeVideo.title}
-                    className="w-full h-full min-h-[184px] lg:min-h-[448px] md:min-h-[327px] rounded-2xl"
-                    allowFullScreen
-                />
+                <div 
+                    className="relative cursor-pointer group"
+                    onClick={() => openModal(activeVideo)}
+                >
+                    <img
+                        src={getYouTubeThumbnail(activeVideo.youtubeId)}
+                        alt={activeVideo.title}
+                        className="w-full h-full min-h-[184px] lg:min-h-[448px] md:min-h-[327px] rounded-2xl object-cover"
+                    />
+                    {/* Play button overlay */}
+                    <div className="absolute inset-0 bg-transparent rounded-2xl flex items-center justify-center">
+                        <div className="group-hover:bg-accent-dark transition-background duration-300 bg-standart-black rounded-full p-6">
+                            <svg className="w-12 h-12 text-standart-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className="lg:w-[520px] w-full space-y-4 max-h-[448px] overflow-y-auto pr-6">
@@ -54,6 +79,15 @@ export const VideoPlayer = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Video Modal */}
+            {modalVideo && (
+                <VideoModal
+                    isOpen={isModalOpen}
+                    onClose={closeModal}
+                    video={modalVideo}
+                />
+            )}
         </div>
     );
 };
