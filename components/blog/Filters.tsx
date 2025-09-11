@@ -1,7 +1,7 @@
 'use client';
 
 import { SearchIcon } from "../icons/blog/SearchIcon"
-import { Select } from "../Select"
+import { Select } from "../ui/Select"
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 

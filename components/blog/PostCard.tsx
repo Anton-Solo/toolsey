@@ -13,7 +13,6 @@ interface PostCardProps {
 export const PostCard = ({ post }: PostCardProps) => {
     const [imageError, setImageError] = useState(false);
 
-    // Format date
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', {
@@ -31,13 +30,11 @@ export const PostCard = ({ post }: PostCardProps) => {
         return `${readTime} min read`;
     };
 
-    // Get image source with fallback
     const getImageSrc = () => {
         if (imageError) {
             return "/images/test-image.png";
         }
         
-        // Check if the medium image URL is valid
         if (post.images.medium && 
             post.images.medium !== "https://devpro.toolsey.com/core/blog_img" && 
             post.images.medium.includes('.')) {

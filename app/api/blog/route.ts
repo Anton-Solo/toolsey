@@ -23,20 +23,6 @@ export async function GET(request: NextRequest) {
 
     const apiUrl = `${process.env.API_BASE_URL}/blog/posts/?${apiParams.toString()}`;
 
-    console.log('Making API request to:', apiUrl);
-    console.log('API_BASE_URL:', process.env.API_BASE_URL);
-    console.log('BEARER_TOKEN exists:', !!BEARER_TOKEN);
-    console.log('BEARER_TOKEN value:', BEARER_TOKEN ? '***' + BEARER_TOKEN.slice(-4) : 'undefined');
-    console.log('NEXT_PUBLIC_API_TOKEN:', process.env.NEXT_PUBLIC_API_TOKEN ? '***' + process.env.NEXT_PUBLIC_API_TOKEN.slice(-4) : 'undefined');
-    console.log('API_TOKEN:', process.env.API_TOKEN ? '***' + process.env.API_TOKEN.slice(-4) : 'undefined');
-    console.log('Request parameters:', {
-      sort,
-      category,
-      searchText,
-      page,
-      perPage
-    });
-
     if (!BEARER_TOKEN) {
       console.error('No API token found!');
       return NextResponse.json(
@@ -55,10 +41,6 @@ export async function GET(request: NextRequest) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('API request failed:', response.status, response.statusText);
-      console.error('API response body:', errorText);
-      console.error('Request URL:', apiUrl);
-      console.error('Request params:', Object.fromEntries(apiParams));
       
       return NextResponse.json(
         { 

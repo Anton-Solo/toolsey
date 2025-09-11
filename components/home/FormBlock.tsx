@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from "react";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import Image from "next/image";
@@ -11,23 +10,28 @@ import { FormElipse4 } from "../icons/home-form/FormElipse4";
 import { FormElipse5 } from "../icons/home-form/FormElipse5";
 import { FormElipse6 } from "../icons/home-form/FormElipse6";
 import { useCalendly } from "@/hooks/useCalendly";
+import { useFormStatus } from "@/hooks/useFormStatus";
 import { CALENDLY_URL } from "@/constans";
 
 export const FormBlock = () => {
-    const [phone, setPhone] = useState<string>("");
-    const [fullName, setFullName] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
     const { openDirectLink } = useCalendly();
+    const {
+        formData,
+        errors,
+        isPending,
+        isSubmitting,
+        isValid,
+        setFieldValue,
+        submitForm
+    } = useFormStatus();
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        
+    const handleSubmit = async (data: { fullName: string; email: string; phone: string }) => {
         const calendlyOptions = {
             url: CALENDLY_URL,
             prefill: {
-                name: fullName,
-                email: email,
-                phone: phone
+                name: data.fullName,
+                email: data.email,
+                phone: data.phone
             },
             utm: {
                 utmSource: 'toolsey_website',
@@ -38,6 +42,11 @@ export const FormBlock = () => {
         };
 
         openDirectLink(calendlyOptions);
+    };
+
+    const onSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        await submitForm(handleSubmit);
     };
 
     return (
@@ -56,44 +65,60 @@ export const FormBlock = () => {
                 />
             </div>
             <form 
-                onSubmit={handleSubmit}
+                onSubmit={onSubmit}
                 className="relative z-30 bg-standart-white p-8 rounded-4xl shadow-form flex flex-col gap-6 text-accent max-w-[416px] w-full"
             >
                 <label className="block w-full">
                     <input 
                         type='text'
                         placeholder="Full name *"
-                        className="input w-full"
-                        value={fullName}
+                        className={`input w-full ${errors.fullName ? 'border-red-500 focus:border-red-500' : ''}`}
+                        value={formData.fullName}
                         aria-label="Full name"
-                        onChange={(e) => setFullName(e.target.value)}
+                        onChange={(e) => setFieldValue('fullName', e.target.value)}
                         required
+                        disabled={isSubmitting}
                     />
+                    {errors.fullName && (
+                        <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+                    )}
                 </label>
                 <label className="block w-full">
                     <input 
                         type='email'
                         placeholder="Email *"
-                        className="input w-full"
+                        className={`input w-full ${errors.email ? 'border-red-500 focus:border-red-500' : ''}`}
                         aria-label="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formData.email}
+                        onChange={(e) => setFieldValue('email', e.target.value)}
                         required
+                        disabled={isSubmitting}
                     />
+                    {errors.email && (
+                        <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    )}
                 </label>
-                <PhoneInput
-                    defaultCountry="us"
-                    value={phone}
-                    onChange={setPhone}
-                    aria-label="Phone"
-                />
+                <div className="block w-full">
+                    <PhoneInput
+                        defaultCountry="us"
+                        value={formData.phone}
+                        onChange={(phone) => setFieldValue('phone', phone)}
+                        aria-label="Phone"
+                        disabled={isSubmitting}
+                        className={errors.phone ? 'border-red-500' : ''}
+                    />
+                    {errors.phone && (
+                        <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                    )}
+                </div>
                 <p>It only takes 15 minutes to learn why 30,000 pros use Toolsey to generate more sales. </p>
                 
                 <button 
                     type="submit"
-                    className="btn btn-primary h-14 text-[20px]"
+                    className={`btn btn-primary h-14 text-[20px] ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                    // disabled={isSubmitting || !isValid}
                 >
-                    Discovery Call
+                    {isSubmitting ? 'Processing...' : 'Discovery Call'}
                 </button>
             </form>
             <div className="relative -ml-[300px] md:block hidden">

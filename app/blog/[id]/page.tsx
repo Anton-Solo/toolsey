@@ -1,7 +1,8 @@
+import Head from 'next/head';
 import LatestPost from "@/components/blog/LatestPost";
 import { WeeklyNews } from "@/components/blog/WeeklyNews";
 import { ArrowIcon } from "@/components/icons/support/ArrowIcon";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { fetchBlogPostById } from "@/lib/api/blog";
 import { BlogPost } from "@/types/blog.types";
 import { splitHtmlContent } from "@/utils/contentSplitter";
@@ -10,59 +11,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface PostPageProps {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 }
 
-export const revalidate = 300; // ISR: revalidate every 5 minutes
-export const dynamicParams = true; // Generate pages on-demand for new posts
-
-// Generate metadata for SEO
-// export async function generateMetadata({ params }: PostPageProps) {
-//     try {
-//         const response = await fetchBlogPostById(parseInt(params.id));
-//         const post: BlogPost = response.data;
-
-//         return {
-//             title: post.title,
-//             description: post.summary || post.content.replace(/<[^>]*>/g, '').substring(0, 160),
-//             openGraph: {
-//                 title: post.title,
-//                 description: post.summary || post.content.replace(/<[^>]*>/g, '').substring(0, 160),
-//                 images: [
-//                     {
-//                         url: post.images.large || '/images/test-image.png',
-//                         width: 1200,
-//                         height: 630,
-//                         alt: post.title,
-//                     },
-//                 ],
-//                 type: 'article',
-//                 publishedTime: post.published,
-//             },
-//             twitter: {
-//                 card: 'summary_large_image',
-//                 title: post.title,
-//                 description: post.summary || post.content.replace(/<[^>]*>/g, '').substring(0, 160),
-//                 images: [post.images.large || '/images/test-image.png'],
-//             },
-//         };
-//     } catch (error) {
-//         console.error('Failed to generate metadata:', error);
-//         return {
-//             title: 'Blog Post',
-//             description: 'Read our latest blog post',
-//         };
-//     }
-// }
+export const revalidate = 300;
+export const dynamicParams = true; 
 
 export default async function Post({ params }: PostPageProps) {
     try {
-        const response = await fetchBlogPostById(parseInt(params.id));
+        const resolvedParams = await params;
+        const response = await fetchBlogPostById(parseInt(resolvedParams.id));
         const post: BlogPost = response.data;
 
-        // Format date
         const formatDate = (dateString: string) => {
             const date = new Date(dateString);
             return date.toLocaleDateString('en-US', {
@@ -80,13 +42,20 @@ export default async function Post({ params }: PostPageProps) {
             return `${readTime} min read`;
         };
 
-        // Extract images from content and remove them from text content
         const imagesInContent = post.content.match(/<img[^>]*>/gi) || [];
         const textContent = post.content.replace(/<img[^>]*>/gi, '');
         const { firstHalf, secondHalf } = splitHtmlContent(textContent, 0.6);
 
         return (
             <main className="bg-primary-light">
+                <Head>
+                    <title>{post.title}</title>
+                    <meta name="description" content={post.summary || post.content.substring(0, 160)} />
+                    <meta property="og:title" content={post.title} />
+                    <meta property="og:description" content={post.summary || post.content.substring(0, 160)} />
+                    <meta property="og:image" content={post.images.large || "/images/test-image.png"} />
+                </Head>
+
                 <section className="py-[60px]">
                     <div className="container">
                         <Link href="/blog" className="flex items-center gap-2 lg:-mb-6 mb-4 text-primary font-medium hover:opacity-80 transition-opacity duration-300">
@@ -94,7 +63,6 @@ export default async function Post({ params }: PostPageProps) {
                             Back to blog
                         </Link>
                         <div className="max-w-[640px] w-full mx-auto">
-                            {/* Main blog image */}
                             <Image 
                                 src={post.images.large || "/images/test-image.png"}
                                 alt={post.title} 
@@ -123,14 +91,7 @@ export default async function Post({ params }: PostPageProps) {
                             </div>
 
                             <div className="post">
-                                {/* Display summary if available */}
-                                {post.summary && (
-                                    <div className="mb-8 p-6 bg-secondary-foreground/10 rounded-lg">
-                                        <p className="text-lg font-medium text-accent-dark">{post.summary}</p>
-                                    </div>
-                                )}
 
-                                {/* Show images from content if they exist */}
                                 {imagesInContent.length > 0 && (
                                     <div className="mb-8">
                                         <div dangerouslySetInnerHTML={{ 
@@ -139,26 +100,20 @@ export default async function Post({ params }: PostPageProps) {
                                     </div>
                                 )}
 
-                                {/* Show content based on whether it was split */}
                                 {secondHalf ? (
                                     <>
-                                        {/* First half of content */}
                                         <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
                                         
-                                        {/* WeeklyNews in the middle */}
                                         <div className="my-12">
                                             <WeeklyNews isPost={true} />
                                         </div>
                                         
-                                        {/* Second half of content */}
                                         <div dangerouslySetInnerHTML={{ __html: secondHalf }} />
                                     </>
                                 ) : (
                                     <>
-                                        {/* Show full content if not split */}
                                         <div dangerouslySetInnerHTML={{ __html: textContent }} />
                                         
-                                        {/* WeeklyNews at the end */}
                                         <div className="mt-12">
                                             <WeeklyNews isPost={true} />
                                         </div>
