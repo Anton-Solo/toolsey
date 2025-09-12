@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { HOW_WORKS } from '@/constans';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Link from 'next/link';
+import { VideoModal } from '../support/VideoModal';
+import { useState } from 'react';
 
 export const LazyHowItWorksSection = () => {
   const { ref, isVisible } = useScrollAnimation({
@@ -11,6 +13,39 @@ export const LazyHowItWorksSection = () => {
     rootMargin: '0px 0px -100px 0px',
     triggerOnce: true
   });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalVideo, setModalVideo] = useState<{
+    id: number;
+    title: string;
+    youtubeId: string;
+    description: string;
+  } | null>(null);
+
+  const openAppVideoModal = () => {
+    setModalVideo({
+      id: 1,
+      title: "Toolsey Mobile App Demo",
+      youtubeId: "etRZSgaDfcs",
+      description: "See how Toolsey mobile app works in action. Smart and easy to use — your sales team will be up and running in just a few minutes."
+    });
+    setIsModalOpen(true);
+  };
+
+  const openDesktopVideoModal = () => {
+    setModalVideo({
+      id: 2,
+      title: "Toolsey Desktop Command Center Demo",
+      youtubeId: "7yGApmXs37Q",
+      description: "See how Toolsey desktop command center works. Powerful and easy to use — your admin's life just got a whole lot easier and more productive."
+    });
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalVideo(null);
+  };
 
   return (
     <section 
@@ -58,7 +93,12 @@ export const LazyHowItWorksSection = () => {
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             />
             <div className="flex items-center justify-center">
-              <button className="btn btn-primary mt-4">Watch app video</button>
+              <button 
+                className="btn btn-primary mt-4"
+                onClick={openAppVideoModal}
+              >
+                Watch app video
+              </button>
             </div>
           </div>
         </div>
@@ -96,11 +136,24 @@ export const LazyHowItWorksSection = () => {
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             />
             <div className="flex items-center justify-center">
-              <button className="btn btn-primary mt-4">Watch desktop video</button>
+              <button 
+                className="btn btn-primary mt-4"
+                onClick={openDesktopVideoModal}
+              >
+                Watch desktop video
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      {modalVideo && (
+        <VideoModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          video={modalVideo}
+        />
+      )}
     </section>
   );
 };
