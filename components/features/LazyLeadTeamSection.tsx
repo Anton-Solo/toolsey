@@ -5,7 +5,8 @@ import Image from 'next/image';
 import { LEAD_TEAM_BLOCK } from '@/constans/features';
 import { ComponentType } from 'react';
 import { SVGProps } from 'react';
-import FeaturesCard from '@/components/features/FeaturesCard';
+import { Skeleton } from '@/components/ui/Skeleton';
+import FeaturesCard from './FeaturesCard';
 
 type AnimationComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -24,15 +25,15 @@ const extractAnimationComponent = (mod: AnimationModule): AnimationComponent => 
 const animMap: Record<string, AnimationComponent> = {
   TeamManagementAnim: dynamic(() => import('@/components/features/TeamManagementAnim').then(extractAnimationComponent), { 
     ssr: false, 
-    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
+    loading: () => <Skeleton height={200} width="100%" rounded /> 
   }) as AnimationComponent,
   ReportsAnim: dynamic(() => import('@/components/features/ReportsAnim').then(extractAnimationComponent), { 
     ssr: false, 
-    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
+    loading: () => <Skeleton height={200} width="100%" rounded /> 
   }) as AnimationComponent,
   ArchiveAnim: dynamic(() => import('@/components/features/ArchiveAnim').then(extractAnimationComponent), { 
     ssr: false, 
-    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
+    loading: () => <Skeleton height={200} width="100%" rounded /> 
   }) as AnimationComponent,
 };
 

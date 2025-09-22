@@ -5,7 +5,8 @@ import Image from 'next/image';
 import { LEAD_FEATURES_BLOCK } from '@/constans/features';
 import { ComponentType } from 'react';
 import { SVGProps } from 'react';
-import FeaturesCard from '@/components/features/FeaturesCard';
+import { Skeleton } from '@/components/ui/Skeleton';
+import FeaturesCard from './FeaturesCard';
 
 // import LeadAgg from '@/components/features/LeadAgg';
 
@@ -26,7 +27,7 @@ const animMap: Record<string, AnimationComponent> = {
   // LeadAgg: LeadAgg,
   TrackAnim: dynamic(() => import('@/components/features/TrackAnim').then(extractAnimationComponent), { 
     ssr: false, 
-    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
+    loading: () => <Skeleton height={200} width="100%" rounded /> 
   }) as AnimationComponent,
   // InstantLeadAnim: dynamic(() => import('@/components/features/InstantLeadAnim').then(extractAnimationComponent), { 
   //   ssr: false, 

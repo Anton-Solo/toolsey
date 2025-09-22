@@ -60,7 +60,13 @@ export default function Header() {
                 onClick={handleOpenMenu}
                 className="md:hidden inline-flex items-center justify-center h-10 w-10 -mr-2"
             >
-            <Image src="/icons/burger.svg" alt="Open menu" width={24} height={24} />
+            <Image 
+                src="/icons/burger.svg" 
+                alt="Open mobile menu" 
+                width={24} 
+                height={24} 
+                loading="lazy"
+            />
           </button>
           </div>
         </div>
@@ -77,7 +83,14 @@ export default function Header() {
             <div className="container">
               <div className="flex items-center justify-between h-[72px]">
                 <Link href="/">
-                  <Image src="/icons/logo.svg" alt="Logo" width={136} height={28} />
+                  <Image 
+                    src="/icons/logo.svg" 
+                    alt="Toolsey logo" 
+                    width={136} 
+                    height={28} 
+                    priority={false}
+                    loading="lazy"
+                  />
                 </Link>
                 <button
                   type="button"

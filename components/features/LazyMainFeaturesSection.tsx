@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { MAIN_FEATURES_BLOCK } from '@/constans/features';
 import { ComponentType } from 'react';
 import { SVGProps } from 'react';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 type AnimationComponent = ComponentType<SVGProps<SVGSVGElement>>;
@@ -24,15 +25,15 @@ const extractAnimationComponent = (mod: AnimationModule): AnimationComponent => 
 const animMap: Record<string, AnimationComponent> = {
   ProReports: dynamic(() => import('@/components/features/ProReportsAnim').then(extractAnimationComponent), { 
     ssr: false, 
-    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
+    loading: () => <Skeleton height={200} width="100%" rounded /> 
   }) as AnimationComponent,
   CreateFormAnim: dynamic(() => import('@/components/features/CreateFormAnim').then(extractAnimationComponent), { 
     ssr: false, 
-    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
+    loading: () => <Skeleton height={200} width="100%" rounded /> 
   }) as AnimationComponent,
   MessagingAnim: dynamic(() => import('@/components/features/MessagingAnim').then(extractAnimationComponent), { 
     ssr: false, 
-    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
+    loading: () => <Skeleton height={200} width="100%" rounded /> 
   }) as AnimationComponent,
 };
 
