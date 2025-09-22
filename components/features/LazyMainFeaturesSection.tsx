@@ -56,7 +56,6 @@ export const LazyMainFeaturesSection = () => {
             return (
               <MainFeatureItem
                 key={id}
-                id={id}
                 title={title}
                 subtitle={subtitle}
                 description={description}
@@ -74,7 +73,6 @@ export const LazyMainFeaturesSection = () => {
 };
 
 const MainFeatureItem = ({ 
-  id, 
   title, 
   subtitle, 
   description, 
@@ -83,7 +81,6 @@ const MainFeatureItem = ({
   imageUrl, 
   index 
 }: {
-  id: number;
   title: string;
   subtitle: string;
   description: string;

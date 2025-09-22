@@ -18,9 +18,7 @@ export const FormBlock = () => {
     const {
         formData,
         errors,
-        isPending,
         isSubmitting,
-        isValid,
         setFieldValue,
         submitForm
     } = useFormStatus();

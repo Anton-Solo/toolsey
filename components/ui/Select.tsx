@@ -103,7 +103,6 @@ export const Select = ({
 
     return (
         <div ref={selectRef} className="relative sm:w-max w-full">
-            {/* Input Field */}
             <div
                 className={`input bg-standart-white flex items-center !pr-10 cursor-pointer ${inputClassName} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
                 onClick={handleInputClick}
@@ -112,6 +111,7 @@ export const Select = ({
                 role="combobox"
                 aria-expanded={isOpen}
                 aria-haspopup="listbox"
+                aria-controls="select-dropdown"
             >
                 <span className="block truncate">
                     {displayValue}
@@ -128,6 +128,7 @@ export const Select = ({
                 <div
                     className={`input flex flex-col gap-2 !h-max bg-standart-white w-full overflow-y-auto !p-4 max-h-60 ${dropdownClassName}`}
                     role="listbox"
+                    id="select-dropdown"
                 >
                     {options.map((option) => (
                         <div

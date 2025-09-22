@@ -11,9 +11,9 @@ export default function AboutUs() {
         <main>
             <section className="bg-primary-light py-32 relative overflow-visible">
                 <div className="container">
-                    <img src='/icons/blue-elipse.svg' alt='circle' className="absolute bottom-0 left-1/2 w-[730px] lg:w-[1343px] -translate-x-1/2 pointer-events-none select-none"/>
-                    <img src='/icons/blue-small-elipse.svg' alt='circle' className="absolute bottom-0 left-1/2 w-[542px] lg:w-[1035px] -translate-x-1/2 pointer-events-none select-none"/>
-                    <img src='/icons/blue-smallest-elipse.svg' alt='circle' className="absolute w-[385px] lg:w-[736px] bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none"/>
+                    <Image src='/icons/blue-elipse.svg' alt='circle' width={1343} height={400} className="absolute bottom-0 left-1/2 w-[730px] lg:w-[1343px] -translate-x-1/2 pointer-events-none select-none"/>
+                    <Image src='/icons/blue-small-elipse.svg' alt='circle' width={1035} height={300} className="absolute bottom-0 left-1/2 w-[542px] lg:w-[1035px] -translate-x-1/2 pointer-events-none select-none"/>
+                    <Image src='/icons/blue-smallest-elipse.svg' alt='circle' width={736} height={200} className="absolute w-[385px] lg:w-[736px] bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none"/>
                     <div className="flex flex-col items-center justify-center">
                         <p className="p-body-16 !text-primary font-medium mb-4">About Us</p>
                         <h1 className="h2 font-bold mb-4 text-center">

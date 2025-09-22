@@ -1,4 +1,17 @@
 import '@testing-library/jest-dom'
+import React from 'react'
+
+const mockAct = (callback) => {
+  return callback()
+}
+
+global.React = React
+global.act = mockAct
+
+jest.mock('react-dom/test-utils', () => ({
+  ...jest.requireActual('react-dom/test-utils'),
+  act: mockAct,
+}))
 
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
@@ -20,7 +33,6 @@ jest.mock('next/navigation', () => ({
   },
 }))
 
-// Mock Next.js Image component
 jest.mock('next/image', () => ({
   __esModule: true,
   default: function Image(props) {
@@ -29,7 +41,6 @@ jest.mock('next/image', () => ({
   },
 }))
 
-// Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
   constructor() {}
   disconnect() {}
@@ -45,15 +56,14 @@ global.ResizeObserver = class ResizeObserver {
   unobserve() {}
 }
 
-// Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation(query => ({
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
+    addListener: jest.fn(), 
+    removeListener: jest.fn(), 
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),

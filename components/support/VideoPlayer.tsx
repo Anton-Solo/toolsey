@@ -2,6 +2,7 @@
 
 import { TUTORIAL_VIDEOS } from '@/constans/ support';
 import { useState } from 'react';
+import Image from 'next/image';
 import { VideoModal } from './VideoModal';
 
 interface VideoItem {
@@ -37,9 +38,11 @@ export const VideoPlayer = () => {
                     className="relative cursor-pointer group"
                     onClick={() => openModal(activeVideo)}
                 >
-                    <img
+                    <Image
                         src={getYouTubeThumbnail(activeVideo.youtubeId)}
                         alt={activeVideo.title}
+                        width={1280}
+                        height={720}
                         className="w-full h-full min-h-[184px] lg:min-h-[448px] md:min-h-[327px] rounded-2xl object-cover"
                     />
                     {/* Play button overlay */}
@@ -65,9 +68,11 @@ export const VideoPlayer = () => {
                         onClick={() => setActiveVideo(video)}
                     >
                         <div className="flex gap-4">
-                            <img
+                            <Image
                                 src={getYouTubeThumbnail(video.youtubeId)}
                                 alt={video.title}
+                                width={320}
+                                height={180}
                                 className="w-1/3 h-[110px] object-cover rounded-lg"
                             />
                             <div>

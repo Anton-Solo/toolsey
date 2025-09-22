@@ -2,6 +2,7 @@
 
 import { NAV_LINKS, PRO_TOOLSEY_URL } from "@/constans";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -29,7 +30,7 @@ export default function Header() {
       <div className="container">
         <div className="flex items-center justify-between h-full">
           <Link href="/">
-            <img src="/icons/logo.svg" alt="Logo" width={153} height={32} />
+            <Image src="/icons/logo.svg" alt="Logo" width={153} height={32} priority />
           </Link>
 
           <nav className="hidden md:flex items-center gap-6 font-medium tracking-sm">
@@ -59,7 +60,7 @@ export default function Header() {
                 onClick={handleOpenMenu}
                 className="md:hidden inline-flex items-center justify-center h-10 w-10 -mr-2"
             >
-            <img src="/icons/burger.svg" alt="Open menu" width={24} height={24} />
+            <Image src="/icons/burger.svg" alt="Open menu" width={24} height={24} />
           </button>
           </div>
         </div>
@@ -76,7 +77,7 @@ export default function Header() {
             <div className="container">
               <div className="flex items-center justify-between h-[72px]">
                 <Link href="/">
-                  <img src="/icons/logo.svg" alt="Logo" width={136} height={28} />
+                  <Image src="/icons/logo.svg" alt="Logo" width={136} height={28} />
                 </Link>
                 <button
                   type="button"
