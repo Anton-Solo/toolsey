@@ -42,4 +42,5 @@ export interface BlogApiParams {
   category?: string;
   sort?: string;
   searchText?: string;
+  excluded_ids?: number[];
 }

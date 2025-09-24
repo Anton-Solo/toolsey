@@ -3,7 +3,7 @@
 import { SearchIcon } from "../icons/blog/SearchIcon"
 import { Select } from "../ui/Select"
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface FiltersProps {
     availableCategories?: {
@@ -21,6 +21,11 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
 
     const currentCategory = searchParams.get('category') || '';
     const currentSort = searchParams.get('sort') || 'newest';
+    const currentSearchText = searchParams.get('searchText') || '';
+
+    useEffect(() => {
+        setSearchTerm(currentSearchText);
+    }, [currentSearchText]);
 
     const categoryOptions = [
         { value: '', label: 'All categories' },
@@ -55,6 +60,11 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
         updateFilters('searchText', searchTerm);
     };
 
+    const clearSearch = () => {
+        setSearchTerm('');
+        updateFilters('searchText', '');
+    };
+
     return (
         <div className="flex lg:flex-nowrap flex-wrap items-center justify-between gap-8">
             <form onSubmit={handleSearch} className="flex items-center gap-3 bg-standart-white input sm:max-w-[416px] w-full relative">
@@ -63,10 +73,32 @@ export const Filters = ({ availableCategories = [] }: FiltersProps) => {
                     type="text" 
                     aria-label="Search articles, topics, or keywords"
                     placeholder="Search articles, topics, or keywords" 
-                    className="w-full h-full outline-0"
+                    className="w-full h-full outline-0 pr-8"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
+                {searchTerm && (
+                    <button
+                        type="button"
+                        onClick={clearSearch}
+                        className="absolute right-3 top-[21px] hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
+                        aria-label="Clear search"
+                    >
+                        <svg 
+                            className="w-4 h-4 text-gray-500" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                        >
+                            <path 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth={2} 
+                                d="M6 18L18 6M6 6l12 12" 
+                            />
+                        </svg>
+                    </button>
+                )}
             </form>
             <div className="flex lg:flex-nowrap flex-wrap items-center flex-col sm:flex-row gap-8 sm:w-max w-full">
                 <Select

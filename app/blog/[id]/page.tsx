@@ -42,9 +42,7 @@ export default async function Post({ params }: PostPageProps) {
             return `${readTime} min read`;
         };
 
-        const imagesInContent = post.content.match(/<img[^>]*>/gi) || [];
-        const textContent = post.content.replace(/<img[^>]*>/gi, '');
-        const { firstHalf, secondHalf } = splitHtmlContent(textContent, 0.6);
+        const { firstHalf, secondHalf } = splitHtmlContent(post.content, 0.6);
 
         return (
             <main className="bg-primary-light">
@@ -72,7 +70,7 @@ export default async function Post({ params }: PostPageProps) {
                                 placeholder="blur"
                                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                             />
-                            <h1 className="text-h1-sm leading-h1-sm tracking-sm font-bold mb-6">
+                            <h1 className="sm:text-h1-sm text-2xl sm:leading-h1-sm tracking-sm font-bold mb-6">
                                 {post.title}
                             </h1>
 
@@ -91,15 +89,6 @@ export default async function Post({ params }: PostPageProps) {
                             </div>
 
                             <div className="post">
-
-                                {imagesInContent.length > 0 && (
-                                    <div className="mb-8">
-                                        <div dangerouslySetInnerHTML={{ 
-                                            __html: imagesInContent.join('') 
-                                        }} />
-                                    </div>
-                                )}
-
                                 {secondHalf ? (
                                     <>
                                         <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
@@ -112,7 +101,7 @@ export default async function Post({ params }: PostPageProps) {
                                     </>
                                 ) : (
                                     <>
-                                        <div dangerouslySetInnerHTML={{ __html: textContent }} />
+                                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
                                         
                                         <div className="mt-12">
                                             <WeeklyNews isPost={true} />
@@ -124,7 +113,7 @@ export default async function Post({ params }: PostPageProps) {
                     </div>
                 </section>
 
-                <LatestPost />
+                <LatestPost excluded_ids={[parseInt(resolvedParams.id)]} />
                 <ScrollToTop />
             </main>
         )

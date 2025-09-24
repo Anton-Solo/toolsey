@@ -3,9 +3,10 @@ import { ArrowIcon } from "../icons/support/ArrowIcon"
 import { PostCard } from "./PostCard"
 import { fetchBlogPosts } from "@/lib/api/blog"
 
-export default async function LatestPost() {
+export default async function LatestPost({excluded_ids}: {excluded_ids: number[]}) {
     const posts = await fetchBlogPosts({
         perPage: 3,
+        excluded_ids: excluded_ids,
     })
 
     return (

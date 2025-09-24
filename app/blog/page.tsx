@@ -41,7 +41,7 @@ export default async function Blog({ searchParams }: BlogPageProps) {
         const categories = allCategories.data;
 
         return (
-            <main className="bg-primary-light pt-[120px] pb-[60px]">
+            <main className="bg-primary-light sm:pt-[120px] pt-[60px] pb-[60px]">
                 <section className=" pb-[60px]">
                     <div className="container">
                         <h1 className="h2 font-bold mb-4 text-center">The Toolsey Blog</h1>
@@ -117,7 +117,7 @@ export default async function Blog({ searchParams }: BlogPageProps) {
     } catch (error) {
         console.error('Failed to fetch blog posts:', error);
         return (
-            <main className="bg-primary-light pt-[120px] pb-[60px]">
+            <main className="bg-primary-light sm:pt-[120px] pt-[60px] pb-[60px]">
                 <section className=" pb-[60px]">
                     <div className="container">
                         <h1 className="h2 font-bold mb-4 text-center">The Toolsey Blog</h1>

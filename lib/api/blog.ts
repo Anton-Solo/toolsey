@@ -12,6 +12,9 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   if (params.category) searchParams.set('category', params.category);
   if (params.sort) searchParams.set('sort', params.sort);
   if (params.searchText) searchParams.set('searchText', params.searchText);
+  if (params.excluded_ids && params.excluded_ids.length > 0) {
+    searchParams.set('excluded_ids', JSON.stringify(params.excluded_ids));
+  }
 
   const getAbsoluteUrl = () => {
     if (typeof window === 'undefined') {

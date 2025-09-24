@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
     const sort = searchParams.get('sort');
     const category = searchParams.get('category');
     const searchText = searchParams.get('searchText');
+    const excludedIds = searchParams.get('excluded_ids');
     const page = searchParams.get('page') || '1';
     const perPage = searchParams.get('perPage') || '10';
 
@@ -17,6 +18,17 @@ export async function GET(request: NextRequest) {
     if (sort) apiParams.append('sort', sort);
     if (category) apiParams.append('category', category);
     if (searchText) apiParams.append('searchText', searchText);
+    
+    if (excludedIds) {
+      try {
+        const parsedIds = JSON.parse(excludedIds);
+        if (Array.isArray(parsedIds)) {
+          parsedIds.forEach(id => apiParams.append('excluded_ids[]', id.toString()));
+        }
+      } catch (e) {
+        apiParams.append('excluded_ids', excludedIds);
+      }
+    }
     
     apiParams.append('page', page);
     apiParams.append('perPage', perPage);
