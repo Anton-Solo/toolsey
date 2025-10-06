@@ -50,7 +50,7 @@ export const LazyHowItWorksSection = () => {
   return (
     <section 
       ref={ref}
-      className={`mb-28 transition-all duration-700 ${
+      className={`mb-28 transition-all duration-700 relative z-50 ${
         isVisible 
           ? 'animate-fade-in-up opacity-100' 
           : 'opacity-0 translate-y-8'

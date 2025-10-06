@@ -14,7 +14,6 @@ interface VideoModalProps {
 }
 
 export const VideoModal = ({ isOpen, onClose, video }: VideoModalProps) => {
-    // Close modal on Escape key
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
@@ -37,7 +36,7 @@ export const VideoModal = ({ isOpen, onClose, video }: VideoModalProps) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center">
             <div 
                 className="absolute inset-0 bg-accent-foreground transition-opacity duration-300"
                 onClick={onClose}
