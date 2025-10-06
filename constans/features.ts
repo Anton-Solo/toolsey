@@ -13,7 +13,7 @@ export const LEAD_FEATURES_BLOCK = [
         subtitle: "Respond in Seconds. Win More Jobs.",
         description: "Toolsey sends real-time email and SMS alerts the moment a new lead comes in. Customize alerts to notify sales reps, admins, or managers. Messages are branded, automated, and lightning fast.",
         whyItMatters: "Responding in under 5 minutes boosts your chance of contact by 900%. Never miss a lead again.",
-        Anim: '/images/instant-lead.png'
+        Anim: 'InstantLeadAnim'
     },
     {
         id: 3,

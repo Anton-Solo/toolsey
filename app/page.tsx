@@ -32,8 +32,8 @@ export default function Home() {
           <h4 className="text-foreground text-2xl mb-12 text-center">
             Trusted by <span className="font-medium">30,000+</span> Contactors and Home Service Pros
           </h4>
-          <BrandsSlider />
         </div>
+        <BrandsSlider />
       </section>
 
       <section className="pb-28">

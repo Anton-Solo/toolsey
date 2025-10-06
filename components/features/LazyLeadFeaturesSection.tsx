@@ -29,10 +29,10 @@ const animMap: Record<string, AnimationComponent> = {
     ssr: false, 
     loading: () => <Skeleton height={200} width="100%" rounded /> 
   }) as AnimationComponent,
-  // InstantLeadAnim: dynamic(() => import('@/components/features/InstantLeadAnim').then(extractAnimationComponent), { 
-  //   ssr: false, 
-  //   loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
-  // }) as AnimationComponent,
+  InstantLeadAnim: dynamic(() => import('@/components/features/InstantLeadAnim').then(extractAnimationComponent), { 
+    ssr: false, 
+    loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded" /> 
+  }) as AnimationComponent,
 };
 
 export const LazyLeadFeaturesSection = () => {
