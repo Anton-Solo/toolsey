@@ -4,6 +4,12 @@ import { WeeklyNews } from "@/components/blog/WeeklyNews";
 import { Pagination } from "@/components/blog/Pagination";
 import { fetchBlogCategories, fetchBlogPosts } from "@/lib/api/blog";
 import React, { Suspense } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog—Lead Management Tips for Contractors | Toolsey",
+  description: "Lead faster and sell smarter with Toolsey's blog—playbooks, sales tips, product updates, and benchmarks for contractors and home-service teams. Win more jobs.",
+};
 
 export const revalidate = 300;
 

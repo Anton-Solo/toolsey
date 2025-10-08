@@ -5,6 +5,12 @@ import { InfoCard } from "@/components/InfoCard";
 import { CALENDLY_URL } from "@/constans";
 import { NUMBERS } from "@/constans/about";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Toolsey—Lead Management for Contractors",
+  description: "Meet Toolsey: the contractor-first platform that turns leads into revenue with automation, texting, analytics, and easy setup. See our impact and book a demo.",
+};
 
 export default function AboutUs() {
     return (

@@ -2,6 +2,12 @@ import { ChatIcon } from "@/components/icons/support/ChatIcon";
 import { FAQItem } from "@/components/support/FAQItem";
 import { VideoPlayer } from "@/components/support/VideoPlayer";
 import { COMMON_QUESTIONS } from "@/constans/ support";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Support & How-To Videos | Toolsey Lead Management",
+  description: "Get help fast: step-by-step videos, FAQs, and live support. Learn to add teammates, integrate your CRM, set notifications, and manage leads in Toolsey.",
+};
 
 export default function Support() {
     return (

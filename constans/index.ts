@@ -31,7 +31,7 @@ export const FOOTER_NAV_LINKS = [
     { label: "Learn More", href: "/learn-more" },
     { label: "Features", href: "/features" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Training", href: "/training" },
+    { label: "Support", href: "/support" },
     { label: "About us", href: "/about-us" },
     { label: "Contact", href: "/contact" },
     { label: "FAQ", href: "/faq"}

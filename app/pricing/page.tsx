@@ -1,5 +1,11 @@
 import { LazyPricingSection } from '@/components/pricing/LazyPricingSection';
 import { CALENDLY_URL } from '@/constans';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pricing—Lead Management Software for Contractors | Toolsey",
+  description: "Simple, transparent pricing for Toolsey lead management. Pick a plan, scale your team, and start closing more jobs—no long contracts. Book a discovery call.",
+};
 
 export default function Pricing() {
     return (

@@ -71,24 +71,38 @@ export default function Footer() {
                             </p>
                             <ul className="flex items-center gap-4">
                                 <li>
-                                    <Image 
-                                        src='/icons/ios-app.svg'
-                                        alt="ios app"
-                                        width={135}
-                                        height={40}
-                                        className="w-[135px] h-[40px]"
-                                        priority={false}
-                                    />
+                                    <a 
+                                        href="https://apps.apple.com/us/app/toolsey/id1525369102"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="transition-opacity hover:opacity-70"
+                                    >
+                                        <Image 
+                                            src='/icons/ios-app.svg'
+                                            alt="ios app"
+                                            width={135}
+                                            height={40}
+                                            className="w-[135px] h-[40px]"
+                                            priority={false}
+                                        />
+                                    </a>
                                 </li>
                                 <li>
-                                    <Image 
-                                        src='/icons/google-app.svg'
-                                        alt="google app"
-                                        width={135}
-                                        height={40}
-                                        className="w-[135px] h-[40px]"
-                                        priority={false}
-                                    />
+                                    <a 
+                                        href="https://play.google.com/store/apps/details?id=com.toolsey&pcampaignid=web_share"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="transition-opacity hover:opacity-70"
+                                    >
+                                        <Image 
+                                            src='/icons/google-app.svg'
+                                            alt="google app"
+                                            width={135}
+                                            height={40}
+                                            className="w-[135px] h-[40px]"
+                                            priority={false}
+                                        />
+                                    </a>
                                 </li>
                             </ul>
                         </div>

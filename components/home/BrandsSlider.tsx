@@ -12,9 +12,12 @@ export const BrandsSlider = () => {
             modules={[Autoplay]}
             slidesPerView={3}
             centeredSlides={true}
+            loop={true}
+            speed={3000}
             autoplay={{
-                delay: 2000,
+                delay: 0,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: false,
               }}
             breakpoints={{
                 768: {

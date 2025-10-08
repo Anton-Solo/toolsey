@@ -4,7 +4,13 @@ import { LazyMainFeaturesSection } from "@/components/features/LazyMainFeaturesS
 import { LazyTextingSection } from "@/components/features/LazyTextingSection";
 import { LazyLeadTeamSection } from "@/components/features/LazyLeadTeamSection";
 import Link from "next/link";
+import { CALENDLY_URL } from "@/constans";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Features—Lead Management for Home Service Pros | Toolsey",
+  description: "Toolsey features for home-service pros: lead aggregation, instant alerts, mapping, smart routing, texting, digital forms, photos, analytics, and more.",
+};
 
 export default function Features() {
   return (
@@ -31,7 +37,13 @@ export default function Features() {
           <h2 className="h2 mb-4">Ready to grow your business?</h2>
           <p className="p-body-20 mb-6">Start using Toolsey today and turn every lead into a customer.</p>
           <div className="flex lg:flex-nowrap flex-wrap items-center justify-center gap-6 mb-4 text-[20px]">
-            <button className="btn btn-primary max-sm:w-full">Learn more</button>
+            <a 
+              href={CALENDLY_URL} 
+              target="_blank" 
+              rel="noopener noreferrer"  
+              className="btn btn-primary max-sm:w-full">
+                Learn more
+            </a>
             <Link href="/pricing" className="btn btn-primary max-sm:w-full">See plans and pricing</Link>
           </div>
           <p className="label">Simple setup. Instant results. No credit card required.</p>

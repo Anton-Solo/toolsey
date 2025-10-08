@@ -11,6 +11,12 @@ import { LazyLeadResponseSection } from "@/components/home/LazyLeadResponseSecti
 import { LazyHowItWorksSection } from "@/components/home/LazyHowItWorksSection";
 import Link from "next/link";
 import { CALENDLY_URL } from "@/constans";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lead Management & Sales Tools for Contractors | Toolsey",
+  description: "All-in-one lead management for contractors—aggregate leads, auto-assign, text customers, and close faster for $79/mo. See Toolsey in action; book a demo.",
+};
 
 export default function Home() {
   return (
@@ -18,8 +24,9 @@ export default function Home() {
       <section className="pt-20 pb-10">
         <div className="container">
           <div className="flex lg:flex-nowrap flex-wrap items-center lg:justify-between justify-center gap-4">
-            <div className="max-w-[410px]">
-              <h1 className="h1 mb-4">Sales team software for only $15/mo</h1>
+            <div className="max-w-[436px]">
+              <h1 className="h1 mb-4">Sales team software for only $79/mo</h1>
+              <p className="p-body-24 mb-6">Includes 5 Users so only $15/mo per User!</p>
               <p className="p-body-20">Powerful sales tools to win more deals.</p>
             </div>
             <FormBlock />
@@ -30,7 +37,7 @@ export default function Home() {
       <section className="py-28 overflow-hidden">
         <div className="container">
           <h4 className="text-foreground text-2xl mb-12 text-center">
-            Trusted by <span className="font-medium">30,000+</span> Contactors and Home Service Pros
+            Trusted by <span className="font-medium">12,000+</span> Contactors and Home Service Pros
           </h4>
         </div>
         <BrandsSlider />
@@ -70,8 +77,8 @@ export default function Home() {
         <div className="container">
             <InfoCard 
               isImage={true}
-              title={"Yes, we know it's ridiculous starting at only $15/mo"}
-              text={"We make it up in volume, Toolsey is enjoyed by over 30,000 contractors and home service pros."}
+              title={"Yes, we know it's ridiculous starting at only $79/mo for 5 users"}
+              text={"We make it up in volume, Toolsey is enjoyed by over 12,000 contractors and home service pros."}
               btnText={"New customer offer"}
               btnHref='/pricing'
               extraTxt="No contracts required and flexible plans allows Toolsey to deliver the best deal to contractors and home service pros in te industry"
@@ -103,7 +110,14 @@ export default function Home() {
                   Don’t see an integration you need? Reach out to us we often times add new ones for customers or already have it in the works. 
                 </p>
                 <div className="lg:block flex justify-center">
-                  <button className="btn btn-white my-6">Let’s talk integrations</button>
+                  <a 
+                    href={CALENDLY_URL} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-white my-6"
+                  >
+                      Let’s talk integrations
+                  </a>
                 </div>
               </div>
               <IntegrationAnim className="self-end"/>

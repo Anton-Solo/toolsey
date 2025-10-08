@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
+import Link from "next/link";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -14,8 +15,14 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Toolsey",
-  description: "Toolsey app",
+  metadataBase: new URL('https://toolsey.vercel.app'),
+  openGraph: {
+    siteName: 'Toolsey',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
@@ -30,6 +37,14 @@ export default function RootLayout({
       >
         <SpeedInsights/>
         <ErrorBoundary>
+          <section className="flex items-center justify-center h-[40px] bg-foreground">
+            <Link href="/pricing" className="flex group text-standart-white text-sm gap-1">
+              <span className=" group-hover:no-underline underline">Get now</span>
+              <span className="group-hover:block">
+                7 day Premium trial.
+              </span>
+            </Link>
+          </section>
           <Header />
           {children}
           <Footer />

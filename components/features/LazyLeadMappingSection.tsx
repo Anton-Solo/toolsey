@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { CALENDLY_URL } from '@/constans';
 
 const SideMenuAnim = dynamic(() => import('@/components/features/SidemenuAnim'), { 
   ssr: false, 
@@ -36,7 +37,14 @@ export const LazyLeadMappingSection = () => {
             <p className="p-body-20 !text-standart-white mb-8">
               <span className="font-bold">Why It Matters:</span> Reduce drive time. Target high-opportunity areas. Make your sales and marketing geographically strategic.
             </p>
-            <button className="btn btn-white">Get started</button>
+            <a 
+              href={CALENDLY_URL} 
+              target="_blank" 
+              rel="noopener noreferrer"  
+              className="btn btn-white"
+            >
+              Get started
+            </a>
           </div>
 
           <div className="flex items-center lg:self-auto self-end shrink-1">

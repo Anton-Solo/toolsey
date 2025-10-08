@@ -79,7 +79,10 @@ export const LazyHowItWorksSection = () => {
               )}
               <Link href="/features" className="p-body-16 font-medium !text-primary hover:opacity-70 transition-opacity duration-300">...and much more!</Link>
             </div>
-            <Link href="/pricing" className="btn btn-primary">Get start free</Link>
+            <div className='flex flex-wrap items-center gap-4'>
+              <Link href="/pricing" className="btn btn-primary">Learn more</Link>
+              <Link href="/pricing" className="btn btn-primary">See plans and pricing</Link>
+            </div>
           </div>
           <div>
             <Image
@@ -122,7 +125,10 @@ export const LazyHowItWorksSection = () => {
               )}
               <Link href="/features" className="p-body-16 font-medium !text-primary hover:opacity-70 transition-opacity duration-300">...and much more!</Link>
             </div>
-            <Link href="/pricing" className="btn btn-primary">Get start free</Link>
+            <div className='flex flex-wrap items-center gap-4'>
+              <Link href="/pricing" className="btn btn-primary">Learn more</Link>
+              <Link href="/pricing" className="btn btn-primary">See plans and pricing</Link>
+            </div>
           </div>
           <div className="flex flex-col items-center justify-center">
             <Image
