@@ -289,7 +289,7 @@ describe('FormBlock', () => {
   it('renders informational text', () => {
     render(<FormBlock />)
     
-    expect(screen.getByText(/It only takes 15 minutes to learn why 30,000 pros use Toolsey to generate more sales/)).toBeInTheDocument()
+    expect(screen.getByText(/It only takes 15 minutes to learn why 10,000 pros use Toolsey to generate more sales/)).toBeInTheDocument()
   })
 
   it('has correct form structure and accessibility', () => {

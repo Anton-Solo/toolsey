@@ -23,7 +23,7 @@ export const LazyTextingSection = () => {
       <div className="container">
         <div className="flex gap-8 lg:flex-row flex-col justify-between lg:items-center overflow-hidden linear-card py-16 lg:pl-16 pl-4 rounded-4xl">
           <div className="max-w-[584px] lg:pr-0 pr-4">
-            <p className="p-body-16 font-medium !text-standart-white mb-2">2-Way Texting</p>
+            <p className="text-3xl font-medium !text-standart-white mb-2">2-Way Texting</p>
             <h3 className="p-body-24 font-bold !text-standart-white mb-4">Text Like a Pro. Right Inside Toolsey.</h3>
             <p className="p-body-20 !text-standart-white mb-4">
               Send and receive texts directly in Toolsey. Use your company&apos;s local number, manage conversations in a global inbox or per lead, and keep every message archived.

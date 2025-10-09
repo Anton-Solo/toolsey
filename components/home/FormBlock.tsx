@@ -109,7 +109,7 @@ export const FormBlock = () => {
                         <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
                     )}
                 </div>
-                <p>It only takes 15 minutes to learn why 30,000 pros use Toolsey to generate more sales. </p>
+                <p>It only takes 15 minutes to learn why 10,000 pros use Toolsey to generate more sales. </p>
                 
                 <button 
                     type="submit"

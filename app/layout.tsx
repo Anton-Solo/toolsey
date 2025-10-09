@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import Link from "next/link";
+import { ZohoDeskWidget } from "@/components/common/ZohoDeskWidget";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -36,6 +37,7 @@ export default function RootLayout({
         className={`${jakarta.variable} antialiased`}
       >
         <SpeedInsights/>
+        <ZohoDeskWidget />
         <ErrorBoundary>
           <section className="flex items-center justify-center h-[40px] bg-foreground">
             <Link href="/pricing" className="flex group text-standart-white text-sm gap-1">

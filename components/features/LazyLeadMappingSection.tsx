@@ -29,7 +29,7 @@ export const LazyLeadMappingSection = () => {
       <div className="container">
         <div className="flex gap-8 lg:flex-row flex-col justify-between lg:items-center overflow-hidden linear-card py-16 lg:pl-16 pl-4 rounded-4xl">
           <div className="max-w-[584px] ">
-            <p className="p-body-16 font-medium !text-standart-white mb-2">Lead Mapping</p>
+            <p className="text-3xl font-medium !text-standart-white mb-2">Lead Mapping</p>
             <h3 className="p-body-24 font-bold !text-standart-white mb-4">Visualize Your Leads. Maximize Your Reach.</h3>
             <p className="p-body-20 !text-standart-white mb-4">
               View all your leads on an interactive, color-coded map. Filter by status, product, rep, or date to identify clusters, optimize routes, and plan smarter campaigns.

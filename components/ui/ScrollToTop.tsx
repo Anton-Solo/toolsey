@@ -37,7 +37,7 @@ export const ScrollToTop = ({ showAfter = 300, className = "" }: ScrollToTopProp
         <button
             onClick={scrollToTop}
             className={`
-                fixed bottom-6 right-6 z-50
+                fixed bottom-[100px] right-7 z-50
                 w-12 h-12 
                 bg-primary text-white
                 rounded-full shadow-lg

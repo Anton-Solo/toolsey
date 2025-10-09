@@ -1,6 +1,7 @@
 import { ChatIcon } from "@/components/icons/support/ChatIcon";
 import { FAQItem } from "@/components/support/FAQItem";
 import { VideoPlayer } from "@/components/support/VideoPlayer";
+import { ZohoDeskChat } from "@/components/support/ZohoDeskChat";
 import { COMMON_QUESTIONS } from "@/constans/ support";
 import type { Metadata } from "next";
 
@@ -24,18 +25,7 @@ export default function Support() {
                 <section className="py-[60px]">
                     <h2 className="h2 text-center text-foreground mb-12">Still need help?</h2>
                     <div className="flex lg:flex-nowrap flex-wrap lg:justify-between justify-center lg:gap-[10px] gap-8">
-                        <div className="p-[40px] rounded-4xl bg-standart-white max-w-[640px] w-full">
-                            <div className="flex justify-center mb-6">
-                                <ChatIcon />
-                            </div>
-                            <h3 className="p-body-24 font-bold mb-4 text-foreground max-w-[210px] mx-auto text-center">
-                                Chat with our Well Trained AI Expert
-                            </h3>
-                            <p className="p-body-16 text-accent mb-6 text-center">Available 24/7</p>
-                            <div className="flex justify-center">
-                                <button className="btn btn-primary">Chat with us</button>
-                            </div>
-                        </div>
+                        <ZohoDeskChat />
                         <div className="p-[40px] rounded-4xl bg-standart-white max-w-[640px] w-full">
                             <div className="flex justify-center mb-6">
                                 <ChatIcon />
@@ -49,7 +39,7 @@ export default function Support() {
                                 Mon-Fri, 8am-5pm
                             </p>
                             <div className="flex justify-center">
-                                <button className="btn btn-primary">Call (800) 810 0264</button>
+                                <a href="tel:+18008100264" className="btn btn-primary">Call (800) 810 0264</a>
                             </div>
                         </div>
                     </div>

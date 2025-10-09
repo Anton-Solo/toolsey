@@ -37,7 +37,7 @@ export default function Home() {
       <section className="py-28 overflow-hidden">
         <div className="container">
           <h4 className="text-foreground text-2xl mb-12 text-center">
-            Trusted by <span className="font-medium">12,000+</span> Contactors and Home Service Pros
+            Trusted by <span className="font-medium">10,000+</span> Contactors and Home Service Pros
           </h4>
         </div>
         <BrandsSlider />
@@ -49,7 +49,7 @@ export default function Home() {
           <p className="p-body-20 mb-20 text-center max-w-[640px] mx-auto">
             Toolsey is an affordable, 
             yet powerful platform to drive more sales with tools 
-            that are easyto-use yet incredibly effective.
+            that are easy to use yet incredibly effective.
           </p>
           <AnimatedAdvantagesSection />
         </div>
@@ -78,10 +78,10 @@ export default function Home() {
             <InfoCard 
               isImage={true}
               title={"Yes, we know it's ridiculous starting at only $79/mo for 5 users"}
-              text={"We make it up in volume, Toolsey is enjoyed by over 12,000 contractors and home service pros."}
+              text={"We make it up in volume, Toolsey is enjoyed by over 10,000 contractors and home service pros."}
               btnText={"New customer offer"}
               btnHref='/pricing'
-              extraTxt="No contracts required and flexible plans allows Toolsey to deliver the best deal to contractors and home service pros in te industry"
+              extraTxt="No contracts required and flexible plans allows Toolsey to deliver the best deal to contractors and home service pros in the industry"
             />
         </div>
       </section>

@@ -21,7 +21,7 @@ export const LEAD_FEATURES_BLOCK = [
         subtitle: "Track Every Lead. Close More Deals.",
         description: "With Toolsey’s customizable sales funnel, you can monitor every stage of a lead’s journey. See activity, status changes, team notes, and get alerts on stalled opportunities before they’re lost.",
         whyItMatters: "Stay in control of your pipeline. Know exactly where every deal stands and take action before it’s too late.",
-        Anim: '/images/track.png'
+        Anim: 'TrackAnim'
     },
     {
         id: 4,

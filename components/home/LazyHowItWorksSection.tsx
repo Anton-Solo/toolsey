@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { HOW_WORKS } from '@/constans';
+import { CALENDLY_URL, HOW_WORKS } from '@/constans';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Link from 'next/link';
 import { VideoModal } from '../support/VideoModal';
@@ -80,7 +80,12 @@ export const LazyHowItWorksSection = () => {
               <Link href="/features" className="p-body-16 font-medium !text-primary hover:opacity-70 transition-opacity duration-300">...and much more!</Link>
             </div>
             <div className='flex flex-wrap items-center gap-4'>
-              <Link href="/pricing" className="btn btn-primary">Learn more</Link>
+              <a 
+                href={CALENDLY_URL} 
+                target="_blank" 
+                rel="noopener noreferrer"  className="btn btn-primary">
+                Learn more
+              </a>
               <Link href="/pricing" className="btn btn-primary">See plans and pricing</Link>
             </div>
           </div>
@@ -126,7 +131,12 @@ export const LazyHowItWorksSection = () => {
               <Link href="/features" className="p-body-16 font-medium !text-primary hover:opacity-70 transition-opacity duration-300">...and much more!</Link>
             </div>
             <div className='flex flex-wrap items-center gap-4'>
-              <Link href="/pricing" className="btn btn-primary">Learn more</Link>
+              <a 
+                href={CALENDLY_URL} 
+                target="_blank" 
+                rel="noopener noreferrer"  className="btn btn-primary">
+                Learn more
+              </a>
               <Link href="/pricing" className="btn btn-primary">See plans and pricing</Link>
             </div>
           </div>
