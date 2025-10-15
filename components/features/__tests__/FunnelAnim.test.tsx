@@ -19,9 +19,9 @@ describe('FunnelAnim', () => {
   });
 
   it('applies custom className', () => {
-    render(<FunnelAnim className="custom-class" />);
+    render(<FunnelAnim className="relative z-10" />);
     const container = screen.getByTestId('lottie-animation').parentElement;
-    expect(container).toHaveClass('custom-class');
+    expect(container).toHaveClass('relative z-10');
   });
 
   it('renders with default props', () => {

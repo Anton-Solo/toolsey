@@ -48,7 +48,7 @@ export const TestimonialsSlider = () => {
                 // onSlideChange={() => console.log('slide change')}
                 // onSwiper={(swiper) => console.log(swiper)}
             >
-                {Array.from({ length: 7 }, (_, index) => (
+                {Array.from({ length: 10 }, (_, index) => (
                     <SwiperSlide key={index} className="!w-auto">
                         <div className='w-full sm:max-w-[416px] max-w-[304px] p-6 md:p-8 rounded-3xl bg-standart-white border border-card-bg'>
                             <p className='p-body-20 !text-accent-dark mb-10'>

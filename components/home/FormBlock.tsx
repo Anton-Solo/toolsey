@@ -55,7 +55,7 @@ export const FormBlock = () => {
                 <FormElipse3 className="-mt-[90px] ml-[115px] md:block hidden"/>
                 <Image 
                     alt="girl image"
-                    priority
+                    priority={true}
                     src="/images/girl.png"
                     width={365}
                     height={281}
@@ -123,7 +123,7 @@ export const FormBlock = () => {
                 <Image 
                     alt="man image"
                     src="/images/man.png"
-                    priority
+                    priority={true}
                     width={182}
                     height={213}
                     className="absolute top-[27%] right-0 w-[182px] md:block hidden"

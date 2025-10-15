@@ -8,7 +8,9 @@ describe('useFormStatus', () => {
     expect(result.current.formData).toEqual({
       fullName: '',
       email: '',
-      phone: ''
+      phone: '',
+      comment: '',
+      companyName: ''
     })
     expect(result.current.errors).toEqual({})
     expect(result.current.isValid).toBe(false)
@@ -23,14 +25,18 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: 'John Doe',
         email: 'john@example.com',
-        phone: '+1234567890'
+        phone: '+1234567890',
+        comment: '',
+        companyName: ''
       })
     })
     
     expect(result.current.formData).toEqual({
       fullName: 'John Doe',
       email: 'john@example.com',
-      phone: '+1234567890'
+      phone: '+1234567890',
+      comment: '',
+      companyName: ''
     })
   })
 
@@ -147,7 +153,9 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: '',
         email: 'invalid',
-        phone: '123'
+        phone: '123',
+        comment: '',
+        companyName: ''
       })
     })
     act(() => {
@@ -174,7 +182,9 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: '',
         email: 'invalid',
-        phone: '123'
+        phone: '123',
+        comment: '',
+        companyName: ''
       })
     })
     act(() => {
@@ -199,7 +209,9 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: 'John Doe',
         email: 'john@example.com',
-        phone: '+1234567890'
+        phone: '+1234567890',
+        comment: '',
+        companyName: ''
       })
     })
     act(() => {
@@ -214,7 +226,9 @@ describe('useFormStatus', () => {
     expect(result.current.formData).toEqual({
       fullName: '',
       email: '',
-      phone: ''
+      phone: '',
+      comment: '',
+      companyName: ''
     })
     expect(result.current.errors).toEqual({})
     expect(result.current.isSubmitting).toBe(false)
@@ -231,7 +245,9 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: 'John Doe',
         email: 'john@example.com',
-        phone: '+1234567890'
+        phone: '+1234567890',
+        comment: '',
+        companyName: ''
       })
     })
     
@@ -242,7 +258,9 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: '',
         email: 'john@example.com',
-        phone: '+1234567890'
+        phone: '+1234567890',
+        comment: '',
+        companyName: ''
       })
     })
     
@@ -258,7 +276,9 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: 'John Doe',
         email: 'john@example.com',
-        phone: '+1234567890'
+        phone: '+1234567890',
+        comment: '',
+        companyName: ''
       })
     })
     
@@ -270,7 +290,9 @@ describe('useFormStatus', () => {
     expect(mockSubmit).toHaveBeenCalledWith({
       fullName: 'John Doe',
       email: 'john@example.com',
-      phone: '+1234567890'
+      phone: '+1234567890',
+      comment: '',
+      companyName: ''
     })
     expect(result.current.isSubmitting).toBe(false)
   })
@@ -284,7 +306,9 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: '',
         email: 'invalid',
-        phone: '123'
+        phone: '123',
+        comment: '',
+        companyName: ''
       })
     })
     

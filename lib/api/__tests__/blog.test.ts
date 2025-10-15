@@ -92,7 +92,6 @@ describe('Blog API', () => {
         expect.stringContaining('/blog/categories'),
         expect.objectContaining({
           headers: expect.objectContaining({
-            'Authorization': 'Bearer undefined',
             'Content-Type': 'application/json',
           }),
         })

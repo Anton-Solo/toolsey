@@ -28,7 +28,6 @@ export const SOCIAL_LINKS = [
 ]
 
 export const FOOTER_NAV_LINKS = [
-    { label: "Learn More", href: "/learn-more" },
     { label: "Features", href: "/features" },
     { label: "Pricing", href: "/pricing" },
     { label: "Support", href: "/support" },

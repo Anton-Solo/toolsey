@@ -42,10 +42,15 @@ jest.mock('next/image', () => ({
 }))
 
 global.IntersectionObserver = class IntersectionObserver {
-  constructor() {}
+  constructor(callback) {
+    this.callback = callback
+  }
   disconnect() {}
   observe() {}
   unobserve() {}
+  takeRecords() {
+    return []
+  }
 }
 
 // Mock ResizeObserver
