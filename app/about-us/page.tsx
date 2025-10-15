@@ -1,11 +1,9 @@
-import { MailIcon } from "@/components/icons/about/MailIcon";
-import { MarkerIcon } from "@/components/icons/about/MarkerIcon";
-import { PhoneIcon } from "@/components/icons/about/PhoneIcon";
 import { InfoCard } from "@/components/InfoCard";
 import { CALENDLY_URL } from "@/constans";
 import { NUMBERS } from "@/constans/about";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { Info } from "@/components/Info";
 
 export const metadata: Metadata = {
   title: "About Toolsey—Lead Management for Contractors",
@@ -103,28 +101,7 @@ export default function AboutUs() {
                                 <br/> <br/>
                                 Let&apos;s do something great together!
                             </p>
-                            <ul className="p-body-20 font-semibold">
-                                <li>
-                                    <div className="flex items-center gap-2 mt-4">
-                                        <MarkerIcon />
-                                        <span>12175 Visionary Way, Suite 118, Fishers, IN 46038</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="flex items-center gap-2 mt-4">
-                                        <PhoneIcon />
-                                        <a href="tel:800-810-0264" className="hover:text-primary transition-colors">800-810-0264</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="flex items-center gap-2 mt-4">
-                                        <MailIcon />
-                                        <a href="mailto:hello@toolsey.com" className="hover:text-primary transition-colors">
-                                            hello@toolsey.com
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
+                            <Info />
                         </div>
                     </div>
                 </div>

@@ -48,7 +48,7 @@ export const TestimonialsSlider = () => {
                 // onSlideChange={() => console.log('slide change')}
                 // onSwiper={(swiper) => console.log(swiper)}
             >
-                {Array.from({ length: 10 }, (_, index) => (
+                {Array.from({ length: 7 }, (_, index) => (
                     <SwiperSlide key={index} className="!w-auto">
                         <div className='w-full sm:max-w-[416px] max-w-[304px] p-6 md:p-8 rounded-3xl bg-standart-white border border-card-bg'>
                             <p className='p-body-20 !text-accent-dark mb-10'>
@@ -74,6 +74,28 @@ export const TestimonialsSlider = () => {
                         </div>
                     </SwiperSlide>
                 ))}
+                {/* <SwiperSlide className="!w-auto">
+                    <div className='w-full sm:max-w-[416px] max-w-[304px] p-6 md:p-8 rounded-3xl bg-standart-white border border-card-bg'>
+                        <p className='p-body-20 !text-accent-dark mb-10'>
+                            Doesn't get any better than this! Love the connection and the Toolsey staff is simply amazing!
+                        </p>
+                        <div className='flex items-center gap-4'>
+                            <div className='w-12 h-12 rounded-full'>
+                                <Image
+                                    src="/images/test-avatar.png"
+                                    alt="avatar"
+                                    width={48}
+                                    height={48}
+                                    className="rounded-full object-cover"
+                                />
+                            </div>
+                            <div>
+                                <p className='p-body-16 text-foreground font-bold'>Szymon Opyd</p>
+                                <p className='p-body-16 text-accent-dark font-medium'>Handyman</p>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide> */}
             </Swiper>   
         </div>
     )

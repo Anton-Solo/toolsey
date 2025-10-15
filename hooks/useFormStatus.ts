@@ -4,14 +4,18 @@ import { useState, useTransition } from 'react';
 
 interface FormData {
     fullName: string;
+    companyName: string;
     email: string;
     phone: string;
+    comment: string;
 }
 
 interface FormErrors {
     fullName?: string;
+    companyName?: string;
     email?: string;
     phone?: string;
+    comment?: string;
 }
 
 interface UseFormStatusReturn {
@@ -30,8 +34,10 @@ interface UseFormStatusReturn {
 
 const initialFormData: FormData = {
     fullName: '',
+    companyName: '',
     email: '',
-    phone: ''
+    phone: '',
+    comment: ''
 };
 
 const initialErrors: FormErrors = {};
@@ -59,6 +65,10 @@ export const useFormStatus = (): UseFormStatusReturn => {
                 if (value.trim().length < 2) return 'Full name must be at least 2 characters';
                 return undefined;
             
+            case 'companyName':
+                // Optional field, no validation required
+                return undefined;
+            
             case 'email':
                 if (!value.trim()) return 'Email is required';
                 if (!validateEmail(value)) return 'Please enter a valid email address';
@@ -67,6 +77,10 @@ export const useFormStatus = (): UseFormStatusReturn => {
             case 'phone':
                 if (!value.trim()) return 'Phone number is required';
                 if (!validatePhone(value)) return 'Please enter a valid phone number';
+                return undefined;
+            
+            case 'comment':
+                // Optional field, no validation required
                 return undefined;
             
             default:

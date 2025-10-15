@@ -1,0 +1,111 @@
+'use client';
+
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
+import { useFormStatus } from "@/hooks/useFormStatus";
+
+export const ContactForm = () => {
+    const {
+        formData,
+        errors,
+        isSubmitting,
+        setFieldValue,
+        submitForm
+    } = useFormStatus();
+
+    const handleSubmit = async (data: { fullName: string; companyName: string; email: string; phone: string; comment: string }) => {
+        // TODO: Add form submission logic here
+        console.log('Form submitted:', data);
+    };
+
+    const onSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        await submitForm(handleSubmit);
+    };
+
+    return (
+        <form 
+            onSubmit={onSubmit}
+            className="relative z-30 bg-standart-white p-8 rounded-4xl shadow-form flex flex-col gap-6 text-accent w-full"
+        >
+            <label className="block w-full">
+                <input 
+                    type='text'
+                    placeholder="Full name *"
+                    className={`input w-full ${errors.fullName ? 'border-red-500 focus:border-red-500' : ''}`}
+                    value={formData.fullName}
+                    aria-label="Full name"
+                    onChange={(e) => setFieldValue('fullName', e.target.value)}
+                    required
+                    disabled={isSubmitting}
+                />
+                {errors.fullName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+                )}
+            </label>
+            <label className="block w-full">
+                <input 
+                    type='text'
+                    placeholder="Company name"
+                    className={`input w-full ${errors.companyName ? 'border-red-500 focus:border-red-500' : ''}`}
+                    value={formData.companyName}
+                    aria-label="Company name"
+                    onChange={(e) => setFieldValue('companyName', e.target.value)}
+                    disabled={isSubmitting}
+                />
+                {errors.companyName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.companyName}</p>
+                )}
+            </label>
+            <label className="block w-full">
+                <input 
+                    type='email'
+                    placeholder="Email *"
+                    className={`input w-full ${errors.email ? 'border-red-500 focus:border-red-500' : ''}`}
+                    aria-label="Email"
+                    value={formData.email}
+                    onChange={(e) => setFieldValue('email', e.target.value)}
+                    required
+                    disabled={isSubmitting}
+                />
+                {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
+            </label>
+            <div className="block w-full">
+                <PhoneInput
+                    defaultCountry="us"
+                    value={formData.phone}
+                    onChange={(phone) => setFieldValue('phone', phone)}
+                    aria-label="Phone"
+                    disabled={isSubmitting}
+                    className={errors.phone ? 'border-red-500' : ''}
+                />
+                {errors.phone && (
+                    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                )}
+            </div>
+            <label className="block w-full">
+                <textarea 
+                    placeholder="Your comment"
+                    className={`input !py-2 w-full min-h-[128px] max-h-[128px] resize-y ${errors.comment ? 'border-red-500 focus:border-red-500' : ''}`}
+                    value={formData.comment}
+                    aria-label="Your comment"
+                    onChange={(e) => setFieldValue('comment', e.target.value)}
+                    disabled={isSubmitting}
+                />
+                {errors.comment && (
+                    <p className="text-red-500 text-sm mt-1">{errors.comment}</p>
+                )}
+            </label>
+
+            <button 
+                type="submit"
+                className={`btn btn-primary h-14 text-[20px] ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                // disabled={isSubmitting || !isValid}
+            >
+                {isSubmitting ? 'Processing...' : 'Contact us'}
+            </button>
+        </form>
+    )
+}

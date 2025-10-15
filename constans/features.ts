@@ -5,7 +5,7 @@ export const LEAD_FEATURES_BLOCK = [
         subtitle: "All Your Leads. One Powerful Hub.",
         description: "Toolsey automatically pulls leads from top platforms like Angi, Facebook, Thumbtack, Porch, and your website into a single dashboard—no copy-paste, no missed leads. Integrated with 20+ tools including Zapier and Calendly, every lead is time-stamped and instantly triggers notifications, assignments, and follow-ups.",
         whyItMatters: "Stop juggling spreadsheets and inboxes. Centralize your leads, respond faster, and stay organized to win more jobs.",
-        Anim: '/images/lead-agg.png'
+        Anim: 'LeadAgg'
     },
     {
         id: 2,

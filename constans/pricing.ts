@@ -23,14 +23,12 @@ export const PRICING_DATA: PricingData = {
     {
       id: 'basic',
       name: 'Basic',
-      description: 'MOST POPULAR',
       price: {
         monthly: 79,
         yearly: 79,
       },
       currency: '$',
       period: 'mo',
-      isPopular: true,
       features: [
         { id: 'users-5', text: '5 Users included ($20 per additional user/mo)', included: true },
         { id: 'integrations-unlimited', text: 'Unlimited Integrations (35+ integrations available)', included: true },
@@ -50,6 +48,8 @@ export const PRICING_DATA: PricingData = {
     {
       id: 'premium',
       name: 'Premium',
+      isPopular: true,
+      description: 'MOST POPULAR',
       price: {
         monthly: 129,
         yearly: 129,
