@@ -7,8 +7,7 @@ import { ComponentType } from 'react';
 import { SVGProps } from 'react';
 import { Skeleton } from '@/components/ui/Skeleton';
 import FeaturesCard from './FeaturesCard';
-
-import LeadAgg from '@/components/features/LeadAgg';
+import AllLeadsAnim from './AllLeadsAnim';
 
 type AnimationComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -24,7 +23,7 @@ const extractAnimationComponent = (mod: AnimationModule): AnimationComponent => 
 };
 
 const animMap: Record<string, AnimationComponent> = {
-  LeadAgg: LeadAgg,
+  LeadAgg: AllLeadsAnim,
   TrackAnim: dynamic(() => import('@/components/features/FunnelAnim').then(extractAnimationComponent), { 
     ssr: false, 
     loading: () => <Skeleton height={200} width="100%" rounded /> 
