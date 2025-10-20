@@ -103,5 +103,6 @@ describe('AllLeadsAnim', () => {
     expect(animation).toHaveAttribute('data-loop', 'false');
     expect(animation).toHaveAttribute('data-autoplay', 'false');
   });
+  
 });
 
