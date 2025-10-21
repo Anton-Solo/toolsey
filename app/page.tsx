@@ -59,10 +59,10 @@ export default function Home() {
 
       <LazyLeadResponseSection />
 
-      <section className="mb-28">
+      <section className="mb-20">
         <div className="container">
           <h2 className="h2 mb-4 text-center max-w-[984px] mx-auto">Consolidating information is the key to efficiency and sanity!</h2>
-          <p className="p-body-20 text-center max-w-[560px] mx-auto mb-28">Toolsey will aggregate and organize all of your lead sources and sales activity into one place.</p>
+          <p className="p-body-20 text-center max-w-[560px] mx-auto mb-20">Toolsey will aggregate and organize all of your lead sources and sales activity into one place.</p>
             
           <div className="flex flex-col lg:flex-row items-center justify-center">
             <LazyConsolidatingAnim className="lg:-mr-[220px] -mb-[50%] lg:mb-0 max-w-[665px] w-full"/>

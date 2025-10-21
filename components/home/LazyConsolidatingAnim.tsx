@@ -28,7 +28,7 @@ export const LazyConsolidatingAnim = ({ className, disableLazyLoading = false }:
         }
       },
       {
-        rootMargin: '200px', // Start loading 200px before element comes into view for better UX
+        rootMargin: '200px',
         threshold: 0.1
       }
     );
@@ -43,7 +43,7 @@ export const LazyConsolidatingAnim = ({ className, disableLazyLoading = false }:
   return (
     <div ref={ref} className={className}>
       {isVisible ? (
-        <ConsolidatingAnim className="h-max w-full" />
+        <ConsolidatingAnim className="lg:h-[800px] h-max w-full" />
       ) : (
         <div className="lg:-mr-[220px] -mb-[325px] lg:mb-0 max-w-[665px] h-[677px] flex items-center justify-center relative">
           <div className="animate-pulse">
