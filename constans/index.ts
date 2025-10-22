@@ -15,8 +15,9 @@ export const NAV_LINKS = [
     { label: "Features", href: "/features",},
     { label: "Pricing", href: "/pricing",},
     { label: "Support", href: "/support",},
-    { label: "Blog", href: "/blog",},
     { label: "About us", href: "/about-us",},
+    { label: "Contact", href: "/contact",},
+    { label: "Blog", href: "/blog",},
 ]
 
 export const SOCIAL_LINKS = [
@@ -90,4 +91,4 @@ export { PRICING_DATA } from './pricing';
 
 export const CALENDLY_URL = "https://calendly.com/d/cwvy-bn4-8wr/toolsey-discovery-call";
 
-export const PRO_TOOLSEY_URL = "https://pro.toolsey.com/sign-up";
+export const PRO_TOOLSEY_URL = "https://pro.toolsey.com/login";

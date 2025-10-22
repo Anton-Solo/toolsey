@@ -15,14 +15,16 @@ export default function Footer() {
             <div className="container">
                 <div className="flex flex-wrap justify-between mb-10 tracking-sm text-accent gap-6">
                     <div className="flex flex-col gap-6 max-w-[332px]">
-                        <Image 
-                            src="/icons/logo.svg"
-                            alt="logo"
-                            width={230}
-                            height={48}
-                            className="w-[230px] h-[48px]"
-                            priority={false}
-                        />
+                        <Link href="/">
+                            <Image 
+                                src="/icons/logo.svg"
+                                alt="logo"
+                                width={230}
+                                height={48}
+                                className="w-[230px] h-[48px]"
+                                priority={false}
+                            />
+                        </Link>
                         <p className="text-accent">
                             Toolsey was designed to organize and automate your sales process. 
                             We have one objective to help you make more money!

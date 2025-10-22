@@ -33,7 +33,7 @@ export default function Header() {
             <Image src="/icons/logo.svg" alt="Logo" width={153} height={32} priority />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6 font-medium tracking-sm">
+          <nav className="hidden md:flex items-center lg:gap-6 gap-3 font-medium tracking-sm">
             {NAV_LINKS.map((link) => (
               <Link 
                 key={link.label} 
