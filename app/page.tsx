@@ -78,7 +78,7 @@ export default function Home() {
             <InfoCard 
               isImage={true}
               title={"Yes, we know it's ridiculous starting at only $79/mo for 5 users"}
-              text={"We make it up in volume, Toolsey is enjoyed by over 10,000 contractors and home service pros."}
+              text={"We make it up in volume, Toolsey is enjoyed by over 10,000+ contractors and home service pros."}
               btnText={"New customer offer"}
               btnHref='/pricing'
               extraTxt="No contracts required and flexible plans allows Toolsey to deliver the best deal to contractors and home service pros in the industry"

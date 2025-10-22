@@ -1,11 +1,24 @@
+import React from 'react'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { FormBlock } from '@/components/home/FormBlock'
-import { useFormStatus } from '@/hooks/useFormStatus'
-import { useCalendly } from '@/hooks/useCalendly'
 
-jest.mock('@/hooks/useFormStatus')
-jest.mock('@/hooks/useCalendly')
+const mockSetFieldValue = jest.fn()
+const mockSubmitForm = jest.fn()
+const mockOpenDirectLink = jest.fn()
+
+jest.mock('@/constans', () => ({
+  CALENDLY_URL: 'https://calendly.com/test'
+}))
+
+jest.mock('react-international-phone/style.css', () => ({}))
+
+jest.mock('@/hooks/useFormStatus', () => ({
+  useFormStatus: jest.fn()
+}))
+
+jest.mock('@/hooks/useCalendly', () => ({
+  useCalendly: jest.fn()
+}))
 
 jest.mock('next/image', () => {
   return function MockImage({ alt, src, ...props }: { alt: string; src: string; [key: string]: unknown }) {
@@ -54,46 +67,88 @@ jest.mock('react-international-phone', () => ({
   )
 }))
 
+import { useFormStatus } from '@/hooks/useFormStatus'
+import { useCalendly } from '@/hooks/useCalendly'
+import { FormBlock } from '@/components/home/FormBlock'
+
 const mockUseFormStatus = useFormStatus as jest.MockedFunction<typeof useFormStatus>
 const mockUseCalendly = useCalendly as jest.MockedFunction<typeof useCalendly>
 
+const createDefaultFormStatus = () => ({
+  formData: {
+    fullName: '',
+    companyName: '',
+    email: '',
+    phone: '',
+    comment: ''
+  },
+  errors: {},
+  isPending: false,
+  isSubmitting: false,
+  isValid: false,
+  setFormData: jest.fn(),
+  setFieldValue: mockSetFieldValue,
+  validateForm: jest.fn(),
+  clearErrors: jest.fn(),
+  resetForm: jest.fn(),
+  submitForm: mockSubmitForm
+})
+
+const createDefaultCalendly = () => ({
+  openPopup: jest.fn(),
+  openDirectLink: mockOpenDirectLink,
+  createInlineWidget: jest.fn()
+})
+
 describe('FormBlock', () => {
-  const mockSetFieldValue = jest.fn()
-  const mockSubmitForm = jest.fn()
-  const mockOpenDirectLink = jest.fn()
-
-  const defaultFormStatus = {
-    formData: {
-      fullName: '',
-      email: '',
-      phone: ''
-    },
-    errors: {},
-    isPending: false,
-    isSubmitting: false,
-    isValid: false,
-    setFormData: jest.fn(),
-    setFieldValue: mockSetFieldValue,
-    validateForm: jest.fn(),
-    clearErrors: jest.fn(),
-    resetForm: jest.fn(),
-    submitForm: mockSubmitForm
-  }
-
-  const defaultCalendly = {
-    openPopup: jest.fn(),
-    openDirectLink: mockOpenDirectLink,
-    createInlineWidget: jest.fn()
-  }
-
   beforeEach(() => {
     jest.clearAllMocks()
-    mockUseFormStatus.mockReturnValue(defaultFormStatus)
-    mockUseCalendly.mockReturnValue(defaultCalendly)
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+    
+    mockUseFormStatus.mockReturnValue(createDefaultFormStatus())
+    mockUseCalendly.mockReturnValue(createDefaultCalendly())
+  })
+
+  afterEach(() => {
+    jest.restoreAllMocks()
+  })
+
+  it('test mocks', () => {
+    console.log('useFormStatus:', mockUseFormStatus)
+    console.log('useCalendly:', mockUseCalendly)
+    console.log('useFormStatus return:', mockUseFormStatus())
+    console.log('useCalendly return:', mockUseCalendly())
+  })
+
+  it('test render', () => {
+    console.log('FormBlock:', FormBlock)
+    console.log('typeof FormBlock:', typeof FormBlock)
+    console.log('FormBlock.name:', FormBlock.name)
+    
+    let error: Error | null = null
+    let jsx: React.ReactElement | null = null
+    try {
+      jsx = <FormBlock />
+      console.log('JSX:', jsx)
+      console.log('JSX type:', jsx.type)
+      console.log('JSX props:', jsx.props)
+      
+      const result = render(jsx)
+      console.log('Render result container.innerHTML:', result.container.innerHTML)
+      console.log('Render result container.firstChild:', result.container.firstChild)
+    } catch (e) {
+      error = e as Error
+      console.log('Render error:', error)
+      console.log('Error message:', error.message)
+      console.log('Error stack:', error.stack)
+    }
+    expect(error).toBeNull()
   })
 
   it('renders form with all required fields', () => {
-    render(<FormBlock />)
+    const { container } = render(<FormBlock />)
+    console.log('Container HTML:', container.innerHTML)
+    console.log('Container Element:', container.firstChild)
     
     expect(screen.getByLabelText('Full name')).toBeInTheDocument()
     expect(screen.getByLabelText('Email')).toBeInTheDocument()
@@ -117,12 +172,14 @@ describe('FormBlock', () => {
   it('displays form data in input fields', () => {
     const formData = {
       fullName: 'John Doe',
+      companyName: '',
       email: 'john@example.com',
-      phone: '+1234567890'
+      phone: '+1234567890',
+      comment: ''
     }
     
     mockUseFormStatus.mockReturnValue({
-      ...defaultFormStatus,
+      ...createDefaultFormStatus(),
       formData
     })
 
@@ -158,7 +215,7 @@ describe('FormBlock', () => {
     }
     
     mockUseFormStatus.mockReturnValue({
-      ...defaultFormStatus,
+      ...createDefaultFormStatus(),
       errors
     })
 
@@ -177,7 +234,7 @@ describe('FormBlock', () => {
     }
     
     mockUseFormStatus.mockReturnValue({
-      ...defaultFormStatus,
+      ...createDefaultFormStatus(),
       errors
     })
 
@@ -194,7 +251,7 @@ describe('FormBlock', () => {
 
   it('disables inputs when submitting', () => {
     mockUseFormStatus.mockReturnValue({
-      ...defaultFormStatus,
+      ...createDefaultFormStatus(),
       isSubmitting: true
     })
 
@@ -214,7 +271,7 @@ describe('FormBlock', () => {
 
   it('shows processing state on submit button when submitting', () => {
     mockUseFormStatus.mockReturnValue({
-      ...defaultFormStatus,
+      ...createDefaultFormStatus(),
       isSubmitting: true
     })
 
@@ -249,12 +306,14 @@ describe('FormBlock', () => {
   it('calls openDirectLink with correct Calendly options when form is submitted', async () => {
     const formData = {
       fullName: 'John Doe',
+      companyName: '',
       email: 'john@example.com',
-      phone: '+1234567890'
+      phone: '+1234567890',
+      comment: ''
     }
     
     mockUseFormStatus.mockReturnValue({
-      ...defaultFormStatus,
+      ...createDefaultFormStatus(),
       formData
     })
 
@@ -289,7 +348,7 @@ describe('FormBlock', () => {
   it('renders informational text', () => {
     render(<FormBlock />)
     
-    expect(screen.getByText(/It only takes 15 minutes to learn why 10,000 pros use Toolsey to generate more sales/)).toBeInTheDocument()
+    expect(screen.getByText(/It only takes 15 minutes to learn why 10,000+ pros use Toolsey to generate more sales/)).toBeInTheDocument()
   })
 
   it('has correct form structure and accessibility', () => {

@@ -26,7 +26,7 @@ export const LazyHowItWorksSection = () => {
     setModalVideo({
       id: 1,
       title: "Toolsey Mobile App Demo",
-      youtubeId: "etRZSgaDfcs",
+      youtubeId: "GWVa4OHZ_Y8",
       description: "See how Toolsey mobile app works in action. Smart and easy to use — your sales team will be up and running in just a few minutes."
     });
     setIsModalOpen(true);
@@ -36,7 +36,7 @@ export const LazyHowItWorksSection = () => {
     setModalVideo({
       id: 2,
       title: "Toolsey Desktop Command Center Demo",
-      youtubeId: "7yGApmXs37Q",
+      youtubeId: "-MNgFCvt2yk",
       description: "See how Toolsey desktop command center works. Powerful and easy to use — your admin's life just got a whole lot easier and more productive."
     });
     setIsModalOpen(true);
