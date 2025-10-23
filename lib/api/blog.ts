@@ -28,7 +28,7 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
         const url = vercelUrl.startsWith('http') ? vercelUrl : `https://${vercelUrl}`;
         return `${url}/api/blog`;
       }
-      return 'http://localhost:3000/api/blog';
+      return 'http://toolsey.local/api/blog';
     }
     return '/api/blog';
   };
@@ -78,4 +78,58 @@ export async function fetchBlogCategories() {
   }
 
   return response.json();
+}
+
+export interface SubscribeNewsletterData {
+  email: string;
+  'g-recaptcha-response': string;
+}
+
+export interface SubscribeNewsletterResponse {
+  status: boolean;
+  message: string;
+}
+
+export async function subscribeToNewsletter(data: SubscribeNewsletterData): Promise<SubscribeNewsletterResponse> {
+  const response = await fetch(`${process.env.API_BASE_URL}/site/subscribe`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${BEARER_TOKEN}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  const responseData = await response.json();
+
+  if (!response.ok) {
+    let errorMessage = `Failed to subscribe: ${response.status} ${response.statusText}`;
+    
+    if (responseData.message) {
+      try {   
+        const jsonMatch = responseData.message.match(/^(\{.*?\})/);
+        if (jsonMatch) {
+          const jsonPart = jsonMatch[1];
+          const parsedMessage = JSON.parse(jsonPart);
+          if (parsedMessage.detail) {
+            errorMessage = parsedMessage.detail;
+          }
+        } else {
+          throw new Error('No JSON found in message');
+        }
+      } catch (e) {   
+        errorMessage = responseData.message;
+      }
+    }
+    
+    if (responseData.detail) {
+      errorMessage = responseData.detail;
+    } else if (responseData.error) {
+      errorMessage = responseData.error;
+    }
+    
+    throw new Error(errorMessage);
+  }
+
+  return responseData;
 }

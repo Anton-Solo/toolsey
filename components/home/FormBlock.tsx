@@ -122,6 +122,10 @@ export const FormBlock = () => {
                         aria-label="Phone"
                         disabled={isSubmitting}
                         className={errors.phone ? 'border-red-500' : ''}
+                        hideDropdown
+                        disableCountryGuess
+                        disableFormatting
+                        forceDialCode
                     />
                     {errors.phone && (
                         <p className="text-red-500 text-sm mt-1">{errors.phone}</p>

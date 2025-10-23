@@ -1,6 +1,6 @@
 'use client';
 
-import { PRO_TOOLSEY_URL } from '@/constans';
+import { PRO_TOOLSEY_URL_SIGNUP } from '@/constans';
 import { PricingPlan, PricingPeriod } from '@/types/pricing.types';
 
 interface PricingCardProps {
@@ -32,7 +32,7 @@ export const PricingCard = ({ plan, period }: PricingCardProps) => {
       </div>
 
       <a
-        href={PRO_TOOLSEY_URL}
+        href={PRO_TOOLSEY_URL_SIGNUP}
         className="btn btn-primary w-full mb-8"
       >
         {plan.ctaText}
