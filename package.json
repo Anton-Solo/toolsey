@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "sudo next dev --turbopack -H toolsey.local -p 80",
+    "dev:simple": "next dev --turbopack -H toolsey.local",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
@@ -20,6 +21,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-international-phone": "^4.6.0",
+    "sonner": "^2.0.7",
     "swiper": "^11.2.10"
   },
   "devDependencies": {

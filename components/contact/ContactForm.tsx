@@ -3,6 +3,9 @@
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import { useFormStatus } from "@/hooks/useFormStatus";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { submitContactForm, ContactFormData } from "@/lib/api/contact";
+import { toast } from "sonner";
 
 export const ContactForm = () => {
     const {
@@ -10,12 +13,46 @@ export const ContactForm = () => {
         errors,
         isSubmitting,
         setFieldValue,
-        submitForm
+        submitForm,
+        resetForm
     } = useFormStatus();
 
+    const { executeRecaptcha, resetRecaptcha } = useRecaptcha('recaptcha-contact');
+
     const handleSubmit = async (data: { fullName: string; companyName: string; email: string; phone: string; comment: string }) => {
-        // TODO: Add form submission logic here
-        console.log('Form submitted:', data);
+        return new Promise<void>((resolve, reject) => {
+            executeRecaptcha(async (token: string) => {
+                try {
+                    const contactData: ContactFormData = {
+                        full_name: data.fullName,
+                        email: data.email,
+                        phone_number: data.phone,
+                        comments: data.comment || undefined,
+                        company_name: data.companyName || undefined,
+                        'g-recaptcha-response': token,
+                    };
+
+                    const response = await submitContactForm(contactData);
+
+                    if (response.status) {
+                        toast.success(response.message || 'Your message has been sent successfully!');
+                        resetForm();
+                        resetRecaptcha();
+                        resolve();
+                    } else {
+                        toast.error(response.message || 'Failed to send message. Please try again.');
+                        resetRecaptcha();
+                        reject(new Error(response.message || 'Failed to send message'));
+                    }
+                } catch (error) {
+                    console.error('Contact form error:', error);
+                    const errorMessage = error instanceof Error ? error.message : 'An error occurred. Please try again.';
+                    toast.error(errorMessage);
+                    resetRecaptcha();
+                    reject(error);
+                }
+            });
+        });
     };
 
     const onSubmit = async (e: React.FormEvent) => {
@@ -102,10 +139,12 @@ export const ContactForm = () => {
             <button 
                 type="submit"
                 className={`btn btn-primary h-14 text-[20px] ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
-                // disabled={isSubmitting || !isValid}
+                disabled={isSubmitting}
             >
                 {isSubmitting ? 'Processing...' : 'Contact us'}
             </button>
+
+            <div id="recaptcha-contact"></div>
         </form>
     )
 }

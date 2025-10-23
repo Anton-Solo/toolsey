@@ -92,3 +92,4 @@ export { PRICING_DATA } from './pricing';
 export const CALENDLY_URL = "https://calendly.com/d/cwvy-bn4-8wr/toolsey-discovery-call";
 
 export const PRO_TOOLSEY_URL = "https://pro.toolsey.com/login";
+export const PRO_TOOLSEY_URL_SIGNUP = "https://pro.toolsey.com/sign-up";

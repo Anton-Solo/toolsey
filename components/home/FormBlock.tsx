@@ -9,37 +9,55 @@ import { FormElipse3 } from "../icons/home-form/FormElipse3";
 import { FormElipse4 } from "../icons/home-form/FormElipse4";
 import { FormElipse5 } from "../icons/home-form/FormElipse5";
 import { FormElipse6 } from "../icons/home-form/FormElipse6";
-import { useCalendly } from "@/hooks/useCalendly";
 import { useFormStatus } from "@/hooks/useFormStatus";
-import { CALENDLY_URL } from "@/constans";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { submitContactForm, ContactFormData } from "@/lib/api/contact";
+import { toast } from "sonner";
 
 export const FormBlock = () => {
-    const { openDirectLink } = useCalendly();
     const {
         formData,
         errors,
         isSubmitting,
         setFieldValue,
-        submitForm
+        submitForm,
+        resetForm
     } = useFormStatus();
 
-    const handleSubmit = async (data: { fullName: string; email: string; phone: string }) => {
-        const calendlyOptions = {
-            url: CALENDLY_URL,
-            prefill: {
-                name: data.fullName,
-                email: data.email,
-                phone: data.phone
-            },
-            utm: {
-                utmSource: 'toolsey_website',
-                utmMedium: 'form_submission',
-                utmCampaign: 'discovery_call',
-                utmContent: 'homepage_form'
-            }
-        };
+    const { executeRecaptcha, resetRecaptcha } = useRecaptcha('recaptcha-formblock');
 
-        openDirectLink(calendlyOptions);
+    const handleSubmit = async (data: { fullName: string; companyName: string; email: string; phone: string; comment: string }) => {
+        return new Promise<void>((resolve, reject) => {
+            executeRecaptcha(async (token: string) => {
+                try {
+                    const contactData: ContactFormData = {
+                        full_name: data.fullName,
+                        email: data.email,
+                        phone_number: data.phone,
+                        'g-recaptcha-response': token,
+                    };
+
+                    const response = await submitContactForm(contactData);
+
+                    if (response.status) {
+                        toast.success(response.message || 'Your request has been sent successfully! We will contact you soon.');
+                        resetForm();
+                        resetRecaptcha();
+                        resolve();
+                    } else {
+                        toast.error(response.message || 'Failed to send request. Please try again.');
+                        resetRecaptcha();
+                        reject(new Error(response.message || 'Failed to send request'));
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    const errorMessage = error instanceof Error ? error.message : 'An error occurred. Please try again.';
+                    toast.error(errorMessage);
+                    resetRecaptcha();
+                    reject(error);
+                }
+            });
+        });
     };
 
     const onSubmit = async (e: React.FormEvent) => {
@@ -114,10 +132,12 @@ export const FormBlock = () => {
                 <button 
                     type="submit"
                     className={`btn btn-primary h-14 text-[20px] ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
-                    // disabled={isSubmitting || !isValid}
+                    disabled={isSubmitting}
                 >
                     {isSubmitting ? 'Processing...' : 'Discovery Call'}
                 </button>
+
+                <div id="recaptcha-formblock"></div>
             </form>
             <div className="relative -ml-[300px] md:block hidden">
                 <Image 

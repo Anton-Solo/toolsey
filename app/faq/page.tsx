@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description: "Toolsey FAQ for home-service pros: lead aggregation, instant alerts, mapping, smart routing, texting, digital forms, photos, analytics, and more.",
 };
 
-export default function Contact() {
+export default function FAQ() {
     return (
         <main className="bg-primary-light">
             <section className="pt-[72px] pb-[120px]">

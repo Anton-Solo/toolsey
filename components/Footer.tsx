@@ -113,10 +113,10 @@ export default function Footer() {
                 <div className="flex flex-wrap items-center justify-between gap-4 text-accent text-sm tracking-normal">
                     <p>© {year} Toolsey. All Rights Reserved.</p>
                     <div className="flex items-center gap-6 tracking-h1 underline">
-                        <Link href="/">
+                        <Link href="/privacy-policy">
                             Privacy Policy
                         </Link>
-                        <Link href="/">
+                        <Link href="/terms">
                             Terms & Conditions
                         </Link>
                     </div>

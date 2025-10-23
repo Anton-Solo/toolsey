@@ -1,6 +1,6 @@
 "use client";
 
-import { NAV_LINKS, PRO_TOOLSEY_URL } from "@/constans";
+import { NAV_LINKS, PRO_TOOLSEY_URL, PRO_TOOLSEY_URL_SIGNUP } from "@/constans";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -51,7 +51,7 @@ export default function Header() {
 
           <div className="flex items-center gap-6 font-bold tracking-sm">
             <Link className="hidden md:block hover:opacity-70 transition-opacity duration-300" href={PRO_TOOLSEY_URL}>Login</Link>
-            <Link href='/pricing' className="btn btn-primary !h-[48px] !text-[16px] !px-4">Get started</Link>
+            <Link href={PRO_TOOLSEY_URL_SIGNUP} className="btn btn-primary !h-[48px] !text-[16px] !px-4">Get started</Link>
             <button
                 type="button"
                 aria-label="Open menu"

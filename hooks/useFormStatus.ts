@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState } from 'react';
 
 interface FormData {
     fullName: string;
@@ -21,7 +21,6 @@ interface FormErrors {
 interface UseFormStatusReturn {
     formData: FormData;
     errors: FormErrors;
-    isPending: boolean;
     isSubmitting: boolean;
     isValid: boolean;
     setFormData: (data: Partial<FormData>) => void;
@@ -45,7 +44,6 @@ const initialErrors: FormErrors = {};
 export const useFormStatus = (): UseFormStatusReturn => {
     const [formData, setFormDataState] = useState<FormData>(initialFormData);
     const [errors, setErrors] = useState<FormErrors>(initialErrors);
-    const [isPending, startTransition] = useTransition();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const validateEmail = (email: string): boolean => {
@@ -144,9 +142,7 @@ export const useFormStatus = (): UseFormStatusReturn => {
         setIsSubmitting(true);
         
         try {
-            await startTransition(async () => {
-                await onSubmit(formData);
-            });
+            await onSubmit(formData);
         } catch (error) {
             console.error('Form submission error:', error);
         } finally {
@@ -162,7 +158,6 @@ export const useFormStatus = (): UseFormStatusReturn => {
     return {
         formData,
         errors,
-        isPending,
         isSubmitting,
         isValid,
         setFormData,
