@@ -95,8 +95,8 @@ export default function Home() {
           <p className="p-body-20 text-center max-w-[638px] mx-auto mb-12">
             Give yourself an unfair advantage with a system built to win more jobs. Toolsey automation and assignment tools will drive speed to lead
           </p>
+          <TestimonialsSlider />
         </div>
-        <TestimonialsSlider />
       </section>
 
       <section>

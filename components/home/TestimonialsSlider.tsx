@@ -10,7 +10,7 @@ import { TESTIMONIALS } from '../../constans/testimonials';
 
 export const TestimonialsSlider = () => {
     return (
-        <div className="relative w-full overflow-hidden pb-[100px] px-4 sm:px-0">
+        <div className="relative w-full pb-[100px] px-4 sm:px-0">
             <button aria-label="Previous" className="swiper-button-prev !left-[20%] sm:!left-[35%] md:!left-[40%] lg:!left-[45%] !bottom-[10px] !top-auto after:!content-[''] !w-[48px] !h-[48px] rounded-[33px] bg-primary flex items-center justify-center hover:scale-105 transition-all duration-300">
                 <ArrowSlider className='!w-4'/>
             </button>
@@ -25,37 +25,29 @@ export const TestimonialsSlider = () => {
                     prevEl: '.swiper-button-prev',
                 }}
                 spaceBetween={15}
-                slidesPerView={1.2}
+                slidesPerView={1}
                 centeredSlides={false}
                 loop={true}
                 breakpoints={{
                     640: {
-                        slidesPerView: 1.3,
+                        slidesPerView: 1,
                         spaceBetween: 20,
-                        centeredSlides: false,
                     },
                     768: {
                         slidesPerView: 2,
                         spaceBetween: 24,
-                        centeredSlides: true,
                     },
                     1024: {
                         slidesPerView: 3,
                         spaceBetween: 32,
-                        centeredSlides: true,
-                    },
-                    1280: {
-                        slidesPerView: 4,
-                        spaceBetween: 32,
-                        centeredSlides: true,
                     },
                 }}
                 // onSlideChange={() => console.log('slide change')}
                 // onSwiper={(swiper) => console.log(swiper)}
             >
                 {TESTIMONIALS.map((testimonial) => (
-                    <SwiperSlide key={testimonial.id} className="!w-auto">
-                        <div className='md:w-[416px] w-[302px] h-[416px] p-6 md:p-8 rounded-3xl bg-standart-white border border-card-bg flex flex-col'>
+                    <SwiperSlide key={testimonial.id} >
+                        <div className='h-[416px] p-6 md:p-8 rounded-3xl bg-standart-white border border-card-bg flex flex-col'>
                             <div className='mb-6 flex'>
                                 <Image
                                     src={testimonial.company_logo}
