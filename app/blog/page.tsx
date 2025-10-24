@@ -52,7 +52,7 @@ export default async function Blog({ searchParams }: BlogPageProps) {
                     <div className="container">
                         <h1 className="h2 font-bold mb-4 text-center">The Toolsey Blog</h1>
                         <p className="p-body-20 max-w-[436px] mx-auto text-center text-accent">
-                            Lead faster. Sell smarter. Stay ahead with expert insights and product tips.
+                            The contractor growth brief: short reads, big results with Toolsey.
                         </p>
                     </div>
                 </section>
@@ -128,7 +128,7 @@ export default async function Blog({ searchParams }: BlogPageProps) {
                     <div className="container">
                         <h1 className="h2 font-bold mb-4 text-center">The Toolsey Blog</h1>
                         <p className="p-body-20 max-w-[436px] mx-auto text-center text-accent">
-                            Lead faster. Sell smarter. Stay ahead with expert insights and product tips.
+                            The contractor growth brief: short reads, big results with Toolsey.
                         </p>
                     </div>
                 </section>

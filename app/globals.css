@@ -545,3 +545,19 @@ body {
   line-clamp: 3;
 }
 
+.phone-input-no-country-code .PhoneInputCountrySelect {
+  display: none !important;
+}
+
+.phone-input-no-country-code .PhoneInputCountryIcon {
+  display: none !important;
+}
+
+.phone-input-no-country-code .PhoneInputCountrySelectArrow {
+  display: none !important;
+}
+
+.phone-input-no-country-code input {
+  padding-left: 12px !important;
+}
+

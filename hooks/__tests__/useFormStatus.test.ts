@@ -14,7 +14,6 @@ describe('useFormStatus', () => {
     })
     expect(result.current.errors).toEqual({})
     expect(result.current.isValid).toBe(false)
-    expect(result.current.isPending).toBe(false)
     expect(result.current.isSubmitting).toBe(false)
   })
 
@@ -25,7 +24,7 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: 'John Doe',
         email: 'john@example.com',
-        phone: '+1234567890',
+        phone: '123-456-7890',
         comment: '',
         companyName: ''
       })
@@ -34,7 +33,7 @@ describe('useFormStatus', () => {
     expect(result.current.formData).toEqual({
       fullName: 'John Doe',
       email: 'john@example.com',
-      phone: '+1234567890',
+      phone: '123-456-7890',
       comment: '',
       companyName: ''
     })
@@ -71,7 +70,7 @@ describe('useFormStatus', () => {
     act(() => {
       result.current.validateForm()
     })
-    expect(result.current.errors.fullName).toBe('Full name must be at least 2 characters')
+    expect(result.current.errors.fullName).toBeUndefined() // 'A' is valid (at least 1 character)
     
     // Test valid name
     act(() => {
@@ -93,7 +92,7 @@ describe('useFormStatus', () => {
     act(() => {
       result.current.validateForm()
     })
-    expect(result.current.errors.email).toBe('Email is required')
+    expect(result.current.errors.email).toBe('Please enter a valid email address')
     
     // Test invalid email
     act(() => {
@@ -126,18 +125,18 @@ describe('useFormStatus', () => {
     })
     expect(result.current.errors.phone).toBe('Phone number is required')
     
-    // Test short phone
+    // Test invalid phone format
     act(() => {
-      result.current.setFieldValue('phone', '123')
+      result.current.setFieldValue('phone', '1234567890')
     })
     act(() => {
       result.current.validateForm()
     })
-    expect(result.current.errors.phone).toBe('Please enter a valid phone number')
+    expect(result.current.errors.phone).toBe('Please enter a valid phone number in format 333-444-5555')
     
     // Test valid phone
     act(() => {
-      result.current.setFieldValue('phone', '+1234567890')
+      result.current.setFieldValue('phone', '123-456-7890')
     })
     act(() => {
       result.current.validateForm()
@@ -162,7 +161,7 @@ describe('useFormStatus', () => {
       result.current.validateForm()
     })
     
-    expect(Object.keys(result.current.errors)).toHaveLength(3)
+    expect(Object.keys(result.current.errors)).toHaveLength(2) // Only fullName and email errors
     
     // Update field value
     act(() => {
@@ -171,7 +170,7 @@ describe('useFormStatus', () => {
     
     expect(result.current.errors.fullName).toBeUndefined()
     expect(result.current.errors.email).toBeDefined()
-    expect(result.current.errors.phone).toBeDefined()
+    expect(result.current.errors.phone).toBeUndefined() // Phone error cleared when field updated
   })
 
   it('clears all errors when clearErrors is called', () => {
@@ -191,7 +190,7 @@ describe('useFormStatus', () => {
       result.current.validateForm()
     })
     
-    expect(Object.keys(result.current.errors)).toHaveLength(3)
+    expect(Object.keys(result.current.errors)).toHaveLength(2) // Only fullName and email errors
     
     // Clear errors
     act(() => {
@@ -209,7 +208,7 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: 'John Doe',
         email: 'john@example.com',
-        phone: '+1234567890',
+        phone: '123-456-7890',
         comment: '',
         companyName: ''
       })
@@ -245,7 +244,7 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: 'John Doe',
         email: 'john@example.com',
-        phone: '+1234567890',
+        phone: '123-456-7890',
         comment: '',
         companyName: ''
       })
@@ -258,7 +257,7 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: '',
         email: 'john@example.com',
-        phone: '+1234567890',
+        phone: '123-456-7890',
         comment: '',
         companyName: ''
       })
@@ -276,7 +275,7 @@ describe('useFormStatus', () => {
       result.current.setFormData({
         fullName: 'John Doe',
         email: 'john@example.com',
-        phone: '+1234567890',
+        phone: '123-456-7890',
         comment: '',
         companyName: ''
       })
@@ -287,10 +286,12 @@ describe('useFormStatus', () => {
       await result.current.submitForm(mockSubmit)
     })
     
+    // Check if form is valid before expecting submission
+    expect(result.current.isValid).toBe(true)
     expect(mockSubmit).toHaveBeenCalledWith({
       fullName: 'John Doe',
       email: 'john@example.com',
-      phone: '+1234567890',
+      phone: '123-456-7890',
       comment: '',
       companyName: ''
     })

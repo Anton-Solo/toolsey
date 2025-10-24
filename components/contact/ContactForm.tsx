@@ -1,7 +1,5 @@
 'use client';
 
-import { PhoneInput } from "react-international-phone";
-import "react-international-phone/style.css";
 import { useFormStatus } from "@/hooks/useFormStatus";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { submitContactForm, ContactFormData } from "@/lib/api/contact";
@@ -19,7 +17,7 @@ export const ContactForm = () => {
 
     const { executeRecaptcha, resetRecaptcha } = useRecaptcha('recaptcha-contact');
 
-    const handleSubmit = async (data: { fullName: string; companyName: string; email: string; phone: string; comment: string }) => {
+    const handleSubmit = async (data: { fullName: string; companyName?: string; email: string; phone: string; comment?: string }) => {
         return new Promise<void>((resolve, reject) => {
             executeRecaptcha(async (token: string) => {
                 try {
@@ -69,11 +67,10 @@ export const ContactForm = () => {
                 <input 
                     type='text'
                     placeholder="Full name *"
-                    className={`input w-full ${errors.fullName ? 'border-red-500 focus:border-red-500' : ''}`}
+                    className={`input w-full ${errors.fullName ? '!border-red-500 focus:!border-red-500' : ''}`}
                     value={formData.fullName}
                     aria-label="Full name"
                     onChange={(e) => setFieldValue('fullName', e.target.value)}
-                    required
                     disabled={isSubmitting}
                 />
                 {errors.fullName && (
@@ -84,7 +81,7 @@ export const ContactForm = () => {
                 <input 
                     type='text'
                     placeholder="Company name"
-                    className={`input w-full ${errors.companyName ? 'border-red-500 focus:border-red-500' : ''}`}
+                    className={`input w-full ${errors.companyName ? '!border-red-500 focus:!border-red-500' : ''}`}
                     value={formData.companyName}
                     aria-label="Company name"
                     onChange={(e) => setFieldValue('companyName', e.target.value)}
@@ -98,11 +95,10 @@ export const ContactForm = () => {
                 <input 
                     type='email'
                     placeholder="Email *"
-                    className={`input w-full ${errors.email ? 'border-red-500 focus:border-red-500' : ''}`}
+                    className={`input w-full ${errors.email ? '!border-red-500 focus:!border-red-500' : ''}`}
                     aria-label="Email"
                     value={formData.email}
                     onChange={(e) => setFieldValue('email', e.target.value)}
-                    required
                     disabled={isSubmitting}
                 />
                 {errors.email && (
@@ -110,14 +106,43 @@ export const ContactForm = () => {
                 )}
             </label>
             <div className="block w-full">
-                <PhoneInput
-                    defaultCountry="us"
+            <div className="relative">
+                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 flex items-center">
+                    <span className="text-2xl">🇺🇸</span>
+                </div>
+                <input
+                    type="tel"
                     value={formData.phone}
-                    onChange={(phone) => setFieldValue('phone', phone)}
+                    onChange={(e) => {
+                        let value = e.target.value;
+                        
+                        if (value.length < formData.phone.length) {
+                            setFieldValue('phone', value);
+                            return;
+                        }
+                        
+                        let digits = value.replace(/\D/g, '');
+                        
+                        if (digits.length > 10) {
+                            digits = digits.slice(0, 10);
+                        }
+                        
+                        if (digits.length >= 6) {
+                            value = digits.slice(0, 3) + '-' + digits.slice(3, 6) + '-' + digits.slice(6);
+                        } else if (digits.length >= 3) {
+                            value = digits.slice(0, 3) + '-' + digits.slice(3);
+                        } else {
+                            value = digits;
+                        }
+                        
+                        setFieldValue('phone', value);
+                    }}
+                    placeholder="333-444-5555"
                     aria-label="Phone"
                     disabled={isSubmitting}
-                    className={errors.phone ? 'border-red-500' : ''}
+                    className={`w-full px-12 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
                 />
+            </div>
                 {errors.phone && (
                     <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
                 )}
@@ -125,7 +150,7 @@ export const ContactForm = () => {
             <label className="block w-full">
                 <textarea 
                     placeholder="Your comment"
-                    className={`input !py-2 w-full min-h-[128px] max-h-[128px] resize-y ${errors.comment ? 'border-red-500 focus:border-red-500' : ''}`}
+                    className={`input !py-2 w-full min-h-[128px] max-h-[128px] resize-none ${errors.comment ? '!border-red-500 focus:!border-red-500' : ''}`}
                     value={formData.comment}
                     aria-label="Your comment"
                     onChange={(e) => setFieldValue('comment', e.target.value)}

@@ -1,14 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-
-interface FormData {
-    fullName: string;
-    companyName: string;
-    email: string;
-    phone: string;
-    comment: string;
-}
+import { formSchema, type FormData } from '@/lib/validation/schemas';
+import { ZodError } from 'zod';
 
 interface FormErrors {
     fullName?: string;
@@ -46,61 +40,37 @@ export const useFormStatus = (): UseFormStatusReturn => {
     const [errors, setErrors] = useState<FormErrors>(initialErrors);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const validateEmail = (email: string): boolean => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const validatePhone = (phone: string): boolean => {
-        const digitsOnly = phone.replace(/\D/g, '');
-        return digitsOnly.length >= 10;
-    };
-
     const validateField = (field: keyof FormData, value: string): string | undefined => {
-        switch (field) {
-            case 'fullName':
-                if (!value.trim()) return 'Full name is required';
-                if (value.trim().length < 2) return 'Full name must be at least 2 characters';
-                return undefined;
-            
-            case 'companyName':
-                // Optional field, no validation required
-                return undefined;
-            
-            case 'email':
-                if (!value.trim()) return 'Email is required';
-                if (!validateEmail(value)) return 'Please enter a valid email address';
-                return undefined;
-            
-            case 'phone':
-                if (!value.trim()) return 'Phone number is required';
-                if (!validatePhone(value)) return 'Please enter a valid phone number';
-                return undefined;
-            
-            case 'comment':
-                // Optional field, no validation required
-                return undefined;
-            
-            default:
-                return undefined;
+        try {
+            const fieldSchema = formSchema.pick({ [field]: true });
+            fieldSchema.parse({ [field]: value });
+            return undefined;
+        } catch (error) {
+            if (error instanceof ZodError) {
+                return error.issues[0]?.message;
+            }
+            return undefined;
         }
     };
 
     const validateForm = (): boolean => {
-        const newErrors: FormErrors = {};
-        let isValid = true;
-
-        Object.keys(formData).forEach((key) => {
-            const field = key as keyof FormData;
-            const error = validateField(field, formData[field]);
-            if (error) {
-                newErrors[field] = error;
-                isValid = false;
+        try {
+            formSchema.parse(formData);
+            setErrors({});
+            return true;
+        } catch (error) {
+            if (error instanceof ZodError) {
+                const newErrors: FormErrors = {};
+                error.issues.forEach((err) => {
+                    const field = err.path[0] as keyof FormData;
+                    if (field) {
+                        newErrors[field] = err.message;
+                    }
+                });
+                setErrors(newErrors);
             }
-        });
-
-        setErrors(newErrors);
-        return isValid;
+            return false;
+        }
     };
 
     const setFormData = (data: Partial<FormData>) => {
@@ -115,10 +85,39 @@ export const useFormStatus = (): UseFormStatusReturn => {
     const setFieldValue = (field: keyof FormData, value: string) => {
         setFormDataState(prev => ({ ...prev, [field]: value }));
         
-        if (errors[field]) {
+        // Validate field in real-time, but skip phone validation during typing
+        if (field === 'phone') {
+            // For phone, only validate if it's a complete number (10 digits)
+            const digits = value.replace(/\D/g, '');
+            if (digits.length === 10) {
+                const error = validateField(field, value);
+                setErrors(prev => {
+                    const newErrors = { ...prev };
+                    if (error) {
+                        newErrors[field] = error;
+                    } else {
+                        delete newErrors[field];
+                    }
+                    return newErrors;
+                });
+            } else {
+                // Clear phone error if not complete
+                setErrors(prev => {
+                    const newErrors = { ...prev };
+                    delete newErrors[field];
+                    return newErrors;
+                });
+            }
+        } else {
+            // For other fields, validate immediately
+            const error = validateField(field, value);
             setErrors(prev => {
                 const newErrors = { ...prev };
-                delete newErrors[field];
+                if (error) {
+                    newErrors[field] = error;
+                } else {
+                    delete newErrors[field];
+                }
                 return newErrors;
             });
         }
