@@ -11,6 +11,24 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "pro.toolsey.com",
+        port: "",
+        pathname: "/core/blog_img/**",
+      },
+      {
+        protocol: "https",
+        hostname: "web-dev.toolsey.net",
+        port: "",
+        pathname: "/core/blog_img/**",
+      },
+      {
+        protocol: "https",
+        hostname: "toolsey.com",
+        port: "",
+        pathname: "/core/blog_img/**",
+      },
+      {
+        protocol: "https",
         hostname: "img.youtube.com",
         port: "",
         pathname: "/vi/**",
