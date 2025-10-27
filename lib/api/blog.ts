@@ -35,6 +35,7 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   
   const baseUrl = getAbsoluteUrl();
   const url = `${baseUrl}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
+  console.log(url);
   
   const response = await fetch(url, {
     headers: {
