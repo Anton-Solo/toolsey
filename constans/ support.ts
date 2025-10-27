@@ -29,26 +29,44 @@ export const COMMON_QUESTIONS = [
 export const TUTORIAL_VIDEOS = [
     {
         id: 1,
-        title: "Add a team member",
-        youtubeId: "NiMqWab6kAk",
-        description: "Invite teammates in seconds and assign roles so they can start working leads."
+        title: "Lead Enrichment",
+        youtubeId: "-G5r1EBuHoU",
+        description: "Toolsey's Lead Enrichment feature gets you one step ahead of the competition by allowing your team to know as much as possible before walking up to the homeowner's door."
     },
     {
         id: 2,
-        title: "Connect your CRM",
-        youtubeId: "5rlQC1IHvjQ",
-        description: "Integrate Toolsey with your CRM to sync leads and simplify your sales flow."
+        title: "Lead Assignment",
+        youtubeId: "QBzx7jfWV7s",
+        description: "Toolsey's automatic lead assignment allows you to get your leads to the sales team that much faster. You can assign by location, distance, and even type of work."
     },
     {
         id: 3,
-        title: "Capture leads from your website",
-        youtubeId: "NiMqWab6kAk",
-        description: "Use web forms to collect and organize leads—fast and without any coding."
+        title: "Map Leads",
+        youtubeId: "szRHxF5d3q4",
+        description: "Our Map Leads allow you to see all leads location at once."
     },
     {
         id: 4,
-        title: "Set up mobile notifications",
-        youtubeId: "5rlQC1IHvjQ",
-        description: "Enable push alerts so you never miss a lead while working in the field."
-    },
+        title: "Profit Checkers",
+        youtubeId: "njcEexxG0xg",
+        description: "Make the most of our financial tools with the Retail and Insurance Profit Checkers."
+    },  
+    {
+        id: 5,
+        title: "Templates",
+        youtubeId: "rhPfFRoR7eA",
+        description: "Build templates on Toolsey and take the guesswork out of communication with your leads."
+    },  
+    {
+        id: 6,
+        title: "Send From Domain",
+        youtubeId: "WsecET60A4A",
+        description: "All communication comes from Toolsey, but you can set it up to send from your company's domain, so when your leads respond, those responses come directly to you."
+    },  
+    {
+        id: 7,
+        title: "Two-Way Texting",
+        youtubeId: "UKpz--IONSc",
+        description: "We've partnered with Twilio to bring you and your team two-way texting WITHIN the Toolsey platform."
+    }
 ];
