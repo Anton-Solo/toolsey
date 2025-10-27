@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^15.5.2",
-    "@vercel/speed-insights": "^1.2.0",
     "lottie-react": "^2.4.1",
     "next": "15.5.0",
     "react": "19.1.0",

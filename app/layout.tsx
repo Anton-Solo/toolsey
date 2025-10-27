@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import Link from "next/link";
 import { ZohoDeskWidget } from "@/components/common/ZohoDeskWidget";
@@ -44,7 +43,6 @@ export default function RootLayout({
       <body
         className={`${jakarta.variable} antialiased`}
       >
-        <SpeedInsights/>
         <ZohoDeskWidget />
         <Toaster position="top-right" richColors />
         <ErrorBoundary>
