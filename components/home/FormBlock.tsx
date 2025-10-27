@@ -11,6 +11,7 @@ import { useFormStatus } from "@/hooks/useFormStatus";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { submitContactForm, ContactFormData } from "@/lib/api/contact";
 import { toast } from "sonner";
+import { USFlagIcon } from "@/components/icons/USFlagIcon";
 
 export const FormBlock = () => {
     const {
@@ -113,7 +114,7 @@ export const FormBlock = () => {
                 <div className="block w-full">
                     <div className="relative">
                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 flex items-center">
-                            <span className="text-2xl">🇺🇸</span>
+                            <USFlagIcon className="w-6 h-4" />
                         </div>
                         <input
                             type="tel"

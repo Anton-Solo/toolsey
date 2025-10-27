@@ -80,7 +80,7 @@ export const WeeklyNews = ({ isPost = false }: { isPost?: boolean }) => {
                 />
                 <button 
                     type="submit"
-                    className={`btn btn-white !w-max ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                    className={`btn btn-white !w-max ${isSubmitting ? 'opacity-75 cursor-not-allowed !text-standart-white' : ''}`}
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? 'Loading...' : 'Subscribe'}
