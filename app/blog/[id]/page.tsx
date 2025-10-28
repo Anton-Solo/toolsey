@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import LatestPost from "@/components/blog/LatestPost";
 import { WeeklyNews } from "@/components/blog/WeeklyNews";
 import { ArrowIcon } from "@/components/icons/support/ArrowIcon";
@@ -9,6 +8,7 @@ import { splitHtmlContent } from "@/utils/contentSplitter";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from 'next';
 
 interface PostPageProps {
     params: Promise<{
@@ -17,7 +17,30 @@ interface PostPageProps {
 }
 
 export const revalidate = 300;
-export const dynamicParams = true; 
+export const dynamicParams = true;
+
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+    try {
+        const resolvedParams = await params;
+        const response = await fetchBlogPostById(parseInt(resolvedParams.id));
+        const post: BlogPost = response.data;
+
+        return {
+            title: post.title,
+            description: post.summary || post.content.substring(0, 160),
+            openGraph: {
+                title: post.title,
+                description: post.summary || post.content.substring(0, 160),
+                images: [post.images.large || "/images/test-image.png"],
+            },
+        };
+    } catch (error) {
+        return {
+            title: 'Post not found',
+            description: 'The blog post you are looking for does not exist.',
+        };
+    }
+} 
 
 export default async function Post({ params }: PostPageProps) {
     try {
@@ -46,14 +69,6 @@ export default async function Post({ params }: PostPageProps) {
 
         return (
             <main className="bg-primary-light">
-                <Head>
-                    <title>{post.title}</title>
-                    <meta name="description" content={post.summary || post.content.substring(0, 160)} />
-                    <meta property="og:title" content={post.title} />
-                    <meta property="og:description" content={post.summary || post.content.substring(0, 160)} />
-                    <meta property="og:image" content={post.images.large || "/images/test-image.png"} />
-                </Head>
-
                 <section className="py-[60px]">
                     <div className="container">
                         <Link href="/blog" className="flex items-center gap-2 lg:-mb-6 mb-4 text-primary font-medium hover:opacity-80 transition-opacity duration-300">
