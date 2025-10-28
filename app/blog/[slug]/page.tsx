@@ -12,7 +12,7 @@ import type { Metadata } from 'next';
 
 interface PostPageProps {
     params: Promise<{
-        id: string;
+        slug: string;
     }>;
 }
 
@@ -22,7 +22,7 @@ export const dynamicParams = true;
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
     try {
         const resolvedParams = await params;
-        const response = await fetchBlogPostById(parseInt(resolvedParams.id));
+        const response = await fetchBlogPostById(resolvedParams.slug);
         const post: BlogPost = response.data;
 
         return {
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 export default async function Post({ params }: PostPageProps) {
     try {
         const resolvedParams = await params;
-        const response = await fetchBlogPostById(parseInt(resolvedParams.id));
+        const response = await fetchBlogPostById(resolvedParams.slug);
         const post: BlogPost = response.data;
 
         const formatDate = (dateString: string) => {
@@ -128,7 +128,7 @@ export default async function Post({ params }: PostPageProps) {
                     </div>
                 </section>
 
-                <LatestPost excluded_ids={[parseInt(resolvedParams.id)]} />
+                <LatestPost excluded_ids={[post.id]} />
                 <ScrollToTop />
             </main>
         )

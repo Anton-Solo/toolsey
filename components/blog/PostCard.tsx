@@ -46,7 +46,7 @@ export const PostCard = ({ post }: PostCardProps) => {
 
     return (
         <div className="hover:shadow-lg rounded-3xl max-w-[416px] w-full linear-borders bg-standart-white transition-all duration-300 hover:-translate-y-2 flex flex-col">
-            <Link href={`/blog/${post.id}`} className="block w-full h-[208px] relative overflow-hidden rounded-t-3xl">
+            <Link href={`/blog/${post.slug}`} className="block w-full h-[208px] relative overflow-hidden rounded-t-3xl">
                 <Image
                     src={getImageSrc()}
                     alt={post.title}
@@ -85,7 +85,7 @@ export const PostCard = ({ post }: PostCardProps) => {
                         </div>
                     )}
                 </div>
-                <Link href={`/blog/${post.id}`} className="block p-body-20 font-bold mb-2 line-clamp-3 hover:text-primary transition-colors duration-300 flex-grow">
+                <Link href={`/blog/${post.slug}`} className="block p-body-20 font-bold mb-2 line-clamp-3 hover:text-primary transition-colors duration-300 flex-grow">
                     {post.title}
                 </Link>
                 <div className="mt-auto">
@@ -94,7 +94,7 @@ export const PostCard = ({ post }: PostCardProps) => {
                         <span className="bg-accent-dark w-[3px] h-[3px] rounded-full"></span>
                         <p className="label">{calculateReadTime(post.content)}</p>
                     </div>
-                    <Link href={`/blog/${post.id}`} className="flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all duration-300 group">
+                    <Link href={`/blog/${post.slug}`} className="flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all duration-300 group">
                         <span>Read more</span>
                         <ArrowIcon className="w-[10px] h-[5px] stroke-primary -rotate-90 mt-[2px] group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>

@@ -49,7 +49,7 @@ export async function fetchBlogPosts(params: BlogApiParams = {}): Promise<BlogAp
   return response.json();
 }
 
-export async function fetchBlogPostById(id: number) {
+export async function fetchBlogPostById(id: string) {
   const response = await fetch(`${process.env.API_BASE_URL}/blog/posts/${id}`, {
     headers: {
       'Authorization': `Bearer ${BEARER_TOKEN}`,

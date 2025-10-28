@@ -42,10 +42,6 @@ export const useRecaptcha = (containerId: string = 'recaptcha-container') => {
         return;
       }
 
-      console.log('reCAPTCHA Site Key:', process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ? 
-        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY : 
-        'NOT SET');
-
       callbackRef.current = callback;
 
       window.grecaptcha.ready(() => {
