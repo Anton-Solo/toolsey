@@ -36,6 +36,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="d9264300-daa1-432e-8ecc-49ca52d03807"
+          data-blockingmode="auto"
+          strategy="beforeInteractive"
+        />
+        <Script
           src="https://www.google.com/recaptcha/api.js"
           strategy="afterInteractive"
         />
